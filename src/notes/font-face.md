@@ -1,0 +1,34 @@
+---
+title: '@font-face'
+tags:
+  - css
+emoji: 📰
+created: 2020-02-27T23:02:00.000Z
+modified: 2020-03-26T23:06:06.000Z
+---
+
+## Modern browsers
+
+```css
+@font-face {
+  font-family: 'MyWebFont';
+  src: url('myfont.woff2') format('woff2'), url('myfont.woff') format('woff');
+  font-display: 'swap';
+}
+```
+
+## Every browser
+
+```css
+/* prettier-ignore */
+@font-face {
+  font-family: 'MyWebFont';
+  src: url('webfont.eot'); /* IE9 Compat Modes */
+  src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('webfont.woff2') format('woff2'), /* Super Modern Browsers */
+       url('webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('webfont.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+  font-display: 'swap';
+}
+```

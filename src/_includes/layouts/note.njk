@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+---
+
+<article class="note mx-auto">
+  <div class="prose lg:prose-xl prose-slate">
+    <h1>{{ title }}</h1>
+  </div>
+
+  <div class="noteMetadata my-3">
+    <div><a href="{{ link }}">{{ link }}</a></div>
+    <p class="noteListItem__date">{{ created | readableDate }}{%if modified %} {{ modified | readableDate }}{% endif %}</p>
+    <div class="tags flex items-center gap-1">
+      {% if not hideTagsList %}
+        <b>Tags: </b>
+        {% for tag in tags %}
+          {% if tag != 'note' %}
+            <a href="{{ '/tags/' | url }}{{ tag | slug }}" class="tag">{{ tag }}</a>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="prose lg:prose-xl prose-slate">
+    {{ content | safe }}
+
+    <hr>
+
+    <a href="{{ '/' | url }}">&larr; Back home</a>
+  </div>
+</article>

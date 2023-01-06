@@ -1,0 +1,9 @@
+@layer components {
+  .tag {
+    display: inline-flex;
+    flex-shrink: 0;
+    @apply px-2 rounded-full bg-slate-200 text-sm;
+    text-decoration: none;
+    font-weight: normal;
+  }
+}

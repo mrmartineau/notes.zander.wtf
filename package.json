@@ -1,0 +1,38 @@
+{
+  "name": "11ty-notes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently 'pnpm run serve' 'pnpm run css:watch'",
+    "serve": "npx @11ty/eleventy --serve --port 3456",
+    "prebuild": "npm run css",
+    "build": "npx @11ty/eleventy",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css": "postcss src/css/index.css --o _site/css/index.css",
+    "css:watch": "watch 'npm run css' src"
+  },
+  "keywords": [],
+  "author": "Zander Martineau",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.2",
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "@alexcarpenter/slugify": "^1.0.6",
+    "@tailwindcss/typography": "^0.5.8",
+    "autoprefixer": "^10.4.13",
+    "concurrently": "^7.6.0",
+    "eleventy-plugin-shiki-twoslash": "^1.1.0",
+    "luxon": "^3.1.1",
+    "postcss": "^8.4.19",
+    "postcss-cli": "^10.1.0",
+    "postcss-import": "^15.1.0",
+    "postcss-import-ext-glob": "^2.1.1",
+    "tailwindcss": "^3.2.4",
+    "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "color-hash": "^2.0.2"
+  }
+}

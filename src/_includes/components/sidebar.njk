@@ -1,0 +1,14 @@
+<aside class="sidebar">
+  <ul class="flex flex-col gap-1">
+    {% for tag in collections.tagList %}
+      <li class="flex flex-col gap-1">
+        <a
+          class="flex items-center gap-2 rounded px-2 py-1.5 text-sm transition-colors [word-break:break-word] cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:border bg-primary-50 font-bold text-primary-600 dark:bg-primary-500/10 contrast-more:border-primary-500 contrast-more:dark:border-primary-500"
+          href="{{ '/tags/' | url }}{{ tag.path | slug }}">
+          <span class="rounded-xl w-2.5 h-2.5" style="background-color: {{ tag.colour }};"></span>
+          {{ tag.name }} ({{ tag.count }})
+          </a>
+      </li>
+    {% endfor %}
+  </ul>
+</aside>

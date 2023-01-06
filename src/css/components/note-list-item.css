@@ -1,0 +1,20 @@
+@layer components {
+  .noteListItem {
+    @apply p-2 block md:flex justify-between rounded items-center gap-3;
+    transition: all 200ms ease-in-out;
+    overflow: hidden;
+  }
+  .noteListItem:hover {
+    @apply bg-slate-100;
+  }
+  .noteListItem__title {
+    min-width: 260px;
+    font-weight: bold;
+  }
+  .noteListItem__tags {
+    @apply flex items-center gap-1 truncate;
+  }
+  .noteListItem__date {
+    @apply text-xs truncate;
+  }
+}
