@@ -45,7 +45,7 @@ module.exports = function (eleventyConfig) {
       tagList.push({
         name: tag,
         count: tagsObject[tag],
-        colour: getColourFromString(tagName),
+        color: getColourFromString(tagName),
         path: tagName,
       })
     })
@@ -58,6 +58,17 @@ module.exports = function (eleventyConfig) {
       const bDate = new Date(b.data.created) ?? new Date(b.data.modified)
       return aDate.getTime() / 1000 < bDate.getTime() / 1000 ? 1 : -1
     })
+  })
+
+  eleventyConfig.addShortcode('tagDisplay', function (tag) {
+    const tagName = slugify(tag)
+    const tagColor = getColourFromString(tagName)
+    return `<span class="tag" style="background-color: ${tagColor};">${tag}</span>`
+  })
+  eleventyConfig.addShortcode('tagLink', function (tag) {
+    const tagName = slugify(tag)
+    const tagColor = getColourFromString(tagName)
+    return `<a href="/tags/${tagName}" class="tag" style="background-color: ${tagColor};">${tag}</a>`
   })
 
   return {

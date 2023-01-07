@@ -8,9 +8,7 @@
       <div class="flex gap-2 items-center">
         <div class="noteListItem__tags">
           {% for tag in note.data.tags %}
-            {% if tag != 'note' %}
-              <span class="tag">{{ tag }}</span>
-            {% endif %}
+            {% tagDisplay tag %}
           {% endfor %}
         </div>
         <div class="noteListItem__date">

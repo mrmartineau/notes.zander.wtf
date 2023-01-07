@@ -14,9 +14,7 @@ layout: layouts/base.njk
       {% if not hideTagsList %}
         <b>Tags: </b>
         {% for tag in tags %}
-          {% if tag != 'note' %}
-            <a href="{{ '/tags/' | url }}{{ tag | slug }}" class="tag">{{ tag }}</a>
-          {% endif %}
+          {% tagLink tag %}
         {% endfor %}
       {% endif %}
     </div>
