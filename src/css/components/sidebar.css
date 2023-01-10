@@ -1,0 +1,50 @@
+@layer components {
+  .cn-sidebar {
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
+    width: var(--sidebarWidth);
+  }
+
+  .cn-sidebar-contentWrapper {
+    @apply flex flex-col gap-3 justify-between;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 1.5rem;
+
+    @media screen and (min-width: 768px) {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+  }
+
+  .cn-sidebar-top {
+    /* background-color: blue; */
+  }
+  .cn-sidebar-bottom {
+    /* background-color: green; */
+  }
+
+  .cn-sidebar-list {
+    @apply flex flex-col gap-1;
+  }
+
+  .cn-sidebar-list-item {
+    @apply flex gap-1;
+  }
+
+  .cn-sidebar-link {
+    @apply flex items-center gap-2;
+    /* @apply px-2 py-1 text-sm transition-colors [word-break:break-word] cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:border text-primary-600 dark:bg-primary-500/10 contrast-more:border-primary-500 contrast-more:dark:border-primary-500; */
+    background-color: var(--tw-bg-primary-50);
+
+    span {
+      @apply rounded-xl w-2.5 h-2.5;
+    }
+
+    &:hover {
+      /* @apply bg-primary-50; */
+    }
+  }
+}

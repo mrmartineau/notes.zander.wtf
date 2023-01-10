@@ -21,10 +21,7 @@ permalink: /tags/{{ tag | slug }}/
 <div class="container">
   <h1>Tagged “{{ tag }}”</h1>
 
-  {% set notes = collections[tag] %}
-  {% include 'components/note-list.njk' %}
-
-  <p>See <a href="{{ '/tags/' | url }}">all tags</a>.</p>
+  {% set notes = collections[tag] %} {% include 'components/note-list.njk' %}
 </div>
 
 {% endblock %}

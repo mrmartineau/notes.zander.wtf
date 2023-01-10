@@ -1,4 +1,3 @@
-{% set navPages = collections.all | eleventyNavigation %}
 <nav class="navbar">
   <div class="navbar__inner">
     <a class="navbar__logo" href="{{ '/' | url }}">{{ site.meta.title }}</a>
@@ -14,27 +13,5 @@
         </svg>
       </button>
     </div>
-
-    <div class="navbar__links">
-      {% for entry in navPages %}
-        <a class="navbar__link {% if entry.url == page.url %}navbar__link--active{% endif %}" href="{{ entry.url | url }}">
-          {{ entry.title }}
-        </a>
-      {%- endfor %}
-
-      <div class="navbar__button dark-toggle" aria-label="toggle dark theme">
-        <img src="{{ '/static/img/moon.svg' | url }}" alt="">
-      </div>
-
-    </div>
   </div>
-
-  <div class="navbar__mobile-links">
-    {% for entry in navPages %}
-      <a class="navbar__mobile-link {% if entry.url == page.url %}navbar__mobile-link--active{% endif %}" href="{{ entry.url | url }}">
-        {{ entry.title }}
-      </a>
-    {%- endfor %}
-  </div>
-
 </nav>

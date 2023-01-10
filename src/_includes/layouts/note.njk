@@ -7,23 +7,25 @@ layout: layouts/base.njk
     <h1>{{ title }}</h1>
   </div>
 
-  <div class="noteMetadata my-3">
-    <div><a href="{{ link }}">{{ link }}</a></div>
-    <p class="noteListItem__date">{{ created | readableDate }}{%if modified %} {{ modified | readableDate }}{% endif %}</p>
-    <div class="tags flex items-center gap-1">
-      {% if not hideTagsList %}
-        <b>Tags: </b>
-        {% for tag in tags %}
-          {% tagLink tag %}
-        {% endfor %}
-      {% endif %}
+  <div class="noteMetadata my-3 flex flex-col gap-2">
+    {%if link %}
+    <div>
+      <a href="{{ link }}">{{ link }}</a>
+    </div>
+    {% endif %}
+    <p class="noteListItem__date">
+      {{ created | readableDate }}{%if modified %}
+      {{ modified | readableDate }}{% endif %}
+    </p>
+    <div class="tags flex items-center gap-2">
+      {% for tag in tags %} {% tagLink tag %} {% endfor %}
     </div>
   </div>
 
   <div class="prose lg:prose-xl prose-slate">
     {{ content | safe }}
 
-    <hr>
+    <hr />
 
     <a href="{{ '/' | url }}">&larr; Back home</a>
   </div>

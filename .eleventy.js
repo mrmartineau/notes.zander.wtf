@@ -4,12 +4,14 @@ const rssPlugin = require('@11ty/eleventy-plugin-rss')
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
 const { getColourFromString } = require('./src/utils/getColourFromString')
 const slugify = require('@alexcarpenter/slugify')
+const pluginTOC = require('eleventy-plugin-nesting-toc')
 
 module.exports = function (eleventyConfig) {
   // Plugins
   eleventyConfig.addPlugin(rssPlugin)
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
   eleventyConfig.addPlugin(shikiTwoslash, { theme: 'nord' })
+  eleventyConfig.addPlugin(pluginTOC)
 
   // Filters
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
@@ -23,6 +25,7 @@ module.exports = function (eleventyConfig) {
   })
 
   // Collections
+  // Tags
   eleventyConfig.addCollection('tagList', (collection) => {
     const tagsObject = {}
     collection.getAll().forEach((item) => {
@@ -49,13 +52,14 @@ module.exports = function (eleventyConfig) {
         path: tagName,
       })
     })
-    return tagList.sort((a, b) => b.tagCount - a.tagCount)
+    return tagList.sort((a, b) => b.count - a.count)
   })
 
+  // Notes
   eleventyConfig.addCollection('notes', (collection) => {
     return collection.getFilteredByGlob('src/notes/*.md').sort((a, b) => {
-      const aDate = new Date(a.data.created) ?? new Date(a.data.modified)
-      const bDate = new Date(b.data.created) ?? new Date(b.data.modified)
+      const aDate = new Date(a.data.modified) || new Date(a.data.created)
+      const bDate = new Date(b.data.modified) || new Date(b.data.created)
       return aDate.getTime() / 1000 < bDate.getTime() / 1000 ? 1 : -1
     })
   })

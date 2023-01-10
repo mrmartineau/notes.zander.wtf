@@ -1,0 +1,10 @@
+.cn-layoutWrapper {
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .cn-layoutWrapper {
+    display: grid;
+    grid-template-columns: var(--sidebarWidth) 1fr;
+  }
+}

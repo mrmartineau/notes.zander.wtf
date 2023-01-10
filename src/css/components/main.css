@@ -1,0 +1,22 @@
+.cn-main {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 10;
+  padding: 1rem;
+  background-color: white;
+  transition: all 200ms ease-in-out;
+  box-shadow: 0 0 6px -1px rgb(0 0 0 / 10%), 0 0 4px -1px rgb(0 0 0 / 6%);
+  min-height: 100vh;
+}
+
+@media screen and (min-width: 768px) {
+  .cn-main {
+    border-radius: 1rem 0 0 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}

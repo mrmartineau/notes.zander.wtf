@@ -1,7 +1,6 @@
 @import 'tailwindcss/base';
 
-/* @import 'global/reset.css';
-@import 'global/fonts.css'; */
+@import 'global/vars.css';
 
 @import 'tailwindcss/components';
 /* @import 'tailwindcss/typography'; */
