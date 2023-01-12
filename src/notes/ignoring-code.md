@@ -107,7 +107,7 @@ This type of ignore is only allowed to be used in top-level and aimed to disable
 
 ### YAML
 
-```yml
+```yaml
 # prettier-ignore
 key  : value
 hello: world

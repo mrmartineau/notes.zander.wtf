@@ -74,6 +74,11 @@ module.exports = function (eleventyConfig) {
     const tagColor = getColourFromString(tagName)
     return `<a href="/tags/${tagName}" class="tag" style="background-color: ${tagColor};">${tag}</a>`
   })
+  eleventyConfig.addShortcode('tagDot', function (tag) {
+    const tagName = slugify(tag)
+    const tagColor = getColourFromString(tagName)
+    return `<span class="tagDot" style="background-color: ${tagColor};"></span>`
+  })
 
   return {
     markdownTemplateEngine: false,

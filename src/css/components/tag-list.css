@@ -1,0 +1,7 @@
+.tagHeading {
+  @apply mb-6;
+
+  .tagDot {
+    @apply w-5 h-5;
+  }
+}

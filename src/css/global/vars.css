@@ -1,3 +1,23 @@
 :root {
   --sidebarWidth: 250px;
+  --bg: theme(colors.zinc.50);
+  --bg-main: theme(colors.zinc.100);
+  --bg-nav-active: theme(colors.zinc.200);
+  --bg-note-hover: theme(colors.zinc.200);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: theme(colors.zinc.700);
+    --bg-main: theme(colors.zinc.800);
+    --bg-nav-active: theme(colors.zinc.600);
+    --bg-note-hover: theme(colors.zinc.600);
+  }
+}
+
+.dark {
+  --bg: theme(colors.zinc.700);
+  --bg-main: theme(colors.zinc.800);
+  --bg-nav-active: theme(colors.zinc.600);
+  --bg-note-hover: theme(colors.zinc.600);
 }

@@ -110,23 +110,21 @@ export const useAllTags = () => {
 
 Given `frontmatter` like this:
 
-```yml
+```yaml
 ---
 title: Gatsby
 tags:
   - react
   - graphql
 ---
-
 ```
 
 or this
 
-```yml
+```yaml
 ---
 title: Gatsby
 ---
-
 ```
 
 Then query for items that **don't** have tags set

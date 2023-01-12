@@ -1,26 +1,24 @@
 <aside class="cn-sidebar">
   <div class="cn-sidebar-contentWrapper">
     <div class="cn-sidebar-top">
-      <a class="navbar__logo" href="{{ '/' | url }}">{{ site.meta.title }}</a>
-      <a class="cn-sidebar-link" href="{{ '/' | url }}">All notes</a>
+      <div class="cn-sidebar-wrapper">
+        <a class="navbar__logo" href="{{ '/' | url }}">{{ site.meta.title }}</a>
+      </div>
       <nav>
-        TAGS
-        <ul class="cn-sidebar-list">
-          {% for tag in collections.tagList %}
-          <li class="cn-sidebar-list-item">
-            <a
-              class="cn-sidebar-link"
-              href="{{ '/tags/' | url }}{{ tag.path | slug }}"
-            >
-              <span style="background-color: {{ tag.color }}"></span>
-              {{ tag.name }} ({{ tag.count }})
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
+        <a class="cn-sidebar-link" href="{{ '/' | url }}">All notes</a>
+        <div class="cn-sidebar-wrapper">TAGS</div>
+        {% for tag in collections.tagList %}
+        <a
+          class="cn-sidebar-link {{ 'active' if tag.path | slug in page.url }}"
+          href="{{ '/tags/' | url }}{{ tag.path | slug }}"
+        >
+          {% tagDot tag.name %}
+          {{ tag.name }} ({{ tag.count }})
+        </a>
+        {% endfor %}
       </nav>
     </div>
-    <div class="cn-sidebar-bottom">
+    <div class="cn-sidebar-bottom cn-sidebar-wrapper">
       Bottom
       <!-- <a class="dark-toggle" href="javascript:void(0)">
         <img src="{{ '/static/img/moon.svg' | url }}" alt="Toggle dark mode" />

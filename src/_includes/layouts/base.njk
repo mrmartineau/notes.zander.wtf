@@ -23,12 +23,13 @@
     />
     <link rel="stylesheet" href="{{ '/css/index.css' | url }}" media="all" />
   </head>
-  <body class="bg-slate-100">
+
+  <body>
     <div class="cn-layoutWrapper">
       {% include 'components/sidebar.njk' %}
 
       <main id="main" class="cn-main">
-        <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto px-4">
           {% include 'components/search.njk' %}
           {{ content | safe }}
           {% include 'components/footer.njk' %}
@@ -36,7 +37,7 @@
       </main>
     </div>
 
-    <script>
+    <!-- <script>
       const ham = document.querySelector('.navbar__hamburger')
       const menu = document.querySelector('.navbar__mobile-links')
       const darkToggleButtons = document.querySelectorAll('.dark-toggle')
@@ -57,7 +58,7 @@
           window.matchMedia('(prefers-color-scheme: dark)').matches &&
           localStorage.prefsDark !== 'false')
       ) {
-        document.body.classList.add('dark')
+        document.documentElement.classList.add('dark')
         changeDarkToggleBtnIcon()
       }
       ham.addEventListener('click', () => {
@@ -77,6 +78,6 @@
           }
         })
       })
-    </script>
+    </script> -->
   </body>
 </html>

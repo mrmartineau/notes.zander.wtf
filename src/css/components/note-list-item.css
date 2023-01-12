@@ -5,7 +5,7 @@
     overflow: hidden;
   }
   .noteListItem:hover {
-    @apply bg-slate-100;
+    background-color: var(--bg-note-hover);
   }
   .noteListItem__title {
     min-width: 260px;

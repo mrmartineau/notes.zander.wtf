@@ -2,8 +2,13 @@
   .tag {
     display: inline-flex;
     flex-shrink: 0;
-    @apply px-2 rounded-full bg-slate-200 text-xs;
+    @apply px-2 rounded-full bg-zinc-200 text-xs;
     text-decoration: none;
     font-weight: normal;
+  }
+
+  .tagDot {
+    @apply w-2.5 h-2.5 rounded-xl;
+    display: inline-block;
   }
 }

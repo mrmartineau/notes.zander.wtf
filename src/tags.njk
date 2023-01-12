@@ -19,7 +19,11 @@ permalink: /tags/{{ tag | slug }}/
 {% block content %}
 
 <div class="container">
-  <h1>Tagged “{{ tag }}”</h1>
+  <div class="prose lg:prose-xl prose-zinc dark:prose-invert">
+    <h1 class="tagHeading flex gap-4 items-center">
+      {% tagDot tag %} {{ tag }}
+    </h1>
+  </div>
 
   {% set notes = collections[tag] %} {% include 'components/note-list.njk' %}
 </div>

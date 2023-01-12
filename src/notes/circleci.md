@@ -9,7 +9,7 @@ modified: 2020-11-04T17:01:50.000Z
 
 ## Basic example
 
-```yml
+```yaml
 version: 2
 
 references:

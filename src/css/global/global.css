@@ -1,0 +1,15 @@
+:root {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    background-color: var(--bg);
+  }
+}
+
+:root.dark {
+  color-scheme: dark;
+  background-color: var(--bg);
+}

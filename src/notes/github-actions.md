@@ -16,7 +16,7 @@ Docs:
 
 ### On push
 
-```yml
+```yaml
 name: learn-github-actions
 on: [push]
 jobs:
@@ -31,7 +31,7 @@ jobs:
 
 ### PRs only
 
-```yml
+```yaml
 name: Run on PR
 'on': pull_request
 jobs:
@@ -70,7 +70,7 @@ jobs:
 
 ### On merge into `main` branch
 
-```yml
+```yaml
 name: Run on merge
 'on':
   push:
