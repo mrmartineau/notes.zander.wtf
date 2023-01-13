@@ -5,6 +5,7 @@ const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
 const { getColourFromString } = require('./src/utils/getColourFromString')
 const slugify = require('@alexcarpenter/slugify')
 const pluginTOC = require('eleventy-plugin-nesting-toc')
+const heroIcons = require('eleventy-plugin-heroicons')
 
 module.exports = function (eleventyConfig) {
   // Plugins
@@ -12,6 +13,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
   eleventyConfig.addPlugin(shikiTwoslash, { theme: 'nord' })
   eleventyConfig.addPlugin(pluginTOC)
+  eleventyConfig.addPlugin(heroIcons)
 
   // Filters
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {

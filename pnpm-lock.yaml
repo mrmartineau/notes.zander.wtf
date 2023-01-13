@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@11ty/eleventy': 2.0.0-canary.28
+  '@11ty/eleventy': 2.0.0-canary.29
   '@11ty/eleventy-navigation': ^0.3.5
   '@11ty/eleventy-plugin-rss': ^1.2.0
   '@alexcarpenter/slugify': ^1.0.6
@@ -9,6 +9,7 @@ specifiers:
   autoprefixer: ^10.4.13
   color-hash: ^2.0.2
   concurrently: ^7.6.0
+  eleventy-plugin-heroicons: ^1.1.0
   eleventy-plugin-nesting-toc: ^1.3.0
   eleventy-plugin-shiki-twoslash: ^1.1.0
   luxon: ^3.1.1
@@ -16,23 +17,22 @@ specifiers:
   postcss-cli: ^10.1.0
   postcss-import: ^15.1.0
   postcss-import-ext-glob: ^2.1.1
-  slug: ^8.2.2
   tailwindcss: ^3.2.4
   watch: ^1.0.2
 
 dependencies:
   color-hash: 2.0.2
   eleventy-plugin-nesting-toc: 1.3.0
-  slug: 8.2.2
 
 devDependencies:
-  '@11ty/eleventy': 2.0.0-canary.28
+  '@11ty/eleventy': 2.0.0-canary.29
   '@11ty/eleventy-navigation': 0.3.5
   '@11ty/eleventy-plugin-rss': 1.2.0
   '@alexcarpenter/slugify': 1.0.6
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
   autoprefixer: 10.4.13_postcss@8.4.19
   concurrently: 7.6.0
+  eleventy-plugin-heroicons: 1.1.0
   eleventy-plugin-shiki-twoslash: 1.1.0
   luxon: 3.1.1
   postcss: 8.4.19
@@ -93,8 +93,8 @@ packages:
       normalize-path: 3.0.0
     dev: true
 
-  /@11ty/eleventy/2.0.0-canary.28:
-    resolution: {integrity: sha512-/a9z0LahNCPdT5ZEPxAT77/ueC8n9roIgaSUB/EjOTb7YA/mklfn7LxN3JCheo+prcaHspaBsJhGE7qmwB0IRQ==}
+  /@11ty/eleventy/2.0.0-canary.29:
+    resolution: {integrity: sha512-BmD1ibjk6qx+wHLLbv/EMQL2gCn3LOae5SZ1YtRN7U89c6hfEHvsbQ2rdW0rN7RqINe/8xvnTRn0APpuifnvOg==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
@@ -766,6 +766,10 @@ packages:
 
   /electron-to-chromium/1.4.284:
     resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
+    dev: true
+
+  /eleventy-plugin-heroicons/1.1.0:
+    resolution: {integrity: sha512-i9pBWru64ixs8lafSPFLsiCdcpy/FvRb0G/sS5D+VuS+QKyJE5ifxsGtOi6AiAdTzHp1t6uXV4ZMb0k5ACrgng==}
     dev: true
 
   /eleventy-plugin-nesting-toc/1.3.0:
@@ -2015,11 +2019,6 @@ packages:
     resolution: {integrity: sha512-n6KkmvKS0623igEVj3FF0OZs1gYYJ0o0Hj939yc1fyxl2xt+xYpLnzJB6xBSqOfV9ZFLEWodBBN/heZJahuIJQ==}
     engines: {node: '>=14.16'}
     dev: true
-
-  /slug/8.2.2:
-    resolution: {integrity: sha512-5ByW6qXqPeG0Tmlkh24JhdXhvQsbaJSjVr3GgGxUV0BSskZKKBZZfFWxezap8+fh1vxBN9GVbqI1V6nqAFxlBg==}
-    hasBin: true
-    dev: false
 
   /slugify/1.6.5:
     resolution: {integrity: sha512-8mo9bslnBO3tr5PEVFzMPIWwWnipGS0xVbYf65zxDqfNwmzYn1LpiKNrR6DlClusuvo+hDHd1zKpmfAe83NQSQ==}

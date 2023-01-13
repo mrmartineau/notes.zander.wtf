@@ -2,23 +2,27 @@
 layout: layouts/base.njk
 ---
 
-<article class="note mx-auto">
-  <div class="prose lg:prose-xl prose-zinc dark:prose-invert">
+<article class="note mx-auto mt-6">
+  <div class="prose lg:prose-xl prose-zinc dark:prose-invert mb-6">
     <h1>{{ title }}</h1>
   </div>
 
-  <div class="noteMetadata my-3 flex flex-col gap-2">
-    {%if link %}
-    <div>
+  <div class="text-sm mt-6 mb-6 flex flex-col gap-2">
+    {% if link %}
+    <div class="truncate flex items-center gap-2">
+      {% heroicon "outline", "link", "Link", { width: 20 } %}
       <a href="{{ link }}">{{ link }}</a>
     </div>
     {% endif %}
-    <p class="noteListItem__date">
-      {{ created | readableDate }}{%if modified %}
-      {{ modified | readableDate }}{% endif %}
+    <p class="truncate flex items-center gap-2">
+      {% heroicon "outline", "calendar", "Note date", { width: 20 } %} {%if
+      modified %}
+      {{ modified | readableDate }}{% else %}{{ created | readableDate }}{%
+      endif %}
     </p>
     <div class="tags flex items-center gap-2">
-      {% for tag in tags %} {% tagLink tag %} {% endfor %}
+      {% heroicon "outline", "tag", "Tags", { width: 20 } %} {% for tag in tags
+      %} {% tagLink tag %} {% endfor %}
     </div>
   </div>
 

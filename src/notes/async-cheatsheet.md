@@ -4,7 +4,7 @@ tags:
   - javascript
   - cheatsheet
 created: 2020-03-22T14:53:49.000Z
-modified: 2020-03-22T14:53:49.000Z
+modified: 2023-01-13T09:48:49.000Z
 ---
 
 Pending promises can become either...
@@ -44,7 +44,7 @@ promise.then(onFulfilled, onRejected)
 
 ## Combining promises
 
-### Calls onFulfilled once the promise is fulfilled.
+### Calls `onFulfilled` once the promise is fulfilled.
 
 ```js
 value.then(value => nextValue, ...) -> nextValue value.then(value => outcome, ...) -> outcome value.then(value => throw error, ...) -> error
@@ -64,7 +64,7 @@ error.then(...) -> error
 
 ### `promise.catch( onRejected )`
 
-Behaves identically to then when onFulfilled is omitted.
+Behaves identically to then when `onFulfilled` is omitted.
 
 ```js
 error.catch(onRejected) <=> error.then(..., onRejected)
@@ -78,38 +78,47 @@ value.catch(...) -> value
 
 ### `promise.finally( onFinally )`
 
-Calls onFinally with no arguments once any outcome is available. Passes through input promise.
+Calls `onFinally` with no arguments once any outcome is available. Passes through input promise.
 
 ```js
 outcome.finally(() => ...) -> outcome
 ```
 
-The onFulfilled, onRejected and onFinally functions will not be executed until at least the next tick, even for promises that already have an outcome.
+The `onFulfilled`, `onRejected` and `onFinally` functions will not be executed until at least the next tick, even for promises that already have an outcome.
 
 ## Making promises
 
-The function passed to new Promise will be executed synchronously.
+The function passed to new `Promise` will be executed synchronously.
 
 ```js
 new Promise((resolve, reject) => {
   doImportantStuff((error, value) => {
-    if (error) reject(error)
-    else resolve(value)
+    if (error) {
+      reject(error)
+    } else {
+      resolve(value)
+    }
   })
 })
 ```
 
 Use `resolve()` or `reject()` to create promises from values.
+
+```js
 Promise.resolve(value) -> value Promise.reject(error) -> error
+```
 
 If you put a fulfilled promise into a fulfilled promise, they'll collapse into one.
+
+```js
 Promise.resolve(value) -> value
+```
 
 Sometimes you might not need reject, or might not resolve to a value.
 
 ```js
 function delay(milliseconds) {
-  return new Promise(resolve => setTimeout(resolve, milliseconds))
+  return new Promise((resolve) => setTimeout(resolve, milliseconds))
 }
 ```
 
@@ -144,6 +153,6 @@ const fn = async () => {
 }
 ```
 
-await may only be used within async functions.
+`await` may only be used within async functions.
 
-await will wait until at least the next tick before returning, even when awaiting already-fulfilled promises or non-promise values.
+`await` will wait until at least the next tick before returning, even when awaiting already-fulfilled promises or non-promise values.

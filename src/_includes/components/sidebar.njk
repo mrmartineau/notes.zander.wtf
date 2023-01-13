@@ -9,8 +9,8 @@
         <div class="cn-sidebar-wrapper">TAGS</div>
         {% for tag in collections.tagList %}
         <a
-          class="cn-sidebar-link {{ 'active' if tag.path | slug in page.url }}"
-          href="{{ '/tags/' | url }}{{ tag.path | slug }}"
+          class="cn-sidebar-link {{ 'active' if tag.path | slugify in page.url }}"
+          href="{{ '/tags/' | url }}{{ tag.path | slugify }}"
         >
           {% tagDot tag.name %}
           {{ tag.name }} ({{ tag.count }})
