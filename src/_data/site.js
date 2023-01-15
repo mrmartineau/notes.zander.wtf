@@ -1,13 +1,13 @@
 module.exports = {
   meta: {
     title: 'Code Notes',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    description: 'My digital garden of code notes',
     lang: 'en',
     siteUrl: 'https://notes-v2.zander.wtf/',
   },
   feed: {
     // used in feed.xml.njk
-    subtitle: 'Lorem ipsum dolor sit amet consecuteor',
+    subtitle: 'My digital garden of code notes',
     filename: 'atom.xml',
     path: '/atom.xml',
     id: 'https://example.com/',
@@ -17,7 +17,6 @@ module.exports = {
   hero: {
     // used in hero section of main page ie. index.html.njk
     title: 'Welcome to my Code Notes',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores accusantium deserunt odio esse.',
+    description: 'My digital garden of code notes',
   },
 }

@@ -1,12 +1,23 @@
 <aside class="cn-sidebar">
   <div class="cn-sidebar-contentWrapper">
     <div class="cn-sidebar-top">
-      <div class="cn-sidebar-wrapper">
-        <a class="navbar__logo" href="{{ '/' | url }}">{{ site.meta.title }}</a>
+      <div class="cn-sidebar-wrapper prose prose-zinc dark:prose-invert">
+        <h1 class="cn-logo">
+          <a href="{{ '/' | url }}">
+            {{ site.meta.title }}
+          </a>
+        </h1>
+        {% if site.meta.description %}
+        <div class="cn-siteDescription">
+          {{ site.meta.description }}
+        </div>
+        {% endif %}
       </div>
       <nav>
-        <a class="cn-sidebar-link" href="{{ '/' | url }}">All notes</a>
-        <div class="cn-sidebar-wrapper">TAGS</div>
+        <a class="cn-sidebar-link uppercase" href="{{ '/' | url }}"
+          >All notes</a
+        >
+        <div class="cn-sidebar-wrapper uppercase">Tags</div>
         {% for tag in collections.tagList %}
         <a
           class="cn-sidebar-link {{ 'active' if tag.path | slugify in page.url }}"

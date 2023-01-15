@@ -19,10 +19,6 @@ pre {
   /* Give it some space to breathe */
   padding: 12px;
 
-  /* All code samples get a grey border, twoslash ones get a different color */
-  border-left: 1px solid #999;
-  border-bottom: 1px solid #999;
-
   margin-bottom: 3rem;
 
   /* Important to allow the code to move horizontally; */
@@ -230,19 +226,6 @@ pre .inline-completions ul.dropdown li span.result {
   color: black;
   display: inline-block;
 }
-.dark .markdown pre {
-  background-color: #d8d8d8;
-  border-color: #ddd;
-  filter: invert(98%) hue-rotate(180deg);
-}
-
-@media (prefers-color-scheme: dark) {
-  .markdown pre {
-    background-color: #d8d8d8;
-    /* border-color: #ddd; */
-    filter: invert(98%) hue-rotate(180deg);
-  }
-}
 
 data-lsp {
   /* Ensures there's no 1px jump when the hover happens */
@@ -318,3 +301,27 @@ pre .logger.log-log svg {
   margin-left: 6px;
   margin-right: 9px;
 }
+
+@media (prefers-color-scheme: light) {
+  .shiki.dark-plus {
+    display: none;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .shiki.light-plus {
+    display: none;
+  }
+}
+
+/* .dark .markdown pre {
+  background-color: #d8d8d8;
+  border-color: #ddd;
+  filter: invert(98%) hue-rotate(180deg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .markdown pre {
+    background-color: #d8d8d8;
+    filter: invert(98%) hue-rotate(180deg);
+  }
+} */

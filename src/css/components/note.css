@@ -1,0 +1,4 @@
+.noteMetadata {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-m);
+}

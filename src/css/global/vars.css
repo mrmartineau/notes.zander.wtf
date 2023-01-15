@@ -4,6 +4,7 @@
   --bg-main: theme(colors.zinc.100);
   --bg-nav-active: theme(colors.zinc.200);
   --bg-note-hover: theme(colors.zinc.200);
+  --border: #3f3f46;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,6 +13,7 @@
     --bg-main: theme(colors.zinc.800);
     --bg-nav-active: theme(colors.zinc.600);
     --bg-note-hover: theme(colors.zinc.600);
+    --border: #3f3f46;
   }
 }
 
@@ -20,4 +22,5 @@
   --bg-main: theme(colors.zinc.800);
   --bg-nav-active: theme(colors.zinc.600);
   --bg-note-hover: theme(colors.zinc.600);
+  --border: #3f3f46;
 }

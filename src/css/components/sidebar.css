@@ -6,6 +6,19 @@
     width: var(--sidebarWidth);
   }
 
+  .cn-logo {
+    margin-bottom: var(--space-xs);
+
+    a {
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+
+  .cn-siteDescription {
+    line-height: 1.2;
+  }
+
   .cn-sidebar-contentWrapper {
     @apply flex flex-col gap-3 justify-between;
     overflow-x: hidden;
@@ -21,7 +34,7 @@
   }
 
   .cn-sidebar-wrapper {
-    padding: theme('spacing.1') theme('spacing.3');
+    padding: var(--space-s) var(--space-s);
   }
 
   .cn-sidebar-top {
@@ -32,10 +45,11 @@
   }
 
   .cn-sidebar-link {
-    @apply flex items-center gap-2;
+    @apply flex items-center;
     /* @apply px-2 py-1 text-sm transition-colors [word-break:break-word] cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:border text-primary-600 dark:bg-zinc-500/10 contrast-more:border-primary-500 contrast-more:dark:border-primary-500; */
-    padding: theme('spacing.1') theme('spacing.3');
-    font-size: theme('fontSize.sm');
+    padding: var(--space-3xs) var(--space-s);
+    font-size: var(--step--1);
+    gap: var(--space-2xs);
 
     .tagDot {
       @apply w-2.5 h-2.5;

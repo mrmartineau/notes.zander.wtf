@@ -6,14 +6,46 @@ const { getColourFromString } = require('./src/utils/getColourFromString')
 const slugify = require('@alexcarpenter/slugify')
 const pluginTOC = require('eleventy-plugin-nesting-toc')
 const heroIcons = require('eleventy-plugin-heroicons')
+const markdownIt = require('markdown-it')
+const markdownItAnchor = require('markdown-it-anchor')
+const markdownItWikilinks = require('markdown-it-wikilinks')
+const markdownItCopyCode = require('markdown-it-code-copy')
 
 module.exports = function (eleventyConfig) {
   // Plugins
   eleventyConfig.addPlugin(rssPlugin)
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
-  eleventyConfig.addPlugin(shikiTwoslash, { theme: 'nord' })
-  eleventyConfig.addPlugin(pluginTOC)
+  eleventyConfig.addPlugin(shikiTwoslash, {
+    themes: ['dark-plus', 'light-plus'],
+  })
+  eleventyConfig.addPlugin(pluginTOC, {
+    ignoredElements: ['.visually-hidden', '[aria-hidden]'],
+  })
   eleventyConfig.addPlugin(heroIcons)
+
+  let options = {
+    html: true,
+    breaks: true,
+    linkify: true,
+    typographer: true,
+  }
+  eleventyConfig.setLibrary('md', markdownIt(options))
+  eleventyConfig.amendLibrary('md', (mdLib) =>
+    mdLib.use(markdownItAnchor, {
+      permalink: true,
+      safariReaderFix: true,
+      permalink: markdownItAnchor.permalink.linkInsideHeader({
+        symbol: `
+        <span class="visually-hidden">Jump to heading</span>
+        <span aria-hidden="true">#</span>
+      `,
+        placement: 'after',
+      }),
+      slugify: (s) => slugify(s),
+    })
+  )
+  eleventyConfig.amendLibrary('md', (mdLib) => mdLib.use(markdownItWikilinks()))
+  eleventyConfig.amendLibrary('md', (mdLib) => mdLib.use(markdownItCopyCode))
 
   // Filters
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
