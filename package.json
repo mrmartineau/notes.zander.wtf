@@ -7,8 +7,7 @@
     "dev": "concurrently 'pnpm run serve' 'pnpm run css:watch'",
     "serve": "npx @11ty/eleventy --serve --port 3456 --incremental",
     "serve:debug": "DEBUG=Eleventy* npx @11ty/eleventy --serve --port 3456",
-    "prebuild": "npm run css",
-    "build": "npx @11ty/eleventy",
+    "build": "npx @11ty/eleventy && npm run css",
     "test": "echo \"Error: no test specified\" && exit 1",
     "css": "postcss src/css/index.css --o _site/css/index.css",
     "css:watch": "watch 'npm run css' src"

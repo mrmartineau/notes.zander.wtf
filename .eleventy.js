@@ -10,14 +10,15 @@ const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const markdownItWikilinks = require('markdown-it-wikilinks')
 const markdownItCopyCode = require('markdown-it-code-copy')
+// const PostCSSPlugin = require('eleventy-plugin-postcss')
 
 module.exports = function (eleventyConfig) {
   // Plugins
+  // eleventyConfig.addPlugin(PostCSSPlugin)
   eleventyConfig.addPlugin(rssPlugin)
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
   eleventyConfig.addPlugin(shikiTwoslash, {
     themes: ['dark-plus', 'light-plus'],
-    // wrapFragments: '<div class="not-prose"></div>',
   })
   eleventyConfig.addPlugin(pluginTOC, {
     ignoredElements: ['.visually-hidden', '[aria-hidden]'],
