@@ -4,7 +4,7 @@ layout: layouts/base.njk
 
 <article class="note mx-auto mt-6">
   <div class="prose prose-zinc dark:prose-invert mb-6">
-    <h1>{{ title }}</h1>
+    <h1>{% if emoji %}{{ emoji }} {% endif %}{{ title }}</h1>
   </div>
 
   <div class="noteMetadata text-xs mt-6 mb-6 flex flex-col gap-2">
