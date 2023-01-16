@@ -10,6 +10,7 @@
   .noteListItem__title {
     min-width: 260px;
     font-weight: bold;
+    font-size: var(--step-0);
   }
   .noteListItem__tags {
     @apply flex items-center gap-1 truncate;

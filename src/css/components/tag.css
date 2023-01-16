@@ -2,7 +2,7 @@
   .tag {
     display: inline-flex;
     flex-shrink: 0;
-    @apply px-2 rounded-full bg-zinc-200 text-xs;
+    @apply py-0.5 px-2.5 rounded-full bg-zinc-200 text-xs;
     text-decoration: none;
     font-weight: normal;
   }

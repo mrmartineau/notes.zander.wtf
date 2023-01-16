@@ -3,14 +3,13 @@
     box-sizing: border-box;
     margin: 0;
     min-width: 0;
-    width: var(--sidebarWidth);
   }
 
   .cn-logo {
     margin-bottom: var(--space-xs);
 
     a {
-      font-weight: bold;
+      font-weight: 800;
       text-decoration: none;
     }
   }
@@ -24,12 +23,12 @@
     overflow-x: hidden;
     overflow-y: auto;
     position: fixed;
-    /* padding: 1.5rem; */
+    width: var(--sidebar-width);
+    height: 100vh;
 
     @media screen and (min-width: 768px) {
       position: sticky;
       top: 0;
-      height: 100vh;
     }
   }
 
@@ -37,16 +36,8 @@
     padding: var(--space-s) var(--space-s);
   }
 
-  .cn-sidebar-top {
-    /* background-color: blue; */
-  }
-  .cn-sidebar-bottom {
-    /* background-color: green; */
-  }
-
   .cn-sidebar-link {
     @apply flex items-center;
-    /* @apply px-2 py-1 text-sm transition-colors [word-break:break-word] cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:border text-primary-600 dark:bg-zinc-500/10 contrast-more:border-primary-500 contrast-more:dark:border-primary-500; */
     padding: var(--space-3xs) var(--space-s);
     font-size: var(--step--1);
     gap: var(--space-2xs);

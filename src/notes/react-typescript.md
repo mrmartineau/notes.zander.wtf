@@ -5,7 +5,7 @@ tags:
   - typescript
 emoji: ⚛
 created: 2021-03-09T12:42:11.000Z
-modified: 2021-11-11T11:54:45.763Z
+modified: 2023-01-16T07:10:45.763Z
 ---
 
 [React TypeScript cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet) is my bible for all React/TypeScipt things
@@ -20,7 +20,9 @@ modified: 2021-11-11T11:54:45.763Z
 
 This is the preferred method, as described [here](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/function_components/), for typing your React components.
 
-```tsx
+```tsx twoslash
+import type { ReactNode } from 'react'
+
 interface AppProps {
   message: string
 }
@@ -30,7 +32,9 @@ const App = ({ message }: AppProps): JSX.Element => <div>{message}</div>
 
 If you need to type `children`, you can add the types like so:
 
-```tsx
+```tsx twoslash
+import type { ReactNode } from 'react'
+
 interface AppProps {
   message: string
   children: ReactNode // or whatever type you want
@@ -38,7 +42,8 @@ interface AppProps {
 
 const App = ({ message, children }: AppProps): JSX.Element => (
   <div>
-    {message} {children}
+    {message}
+    {children}
   </div>
 )
 ```
@@ -47,7 +52,9 @@ const App = ({ message, children }: AppProps): JSX.Element => (
 
 **Using `FunctionComponent` or `FC` is discouraged because it defines `children` as an optional prop.** In most cases you would want to be explicit about how `children` are used. It also defines `children` as `ReactNode` which is a very broad type. So you may want to define `children` as `ReactText` instead which is `number | string`.
 
-```tsx
+```tsx twoslash
+import type { FC } from 'react'
+
 interface AppProps {
   message: string
 }
@@ -59,7 +66,9 @@ const App: FC<AppProps> = ({ message }) => <div>{message}</div>
 
 Using `VoidFunctionComponent` or `VFC` is slightly better than `FunctionComponent` because you have to explicitly define `children` type, but if you're doing that, you might as well use option 1 above instead.
 
-```tsx
+```tsx twoslash
+import type { FC } from 'react'
+
 interface AppProps {
   message: string
 }

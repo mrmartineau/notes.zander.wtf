@@ -1,10 +1,13 @@
 :root {
-  --sidebarWidth: 250px;
+  --sidebar-width: 250px;
   --bg: theme(colors.zinc.50);
   --bg-main: theme(colors.zinc.100);
   --bg-nav-active: theme(colors.zinc.200);
   --bg-note-hover: theme(colors.zinc.200);
   --border: #3f3f46;
+  --f-mono: Comic Code, JetBrains Mono, SF Mono, Menlo, Monaco, Courier New,
+    monospace;
+  --bg-code-highlight: #f1f1f1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +16,7 @@
     --bg-main: theme(colors.zinc.800);
     --bg-nav-active: theme(colors.zinc.600);
     --bg-note-hover: theme(colors.zinc.600);
+    --bg-code-highlight: #444;
     --border: #3f3f46;
   }
 }
@@ -22,5 +26,6 @@
   --bg-main: theme(colors.zinc.800);
   --bg-nav-active: theme(colors.zinc.600);
   --bg-note-hover: theme(colors.zinc.600);
+  --bg-code-highlight: #444;
   --border: #3f3f46;
 }

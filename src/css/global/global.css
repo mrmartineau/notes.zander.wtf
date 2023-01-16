@@ -13,3 +13,7 @@
   color-scheme: dark;
   background-color: var(--bg);
 }
+
+.icon {
+  opacity: 0.6;
+}

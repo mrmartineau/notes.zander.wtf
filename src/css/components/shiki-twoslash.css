@@ -11,21 +11,13 @@ Code blocks structurally look like:
   </pre>
 */
 
-pre {
-  /* In theory shiki will overwrite these, but this is to make sure there are defaults regardless */
-  background-color: white;
-  color: black;
-
-  /* Give it some space to breathe */
-  padding: 12px;
-
-  margin-bottom: 3rem;
-
-  /* Important to allow the code to move horizontally; */
+pre.shiki {
+  padding: var(--space-s);
+  padding-top: var(--space-l);
+  margin-bottom: var(--space-l);
   overflow-x: auto;
   position: relative;
-}
-pre.shiki {
+  font-family: var(--f-mono);
   overflow-x: auto;
 }
 pre.shiki:hover .dim {
@@ -41,7 +33,7 @@ pre.shiki div.highlight {
 }
 pre.shiki div.highlight {
   opacity: 1;
-  background-color: #f1f8ff;
+  background-color: var(--bg-code-highlight);
 }
 pre.shiki div.line {
   min-height: 1rem;
@@ -49,32 +41,40 @@ pre.shiki div.line {
 
 /** Don't show the language identifiers */
 pre.shiki .language-id {
-  display: none;
+  line-height: 1;
+  border-radius: 0 0 0.2rem 0.2rem;
+  user-select: none;
+  background-color: var(--bg-code-highlight);
+  padding: var(--space-3xs) var(--space-2xs);
+  position: absolute;
+  top: 0;
+  left: var(--space-s);
+  font-size: var(--step--1);
+  text-transform: uppercase;
 }
 
 /* Visually differentiates twoslash code samples  */
-pre.twoslash {
+/* pre.twoslash {
   border-color: #719af4;
-}
+} */
 
 /** When you mouse over the pre, show the underlines */
 pre.twoslash:hover data-lsp {
-  border-color: #747474;
+  border-color: var(--bg-code-highlight);
 }
 
 /** The tooltip-like which provides the LSP response */
 pre.twoslash data-lsp:hover::before {
   content: attr(lsp);
   position: absolute;
-  transform: translate(0, 1rem);
-
-  background-color: #3f3f3f;
-  color: #fff;
+  transform: translate(0, var(--step-2));
+  background-color: var(--bg-code-highlight);
+  color: theme(colors.current);
   text-align: left;
-  padding: 5px 8px;
-  border-radius: 2px;
-  font-family: 'JetBrains Mono', Menlo, Monaco, Consolas, Courier New, monospace;
-  font-size: 14px;
+  padding: var(--space-3xs) var(--space-2xs);
+  border-radius: var(--space-3xs);
+  font-family: var(--f-mono);
+  font-size: var(--step--2);
   white-space: pre-wrap;
   z-index: 100;
 }
@@ -168,25 +168,26 @@ pre .error-behind {
 /* Queries */
 pre .arrow {
   /* Transparent background */
-  background-color: #eee;
-  position: relative;
-  top: -7px;
+  background-color: var(--bg-code-highlight);
+  position: absolute;
+  top: -6px;
   margin-left: 0.1rem;
   /* Edges */
-  border-left: 1px solid #eee;
-  border-top: 1px solid #eee;
+  border-left: 1px solid var(--bg-code-highlight);
+  border-top: 1px solid var(--bg-code-highlight);
   transform: translateY(25%) rotate(45deg);
   /* Size */
   height: 8px;
   width: 8px;
 }
 pre .popover {
-  margin-bottom: 10px;
-  background-color: #eee;
+  position: relative;
+  margin-bottom: var(--space-xs);
+  margin-top: var(--space-xs);
+  background-color: var(--bg-code-highlight);
   display: inline-block;
-  padding: 0 0.5rem 0.3rem;
-  margin-top: 10px;
-  border-radius: 3px;
+  padding: var(--space-3xs) var(--space-2xs);
+  border-radius: var(--space-3xs);
 }
 /* Completion */
 pre .inline-completions ul.dropdown {

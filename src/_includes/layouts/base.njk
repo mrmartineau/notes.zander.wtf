@@ -30,6 +30,9 @@
 
       <main id="main" class="cn-main">
         <div class="max-w-4xl mx-auto px-4">
+          <button class="cn-nav">
+            {% heroicon "outline", "menu", "Show menu", { width: 20 } %}
+          </button>
           <!-- {% include 'components/search.njk' %} -->
           {{ content | safe }}
           {% include 'components/footer.njk' %}
@@ -37,47 +40,38 @@
       </main>
     </div>
 
-    <!-- <script>
-      const ham = document.querySelector('.navbar__hamburger')
-      const menu = document.querySelector('.navbar__mobile-links')
-      const darkToggleButtons = document.querySelectorAll('.dark-toggle')
-      function changeDarkToggleBtnIcon() {
-        darkToggleButtons.forEach((btn) => {
-          if (
-            btn.querySelector('img').src.indexOf('/static/img/moon.svg') !== -1
-          ) {
-            btn.querySelector('img').src = "{{ '/static/img/sun.svg' | url }}"
-          } else {
-            btn.querySelector('img').src = "{{ '/static/img/moon.svg' | url }}"
-          }
-        })
-      }
-      if (
-        localStorage.prefsDark === 'true' ||
-        (window.matchMedia &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches &&
-          localStorage.prefsDark !== 'false')
-      ) {
-        document.documentElement.classList.add('dark')
-        changeDarkToggleBtnIcon()
-      }
-      ham.addEventListener('click', () => {
-        menu.classList.toggle('navbar__mobile-links--open')
-        let prevState = JSON.parse(ham.getAttribute('aria-expanded'))
-        ham.setAttribute('aria-expanded', !prevState)
+    <script>
+      const burger = document.querySelector('.cn-nav')
+      const mainEl = document.querySelector('.cn-main')
+      burger.addEventListener('click', () => {
+        mainEl.toggleAttribute('open')
+        // menu.classList.toggle('navbar__mobile-links--open')
+        // let prevState = JSON.parse(burger.getAttribute('aria-expanded'))
+        // burger.setAttribute('aria-expanded', !prevState)
       })
-      darkToggleButtons.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          changeDarkToggleBtnIcon()
-          if (document.body.classList.contains('dark')) {
-            document.body.classList.remove('dark')
-            localStorage.prefsDark = 'false'
-          } else {
-            document.body.classList.add('dark')
-            localStorage.prefsDark = 'true'
-          }
-        })
-      })
-    </script> -->
+      // const menu = document.querySelector('.navbar__mobile-links')
+      // const darkToggleButtons = document.querySelectorAll('.dark-toggle')
+      // function changeDarkToggleBtnIcon() {
+      //   darkToggleButtons.forEach((btn) => {
+      //     if (
+      //       btn.querySelector('img').src.indexOf('/static/img/moon.svg') !== -1
+      //     ) {
+      //       btn.querySelector('img').src = "{{ '/static/img/sun.svg' | url }}"
+      //     } else {
+      //       btn.querySelector('img').src = "{{ '/static/img/moon.svg' | url }}"
+      //     }
+      //   })
+      // }
+      // if (
+      //   localStorage.prefsDark === 'true' ||
+      //   (window.matchMedia &&
+      //     window.matchMedia('(prefers-color-scheme: dark)').matches &&
+      //     localStorage.prefsDark !== 'false')
+      // ) {
+      //   document.documentElement.classList.add('dark')
+      //   changeDarkToggleBtnIcon()
+      // }
+      //
+    </script>
   </body>
 </html>

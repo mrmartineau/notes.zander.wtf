@@ -11,6 +11,10 @@
   transition: all 200ms ease-in-out;
   /* box-shadow: 0 0 6px -1px rgb(0 0 0 / 10%), 0 0 4px -1px rgb(0 0 0 / 6%); */
   min-height: 100vh;
+
+  &[open] {
+    transform: translateX(var(--sidebar-width));
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -18,5 +22,13 @@
     border-radius: 0.5rem;
     margin: 1rem;
     margin-left: 0;
+
+    &[open] {
+      transform: translateX(0);
+    }
+  }
+
+  .cn-nav {
+    display: none;
   }
 }

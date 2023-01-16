@@ -1,7 +1,7 @@
 ---
 title: URL & URLSearchParams
 created: 2020-12-29T10:31:32.000Z
-modified: 2022-11-25T10:52:04.000Z
+modified: 2023-01-16T10:30:04.000Z
 tags:
   - javascript
 ---
@@ -10,7 +10,7 @@ tags:
 
 Docs: http://developer.mozilla.org/en-US/docs/Web/API/URL
 
-```js
+```js twoslash
 const url = new URL('https://mysite.com/login?user=zander&page=news#hello')
 
 url.hostname // mysite.com
@@ -25,10 +25,10 @@ url.hash // #hello
 
 Docs: http://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams
 
-```js
+```js twoslash
 // example.com?much=wow
 const params = new URLSearchParams(
-  'https://mysite.com/login?user=zander&page=news#hello',
+  'https://mysite.com/login?user=zander&page=news#hello'
 )
 
 params.has('user') // true
@@ -51,10 +51,12 @@ params.toString() // user=zander
 // one liner
 const params = Object.fromEntries(
   new URLSearchParams(
-    new URL('https://mysite.com/login?user=zander&page=news#hello').search,
-  ),
+    new URL('https://mysite.com/login?user=zander&page=news#hello').search
+  )
 )
+```
 
+```ts
 // multi-line
 const url = new URL('https://mysite.com/login?user=zander&page=news#hello')
 const urlParams = new URLSearchParams(url.search)
@@ -64,6 +66,8 @@ const params = Object.fromEntries(urlParams)
 Polyfill: https://github.com/ungap/url-search-params#readme
 
 ## Use `proper-url-join` to construct a url
+
+> I use this package on nearly every project to normalise urls
 
 https://github.com/moxystudio/js-proper-url-join
 

@@ -6,9 +6,11 @@
       {{ note.data.title }}
     </h3>
     <div class="flex gap-2 items-center">
+      {% if note.data.tags.length %}
       <div class="noteListItem__tags">
         {% for tag in note.data.tags %} {% tagDisplay tag %} {% endfor %}
       </div>
+      {% endif %}
       <div class="noteListItem__date">
         {%if note.data.modified %}
         {{ note.data.modified | readableDate }}

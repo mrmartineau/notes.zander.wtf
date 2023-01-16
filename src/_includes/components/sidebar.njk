@@ -14,10 +14,13 @@
         {% endif %}
       </div>
       <nav>
-        <a class="cn-sidebar-link uppercase" href="{{ '/' | url }}"
-          >All notes</a
-        >
-        <div class="cn-sidebar-wrapper uppercase">Tags</div>
+        <a class="cn-sidebar-link uppercase" href="{{ '/' | url }}">
+          {% heroicon "outline", "collection", "All tags", { width: 20 } %} All
+          notes
+        </a>
+        <div class="cn-sidebar-wrapper uppercase flex gap-2 items-center pb-0">
+          {% heroicon "outline", "tag", "Tags", { width: 20 } %} Tags
+        </div>
         {% for tag in collections.tagList %}
         <a
           class="cn-sidebar-link {{ 'active' if tag.path | slugify in page.url }}"
@@ -29,11 +32,9 @@
         {% endfor %}
       </nav>
     </div>
-    <div class="cn-sidebar-bottom cn-sidebar-wrapper">
-      Bottom
-      <!-- <a class="dark-toggle" href="javascript:void(0)">
-        <img src="{{ '/static/img/moon.svg' | url }}" alt="Toggle dark mode" />
-      </a> -->
+    <div class="cn-sidebar-bottom cn-sidebar-wrapper text-sm">
+      Made with <a href="https://www.11ty.dev/">11ty</a> by
+      <a href="https://zander.wtf">Zander</a>
     </div>
   </div>
 </aside>

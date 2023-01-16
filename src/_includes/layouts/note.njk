@@ -3,30 +3,34 @@ layout: layouts/base.njk
 ---
 
 <article class="note mx-auto mt-6">
-  <div class="prose lg:prose-xl prose-zinc dark:prose-invert mb-6">
+  <div class="prose prose-zinc dark:prose-invert mb-6">
     <h1>{{ title }}</h1>
   </div>
 
-  <div class="noteMetadata text-sm mt-6 mb-6 flex flex-col gap-2">
-    {% if link %}
-    <div class="truncate flex items-center gap-2">
-      {% heroicon "outline", "link", "Link", { width: 20 } %}
-      <a href="{{ link }}">{{ link }}</a>
+  <div class="noteMetadata text-xs mt-6 mb-6 flex flex-col gap-2">
+    <div class="flex items-center gap-5">
+      {% if link %}
+      <div class="flex items-center gap-2">
+        {% heroicon "outline", "link", "Link", { width: 18 } %}
+        <a href="{{ link }}">{{ link }}</a>
+      </div>
+      {% endif %}
+      <div class="flex items-center gap-2">
+        {% heroicon "outline", "calendar", "Note date", { width: 18 } %} {%if
+        modified %}
+        {{ modified | readableDate }}{% else %}{{ created | readableDate }}{%
+        endif %}
+      </div>
     </div>
-    {% endif %}
-    <p class="truncate flex items-center gap-2">
-      {% heroicon "outline", "calendar", "Note date", { width: 20 } %} {%if
-      modified %}
-      {{ modified | readableDate }}{% else %}{{ created | readableDate }}{%
-      endif %}
-    </p>
+    {% if tags.length %}
     <div class="tags flex items-center gap-2">
-      {% heroicon "outline", "tag", "Tags", { width: 20 } %} {% for tag in tags
+      {% heroicon "outline", "tag", "Tags", { width: 18 } %} {% for tag in tags
       %} {% tagLink tag %} {% endfor %}
     </div>
+    {% endif %}
   </div>
 
-  <div class="prose lg:prose-xl prose-zinc dark:prose-invert">
+  <div class="prose prose-zinc dark:prose-invert">
     <details class="tocWrapper">
       <summary>On this page</summary>
       {{ content | toc | safe }}
