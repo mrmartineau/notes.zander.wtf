@@ -44,7 +44,7 @@ pre.shiki .language-id {
   line-height: 1;
   border-radius: 0 0 0.2rem 0.2rem;
   user-select: none;
-  background-color: var(--bg-code-highlight);
+  background-color: var(--bg-main);
   padding: var(--space-3xs) var(--space-2xs);
   position: absolute;
   top: 0;
