@@ -31,10 +31,12 @@ layout: layouts/base.njk
   </div>
 
   <div class="prose prose-zinc dark:prose-invert">
+    {% if content | toc %}
     <details class="tocWrapper">
       <summary>On this page</summary>
       {{ content | toc | safe }}
     </details>
+    {% endif %}
 
     {{ content | safe }}
 

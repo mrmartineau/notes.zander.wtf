@@ -17,7 +17,7 @@ specifiers:
   luxon: ^3.1.1
   markdown-it: ^13.0.1
   markdown-it-anchor: ^8.6.6
-  markdown-it-code-copy: ^0.1.1
+  markdown-it-copy: ^1.2.0
   markdown-it-wikilinks: ^1.2.0
   postcss: ^8.4.19
   postcss-cli: ^10.1.0
@@ -43,7 +43,7 @@ devDependencies:
   luxon: 3.1.1
   markdown-it: 13.0.1
   markdown-it-anchor: 8.6.6_ea7kj7wzjkld5jo2noyjqxi764
-  markdown-it-code-copy: 0.1.1
+  markdown-it-copy: 1.2.0
   markdown-it-wikilinks: 1.2.0
   postcss: 8.4.19
   postcss-cli: 10.1.0_postcss@8.4.19
@@ -577,14 +577,6 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /clipboard/2.0.11:
-    resolution: {integrity: sha512-C+0bbOqkezLIsmWSvlsXS0Q0bmkugu7jcfMIACB+RDEntIzQIkdr148we28AfSloQLRdZlYL/QYyrq05j/3Faw==}
-    dependencies:
-      good-listener: 1.2.2
-      select: 1.1.2
-      tiny-emitter: 2.1.0
-    dev: true
-
   /cliui/8.0.1:
     resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
     engines: {node: '>=12'}
@@ -714,10 +706,6 @@ packages:
 
   /defined/1.0.1:
     resolution: {integrity: sha512-hsBd2qSVCRE+5PmNdHt1uzyrFu5d3RwmFDKzyNZMFq/EwDNJF7Ee5+D5oEKF0hU6LhtoUF1macFvOe4AskQC1Q==}
-    dev: true
-
-  /delegate/3.2.0:
-    resolution: {integrity: sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==}
     dev: true
 
   /dependency-graph/0.11.0:
@@ -1059,12 +1047,6 @@ packages:
       slash: 4.0.0
     dev: true
 
-  /good-listener/1.2.2:
-    resolution: {integrity: sha512-goW1b+d9q/HIwbVYZzZ6SsTr4IgE+WA44A0GmPIQstuOrgsFcT7VEJ48nmr9GaRtNu0XTKacFLGnBPAM6Afouw==}
-    dependencies:
-      delegate: 3.2.0
-    dev: true
-
   /graceful-fs/4.2.10:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
     dev: true
@@ -1388,11 +1370,8 @@ packages:
       markdown-it: 13.0.1
     dev: true
 
-  /markdown-it-code-copy/0.1.1:
-    resolution: {integrity: sha512-K6aIaijGlYALchBlWMawRR7A5YvFE5H7Nlw7DUCTIzGzIYEStYZDR4rF70Dhk35cGHbbOpNpa/f4YOOwkL3x3A==}
-    dependencies:
-      clipboard: 2.0.11
-      lodash: 4.17.21
+  /markdown-it-copy/1.2.0:
+    resolution: {integrity: sha512-8Pm/cF7kpr+9VArhICCndb31zmz75hMR0WpmelUNn1RYe8vkqumLKt0xaInTT4mELhMqmnIr+8dm30w7Pzqc4A==}
     dev: true
 
   /markdown-it-regexp/0.4.0:
@@ -2061,10 +2040,6 @@ packages:
       kind-of: 6.0.3
     dev: true
 
-  /select/1.1.2:
-    resolution: {integrity: sha512-OwpTSOfy6xSs1+pwcNrv0RBMOzI39Lp3qQKUTPVVPRjCdNa5JH/oPRiqsesIskK8TVgmRiHwO4KXlV2Li9dANA==}
-    dev: true
-
   /semver-compare/1.0.0:
     resolution: {integrity: sha512-YM3/ITh2MJ5MtzaM429anh+x2jiLVjqILF4m4oyQB18W7Ggea7BfqdH/wGMK7dDiMghv/6WG7znWMwUDzJiXow==}
     dev: true
@@ -2238,10 +2213,6 @@ packages:
 
   /thenby/1.3.4:
     resolution: {integrity: sha512-89Gi5raiWA3QZ4b2ePcEwswC3me9JIg+ToSgtE0JWeCynLnLxNr/f9G+xfo9K+Oj4AFdom8YNJjibIARTJmapQ==}
-    dev: true
-
-  /tiny-emitter/2.1.0:
-    resolution: {integrity: sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==}
     dev: true
 
   /to-fast-properties/2.0.0:

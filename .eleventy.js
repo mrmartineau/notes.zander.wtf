@@ -9,7 +9,7 @@ const heroIcons = require('eleventy-plugin-heroicons')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const markdownItWikilinks = require('markdown-it-wikilinks')
-const markdownItCopyCode = require('markdown-it-code-copy')
+const markdownItCopyCode = require('markdown-it-copy')
 // const PostCSSPlugin = require('eleventy-plugin-postcss')
 
 module.exports = function (eleventyConfig) {
@@ -53,7 +53,17 @@ module.exports = function (eleventyConfig) {
     })
   )
   eleventyConfig.amendLibrary('md', (mdLib) => mdLib.use(markdownItWikilinks()))
-  eleventyConfig.amendLibrary('md', (mdLib) => mdLib.use(markdownItCopyCode))
+  eleventyConfig.amendLibrary('md', (mdLib) =>
+    mdLib.use(markdownItCopyCode, {
+      successText: `<svg xmlns="http://www.w3.org/2000/svg" class="icon inline-block" width="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    `,
+      btnText: `<svg xmlns="http://www.w3.org/2000/svg" class="icon inline-block" width="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+    </svg>`,
+    })
+  )
 
   // Filters
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
