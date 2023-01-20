@@ -1,3 +1,6 @@
 node_modules
 .vscode
 _site
+netlify/functions/search/**
+!netlify/functions/search/index.js
+.env

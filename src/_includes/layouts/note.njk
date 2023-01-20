@@ -16,10 +16,8 @@ layout: layouts/base.njk
       </div>
       {% endif %}
       <div class="flex items-center gap-2">
-        {% heroicon "outline", "calendar", "Note date", { width: 18 } %} {%if
-        modified %}
-        {{ modified | readableDate }}{% else %}{{ created | readableDate }}{%
-        endif %}
+        {% heroicon "outline", "calendar", "Note date", { width: 18 } %}
+        {{ page.date | readableDate }}
       </div>
     </div>
     {% if tags.length %}

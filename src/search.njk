@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+title: Search Page
+permalink:
+  search: /search/
+---
+
+{% block content %}
+
+<div class="container">
+  <div class="prose prose-zinc dark:prose-invert mb-4">
+    <h2 class="mb-3">
+      This list is built at request from the query "{{
+        eleventy.serverless.query.query
+      }}"
+    </h2>
+  </div>
+  {% set notes = eleventy.serverless.query.query | getResults %} {% include
+  'components/note-list.njk' %}
+</div>
+
+{% endblock %}

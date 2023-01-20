@@ -1,3 +1,5 @@
+require('dotenv').config()
+const { EleventyServerlessBundlerPlugin } = require('@11ty/eleventy')
 const { DateTime } = require('luxon')
 const shikiTwoslash = require('eleventy-plugin-shiki-twoslash')
 const rssPlugin = require('@11ty/eleventy-plugin-rss')
@@ -10,11 +12,17 @@ const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const markdownItWikilinks = require('markdown-it-wikilinks')
 const markdownItCopyCode = require('markdown-it-copy')
-// const PostCSSPlugin = require('eleventy-plugin-postcss')
+const pluginJsonFeed = require('eleventy-plugin-json-feed')
+const algoliasearch = require('algoliasearch')
+
+const client = algoliasearch(
+  process.env.ALGOLIA_APP,
+  process.env.ALGOLIA_SEARCH_KEY
+)
+const index = client.initIndex(process.env.ALGOLIA_INDEX)
 
 module.exports = function (eleventyConfig) {
   // Plugins
-  // eleventyConfig.addPlugin(PostCSSPlugin)
   eleventyConfig.addPlugin(rssPlugin)
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
   eleventyConfig.addPlugin(shikiTwoslash, {
@@ -27,14 +35,40 @@ module.exports = function (eleventyConfig) {
     className: 'icon',
     errorOnMissing: true,
   })
+  eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
+    name: 'search',
+    functionsDir: './netlify/functions/',
+  })
+  eleventyConfig.addAsyncFilter('getResults', function (query) {
+    console.log('getResults query', query)
+    const results = index
+      .search(query, {
+        attributesToRetrieve: ['title', 'url', 'date', 'description'],
+      })
+      .then((res) => {
+        return res.hits
+      })
+    return results
+  })
+  /* eleventyConfig.addPlugin(pluginJsonFeed, {
+    // banner_image_metadata_field_name: 'banner_image',
+    content_html: false,
+    content_text: true,
+    filter_posts_tag: true,
+    // image_metadata_field_name: 'image',
+    // summary_metadata_field_name: 'summary',
+    tags_metadata_field_name: 'tags',
+  }) */
 
-  let options = {
-    html: true,
-    breaks: true,
-    linkify: true,
-    typographer: true,
-  }
-  eleventyConfig.setLibrary('md', markdownIt(options))
+  eleventyConfig.setLibrary(
+    'md',
+    markdownIt({
+      html: true,
+      breaks: true,
+      linkify: true,
+      typographer: true,
+    })
+  )
   eleventyConfig.amendLibrary('md', (mdLib) =>
     mdLib.use(markdownItAnchor, {
       permalink: true,
@@ -130,6 +164,18 @@ module.exports = function (eleventyConfig) {
     const tagName = slugify(tag)
     const tagColor = getColourFromString(tagName)
     return `<span class="tagDot" style="background-color: ${tagColor};"></span>`
+  })
+
+  eleventyConfig.setServerOptions({
+    // The starting port number
+    // Will increment up to (configurable) 10 times if a port is already in use.
+    port: 3456,
+
+    // Additional files to watch that will trigger server updates
+    // Accepts an Array of file paths or globs (passed to `chokidar.watch`).
+    // Works great with a separate bundler writing files to your output folder.
+    // e.g. `watch: ["_site/**/*.css"]`
+    watch: ['_site/css/**/*.css'],
   })
 
   return {

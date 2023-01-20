@@ -16,6 +16,8 @@
     @apply flex items-center gap-1 truncate;
   }
   .noteListItem__date {
-    @apply text-xs truncate;
+    @apply truncate;
+    font-size: var(--step--2);
+    opacity: 0.7;
   }
 }
