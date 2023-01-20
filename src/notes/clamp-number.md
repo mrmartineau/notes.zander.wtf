@@ -3,8 +3,7 @@ title: Clamp number
 tags:
   - javascript
   - css
-created: 2021-01-06T11:20:30.000Z
-modified: 2021-01-06T11:20:30.000Z
+date: git Last Modified
 emoji: 🗜
 ---
 

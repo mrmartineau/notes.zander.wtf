@@ -2,7 +2,7 @@
 title: Opengraph metacrap
 tags:
   - html
-created: 2020-02-27T23:02:00.000Z
+date: git Last Modified
 modified: 2020-05-11T11:31:08.000Z
 ---
 

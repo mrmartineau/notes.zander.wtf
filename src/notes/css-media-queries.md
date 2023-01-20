@@ -4,8 +4,7 @@ tags:
   - css
 link: 'https://developer.mozilla.org/en-US/docs/Web/CSS/@media'
 emoji: ↔️
-created: 2020-04-28T22:03:21.000Z
-modified: 2020-06-11T14:47:15.000Z
+date: git Last Modified
 ---
 
 ## light-level
@@ -160,7 +159,6 @@ The value is boolean, so `no-preference` and `reduce` are the values.
 ```
 
 [Read more at MDN.](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-data)
-
 
 ### pointer
 

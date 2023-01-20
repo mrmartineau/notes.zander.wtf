@@ -2,8 +2,7 @@
 title: Redux
 tags:
   - react
-created: 2020-02-27T23:02:00.000Z
-modified: 2020-03-24T22:53:27.000Z
+date: git Last Modified
 ---
 
 ## Basic example
@@ -30,7 +29,7 @@ const Component = ({ query, results, clearQuery }) => (
     query: {query}
     <button onClick={clearQuery}>Clear</button>
     <ul>
-      {results.map(result => (
+      {results.map((result) => (
         <li>
           <img src={result.url} alt={result.title} />
           {result.title}
@@ -43,9 +42,9 @@ const Component = ({ query, results, clearQuery }) => (
 // mapStateToProps
 // For our select function we're returning an object using
 // the implicit return and wrapping it in `()`
-const mapStateToProps = appState => ({
+const mapStateToProps = (appState) => ({
   results: appState.results,
-  query: appState.query
+  query: appState.query,
 })
 
 // mapDispatchToProps
@@ -58,7 +57,7 @@ const mapDispatchToProps = { clearQuery: doClearQuery }
 ## Selectors
 
 ```js
-export const getSignedInStatus = user => user.isSignedIn
-export const getFullName = user => `${user.firstName} ${user.lastName}`
-export const getUsername = user => user.username
+export const getSignedInStatus = (user) => user.isSignedIn
+export const getFullName = (user) => `${user.firstName} ${user.lastName}`
+export const getUsername = (user) => user.username
 ```

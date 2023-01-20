@@ -2,8 +2,7 @@
 title: TypeScript
 tags:
   - typescript
-created: 2020-02-27T23:02:00.000Z
-modified: 2021-04-22T18:06:11.062Z
+date: git Last Modified
 ---
 
 - [TypeScript Deep Dive](https://basarat.gitbook.io/typescript/)
@@ -48,7 +47,7 @@ type Pick<T, K extends keyof T> = {
   [P in K]: T[P]
 }
 // e.g.
-Pick<Todo, "title" | "completed">;
+Pick<Todo, 'title' | 'completed'>
 
 /**
  * Construct a type with a set of properties K of type T
@@ -59,30 +58,33 @@ type Record<K extends keyof any, T> = {
 // e.g.
 Record<string, number>
 Record<string, string[]>
-Record<string, {
-  age: string
-}>
+Record<
+  string,
+  {
+    age: string
+  }
+>
 
 /**
  * Exclude from T those types that are assignable to U
  */
 type Exclude<T, U> = T extends U ? never : T
 // e.g.
-Exclude<"a" | "b" | "c", "a">
+Exclude<'a' | 'b' | 'c', 'a'>
 
 /**
  * Extract from T those types that are assignable to U
  */
 type Extract<T, U> = T extends U ? T : never
 // e.g.
-Extract<"a" | "b" | "c", "a" | "f">
+Extract<'a' | 'b' | 'c', 'a' | 'f'>
 
 /**
  * Construct a type with the properties of T except for those in type K.
  */
 type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>
 // e.g.
-Omit<Todo, "completed" | "createdAt">
+Omit<Todo, 'completed' | 'createdAt'>
 
 /**
  * Exclude null and undefined from T
@@ -94,28 +96,41 @@ NonNullable<string | number | undefined>
 /**
  * Constructs a tuple type from the types used in the parameters of a function type Type.
  */
-type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never
+type Parameters<T extends (...args: any) => any> = T extends (
+  ...args: infer P
+) => any
+  ? P
+  : never
 // e.g.
 Parameters<(s: string) => void>
 
 /**
  * Constructs a tuple or array type from the types of a constructor function type. It produces a tuple type with all the parameter types (or the type never if Type is not a function).
  */
-type ConstructorParameters<T extends new (...args: any) => any> = T extends new (...args: infer P) => any ? P : never
+type ConstructorParameters<T extends new (...args: any) => any> =
+  T extends new (...args: infer P) => any ? P : never
 // e.g.
 ConstructorParameters<ErrorConstructor>
 
 /**
  * Obtain the return type of a function type
  */
-type ReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any
+type ReturnType<T extends (...args: any) => any> = T extends (
+  ...args: any
+) => infer R
+  ? R
+  : any
 // e.g.
 ReturnType<(s: string) => void>
 
 /**
  * Obtain the return type of a constructor function type
  */
-type InstanceType<T extends new (...args: any) => any> = T extends new (...args: any) => infer R ? R : any
+type InstanceType<T extends new (...args: any) => any> = T extends new (
+  ...args: any
+) => infer R
+  ? R
+  : any
 
 /**
  * Convert string literal type to uppercase
@@ -140,7 +155,7 @@ type Uncapitalize<S extends string> = intrinsic
 /**
  * Marker for contextual 'this' type
  */
-interface ThisType<T> { }
+interface ThisType<T> {}
 ```
 
 ## Custom types

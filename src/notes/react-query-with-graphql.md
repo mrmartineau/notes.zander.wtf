@@ -5,8 +5,7 @@ tags:
   - react
   - graphql
 emoji: ⚛
-created: 2021-03-26T12:50:12.000Z
-modified: 2021-11-11T12:24:38.167Z
+date: git Last Modified
 ---
 
 Two hooks are provided to make it easier to work with GraphQL and React Query. They use [`graphql-request`](https://github.com/prisma-labs/graphql-request) to make the requests to the GraphQL server.
@@ -45,7 +44,7 @@ export const useGqlQuery = <ResponseData = unknown, Variables = unknown>(
   queryKey: QueryKey,
   query: string,
   variables?: Variables,
-  options?: UseQueryOptions<ResponseData, Error, ResponseData, QueryKey>,
+  options?: UseQueryOptions<ResponseData, Error, ResponseData, QueryKey>
 ): UseQueryResult<ResponseData, Error> => {
   return useQuery(
     queryKey,
@@ -66,14 +65,14 @@ export const useGqlQuery = <ResponseData = unknown, Variables = unknown>(
         const response = await graphQlClient.request(
           query,
           variables,
-          authorisationHeaders,
+          authorisationHeaders
         )
         return response
       } catch (error) {
         console.log(`🚀 ~ useGqlQuery ~ error`, error)
       }
     },
-    options,
+    options
   )
 }
 ```
@@ -82,7 +81,7 @@ export const useGqlQuery = <ResponseData = unknown, Variables = unknown>(
 
 ```tsx
 export const GET_SHORTLIST = gql`
-  query($from_id: uuid!) {
+  query ($from_id: uuid!) {
     contact_connection(
       where: {
         from_id: { _eq: $from_id }
@@ -110,7 +109,7 @@ const getShortlistQuery = useGqlQuery<QueryData, QueryVariables>(
   GET_SHORTLIST,
   {
     from_id: '1234557565675',
-  },
+  }
 )
 const shortlist = useMemo(() => getShortlistQuery?.data[getShortlistQuery])
 ```
@@ -133,7 +132,7 @@ import { graphQlClient } from '../../graphql/client'
 
 export const useGqlMutation = <Response = unknown, Variables = unknown>(
   query: string,
-  sideEffects?: UseMutationOptions<Response, Error, Variables, unknown>,
+  sideEffects?: UseMutationOptions<Response, Error, Variables, unknown>
 ): UseMutationResult<Response, Error, Variables, unknown> => {
   return useMutation(async (variables) => {
     // always get the latest token
@@ -150,7 +149,7 @@ export const useGqlMutation = <Response = unknown, Variables = unknown>(
 
 ```tsx
 export const REMOVE_SHORTLIST = gql`
-  mutation($from_id: uuid!, $to_id: uuid!) {
+  mutation ($from_id: uuid!, $to_id: uuid!) {
     update_contact_connection(
       where: { from_id: { _eq: $from_id }, to_id: { _eq: $to_id } }
       _set: { row_status: "inactive" }
@@ -186,6 +185,6 @@ const removeShortlist = useGqlMutation<MutationResponse, MutationVariables>(
       console.log(`🚀 ~ mutation variables`, variables)
       console.log(`🚀 ~ mutation data`, data)
     },
-  },
+  }
 )
 ```

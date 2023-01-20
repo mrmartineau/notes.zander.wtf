@@ -1,7 +1,6 @@
 ---
 title: Disable dark mode for Mac apps
-created: 2020-12-03T21:51:12.000Z
-modified: 2020-12-05T08:04:29.000Z
+date: git Last Modified
 ---
 
 First, get the bundle identifier for the app that you want to turn off dark mode.

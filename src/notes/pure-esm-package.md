@@ -2,9 +2,8 @@
 title: Pure ESM packages
 link: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 tags:
- - javascript
-created: 2021-11-02T20:06:11.062Z
-modified: 2021-11-20T13:42:11.062Z
+  - javascript
+date: git Last Modified
 ---
 
 The package linked to from here is now pure [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). It cannot be `require()`'d from CommonJS.
@@ -12,7 +11,7 @@ The package linked to from here is now pure [ESM](https://developer.mozilla.org/
 This means you have the following choices:
 
 1. Use ESM yourself. **(preferred)**\
-  Use `import foo from 'foo'` instead of `const foo = require('foo')` to import the package. You also need to put `"type": "module"` in your package.json and more. Follow the below guide.
+   Use `import foo from 'foo'` instead of `const foo = require('foo')` to import the package. You also need to put `"type": "module"` in your package.json and more. Follow the below guide.
 2. If the package is used in an async context, you could use [`await import(…)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports) from CommonJS instead of `require(…)`.
 3. Stay on the existing version of the package until you can move to ESM.
 
@@ -63,6 +62,7 @@ If you use `ts-node`, follow [this guide](https://github.com/TypeStrong/ts-node/
 [Electron doesn't yet support ESM natively.](https://github.com/electron/electron/issues/21457)
 
 You have the following options:
+
 1. Stay on the previous version of the package in question.
 2. Bundle your dependencies with Webpack into a CommonJS bundle.
 3. Use the [`esm`](https://github.com/standard-things/esm) package.
@@ -102,25 +102,25 @@ We got you covered with this [ESLint rule](https://github.com/sindresorhus/eslin
 ### What do I use instead of `__dirname` and `__filename`?
 
 ```js
-import {fileURLToPath} from 'node:url';
-import path from 'node:path';
+import { fileURLToPath } from 'node:url'
+import path from 'node:path'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 ```
 
 However, in most cases, this is better:
 
 ```js
-import {fileURLToPath} from 'node:url';
+import { fileURLToPath } from 'node:url'
 
-const foo = fileURLToPath(new URL('foo.js', import.meta.url));
+const foo = fileURLToPath(new URL('foo.js', import.meta.url))
 ```
 
 And many Node.js APIs accept URL directly, so you can just do this:
 
 ```js
-const foo = new URL('foo.js', import.meta.url);
+const foo = new URL('foo.js', import.meta.url)
 ```
 
 ### How can I import a module and bypass the cache for testing?
@@ -128,21 +128,22 @@ const foo = new URL('foo.js', import.meta.url);
 There's no good way to do this yet. Not until we get [ESM loader hooks](https://github.com/nodejs/modules/issues/307). For now, this snippet can be useful:
 
 ```js
-const importFresh = async modulePath => import(`${modulePath}?x=${new Date()}`);
+const importFresh = async (modulePath) =>
+  import(`${modulePath}?x=${new Date()}`)
 
-const chalk = (await importFresh('chalk')).default;
+const chalk = (await importFresh('chalk')).default
 ```
 
-*Note: This will cause memory leaks, so only use it for testing, not in production. Also, it will only reload the imported module, not its dependencies.*
+_Note: This will cause memory leaks, so only use it for testing, not in production. Also, it will only reload the imported module, not its dependencies._
 
 ### How can I import JSON?
 
 JavaScript Modules will eventually get [native support for JSON](https://github.com/tc39/proposal-json-modules), but for now, you can do this:
 
 ```js
-import {promises as fs} from 'node:fs';
+import { promises as fs } from 'node:fs'
 
-const packageJson = JSON.parse(await fs.readFile('package.json'));
+const packageJson = JSON.parse(await fs.readFile('package.json'))
 ```
 
 If you target Node.js 14 or later, you can import it using `import fs from 'node:fs/promises';` instead.
@@ -154,7 +155,7 @@ My general rule is that if something exports a single main thing, it should be a
 Keep in mind that you can combine a default export with named exports when it makes sense:
 
 ```js
-import readJson, {JSONError} from 'read-json';
+import readJson, { JSONError } from 'read-json'
 ```
 
 Here, we had exported the main thing `readJson`, but we also exported an error as a named export.
@@ -164,7 +165,7 @@ Here, we had exported the main thing `readJson`, but we also exported an error a
 If your package has both an asynchronous and synchronous main API, I would recommend using named exports:
 
 ```js
-import {readJson, readJsonSync} from 'read-json';
+import { readJson, readJsonSync } from 'read-json'
 ```
 
 This makes it clear to the reader that the package exports multiple main APIs. We also follow the Node.js convention of suffixing the synchronous API with `Sync`.
@@ -174,19 +175,19 @@ This makes it clear to the reader that the package exports multiple main APIs. W
 I have noticed a bad pattern of packages using overly generic names for named exports:
 
 ```js
-import {parse} from 'parse-json';
+import { parse } from 'parse-json'
 ```
 
 This forces the consumer to either accept the ambiguous name (which might cause naming conflicts) or rename it:
 
 ```js
-import {parse as parseJson} from 'parse-json';
+import { parse as parseJson } from 'parse-json'
 ```
 
 Instead, make it easy for the user:
 
 ```js
-import {parseJson} from 'parse-json';
+import { parseJson } from 'parse-json'
 ```
 
 #### Examples

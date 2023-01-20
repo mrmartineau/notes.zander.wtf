@@ -1,6 +1,6 @@
 ---
 title: Shiki Twoslash
-created: 2023-01-16T06:50:00.000Z
+date: git Last Modified
 link: https://shikijs.github.io/twoslash/
 ---
 

@@ -1,8 +1,7 @@
 ---
 title: Coding standards
 emoji: ✅
-created: 2020-03-18T17:40:43.000Z
-modified: 2022-06-09T10:38:49Z
+date: git Last Modified
 ---
 
 ## Naming Conventions

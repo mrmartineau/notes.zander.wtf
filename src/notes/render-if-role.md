@@ -3,8 +3,7 @@ title: RenderIfRole
 tags:
   - react
 emoji: ⚛
-created: 2021-07-12T06:09:33.887Z
-modified: 2021-11-11T12:29:12.563Z
+date: git Last Modified
 ---
 
 ```tsx

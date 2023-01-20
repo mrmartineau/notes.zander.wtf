@@ -1,7 +1,6 @@
 ---
 title: URL & URLSearchParams
-created: 2020-12-29T10:31:32.000Z
-modified: 2023-01-16T10:30:04.000Z
+date: git Last Modified
 tags:
   - javascript
 ---

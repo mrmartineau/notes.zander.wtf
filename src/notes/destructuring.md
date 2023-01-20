@@ -2,8 +2,7 @@
 title: Destructuring
 tags:
   - javascript
-created: 2020-02-27T23:51:44.000Z
-modified: 2020-03-22T23:14:36.000Z
+date: git Last Modified
 ---
 
 ```js
@@ -13,6 +12,6 @@ const exampleObject = { a: { b: 'hi' } }
 // You totally can do this in one line of destructuring.
 const {
   a,
-  a: { b }
+  a: { b },
 } = exampleObject
 ```

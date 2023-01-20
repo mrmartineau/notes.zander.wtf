@@ -3,8 +3,7 @@ title: Async cheatsheet
 tags:
   - javascript
   - cheatsheet
-created: 2020-03-22T14:53:49.000Z
-modified: 2023-01-13T09:48:49.000Z
+date: git Last Modified
 ---
 
 Pending promises can become either...

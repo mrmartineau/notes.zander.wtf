@@ -3,8 +3,7 @@ title: Save sidebar scroll position
 tags:
   - javascript
 link: 'https://twitter.com/hakimel/status/1262337514741706752'
-created: 2020-05-19T08:25:55.000Z
-modified: 2020-05-19T08:25:55.000Z
+date: git Last Modified
 ---
 
 ```ts

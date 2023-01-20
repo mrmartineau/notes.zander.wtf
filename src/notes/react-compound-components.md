@@ -4,7 +4,7 @@ tags:
   - react
   - js
 link: https://jjenzz.com/compound-components
-created: 2021-04-20T23:24:38.094Z
+date: git Last Modified
 modified: 2021-04-22T17:50:06.559Z
 ---
 

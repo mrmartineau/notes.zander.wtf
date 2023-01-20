@@ -3,7 +3,7 @@ title: Make a button element look like a link
 tags:
   - css
 emoji: 🔗
-created: 2021-01-04T19:43:00.000Z
+date: git Last Modified
 modified: 2021-01-04T19:43:00.000Z
 link: https://piccalil.li/quick-tip/make-a-button-element-look-like-a-link/
 ---

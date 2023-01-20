@@ -4,8 +4,7 @@ emoji: 🍿
 tags:
   - javascript
   - typescript
-created: 2020-02-27T23:51:44.000Z
-modified: 2020-02-27T23:51:44.000Z
+date: git Last Modified
 ---
 
 ```ts

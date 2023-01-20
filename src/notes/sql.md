@@ -1,7 +1,6 @@
 ---
 title: SQL
-created: 2020-09-11T10:39:11.000Z
-modified: 2021-11-11T11:10:43.023Z
+date: git Last Modified
 link: https://www.db-book.com/slides-dir/PDF-dir/ch3.pdf
 ---
 

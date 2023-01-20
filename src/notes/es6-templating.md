@@ -2,8 +2,7 @@
 title: ES6 templating
 tags:
   - javascript
-created: 2020-02-27T23:02:00.000Z
-modified: 2020-02-27T23:02:00.000Z
+date: git Last Modified
 ---
 
 ```js
@@ -17,7 +16,7 @@ const markup = `
   <ul class="dogs">
       ${dogs
         .map(
-          dog =>
+          (dog) =>
             `<li>${dog.name}
               is
               ${dog.age * 7}

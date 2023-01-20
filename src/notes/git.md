@@ -3,8 +3,7 @@ title: Git
 tags:
   - cheatsheet
   - git
-created: 2020-02-27T23:02:00.000Z
-modified: 2022-11-11T13:15:54.000Z
+date: git Last Modified
 ---
 
 ## Staging/Adding files

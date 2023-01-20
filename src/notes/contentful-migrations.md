@@ -2,8 +2,7 @@
 title: Contentful migrations
 tags:
   - javascript
-created: 2021-01-06T11:24:00.000Z
-modified: 2021-01-06T11:24:00.000Z
+date: git Last Modified
 emoji: 🦒
 ---
 
@@ -75,6 +74,7 @@ Useful links:
 ### Migration scripts
 
 ```js
+
 ```
 
 #### Richtext field

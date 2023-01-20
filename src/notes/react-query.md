@@ -4,8 +4,7 @@ link: https://react-query.tanstack.com
 tags:
   - react
 emoji: ⚛
-created: 2021-03-26T12:50:12.000Z
-modified: 2021-11-11T12:24:40.451Z
+date: git Last Modified
 ---
 
 ## useQuery
@@ -66,7 +65,7 @@ const someData = useQuery<ResponseUseQueryModel, Error>(
   () =>
     getSomeData<TraineeFeedbackDataModel>({
       path: TRAINEE_FEEDBACK,
-    }),
+    })
 )
 ```
 
@@ -83,7 +82,7 @@ const someData = useQuery<ResponseUseQueryModel, Error>(
   {
     // will wait for `idToken` to be truthy before running this query
     enabled: !!idToken,
-  },
+  }
 )
 ```
 
@@ -94,7 +93,7 @@ import { useQuery, UseQueryResult } from 'react-query'
 
 export const useTraineeFeedback = (
   traineeId: string,
-  idToken: string,
+  idToken: string
 ): UseQueryResult<TraineeFeedbackResponseModel, Error> => {
   return useQuery<TraineeFeedbackResponseModel, Error>(
     ['traineeFeedback', traineeId],
@@ -104,7 +103,7 @@ export const useTraineeFeedback = (
       }),
     {
       enabled: !!idToken,
-    },
+    }
   )
 }
 ```
@@ -131,7 +130,7 @@ export const ViewUser: React.FC = (props) => {
   const { userId } = useParams<ViewUserPagePathParameters>()
   const { status, data, error } = useQuery<IUser, Error>(
     `getUser for ${userId}`,
-    () => getUser({ id: userId }),
+    () => getUser({ id: userId })
   )
 
   if (status === 'success') {

@@ -4,8 +4,7 @@ emoji: 🐕
 tags:
   - javascript
 link: https://github.com/axios/axios
-created: 2020-02-27T23:02:00.000Z
-modified: 2021-12-06T15:30:48.665Z
+date: git Last Modified
 ---
 
 ## Example requests
@@ -137,12 +136,9 @@ axios({
 
 ```ts
 try {
-  await axios.post(
-    '/user/12345',
-    {
-      email: formData.email,
-    }
-  )
+  await axios.post('/user/12345', {
+    email: formData.email,
+  })
 } catch (error: unknown) {
   if (axios.isAxiosError(error)) {
     // you now have type-safe access to the API response that returned the error

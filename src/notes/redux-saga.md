@@ -2,8 +2,7 @@
 title: Redux Saga
 tags:
   - react
-created: 2020-03-22T23:14:36.000Z
-modified: 2020-03-24T22:53:27.000Z
+date: git Last Modified
 ---
 
 > An alternative side effect model for Redux apps
@@ -52,14 +51,14 @@ import { fetchData } from './routines'
 const initialState = {
   data: null,
   loading: false,
-  error: null
+  error: null,
 }
 
 export const exampleReducer = (
   state = initialState,
   action: ExampleActionInterface
 ) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
       case fetchData.REQUEST:
         draft.loading = true

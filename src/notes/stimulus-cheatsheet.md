@@ -2,8 +2,7 @@
 title: Stimulus cheatsheet
 tags:
   - javascript
-created: 2020-06-23T16:45:15.000Z
-modified: 2020-06-23T16:45:15.000Z
+date: git Last Modified
 ---
 
 - Website: https://stimulusjs.org/
@@ -18,6 +17,7 @@ modified: 2020-06-23T16:45:15.000Z
 - `disconnect`: anytime the controller is disconnected from the DOM
 
 ## Action descriptors
+
 The data-action value `click->hello#greet` is called an action descriptor. This particular descriptor says:
 
 - `click` is the event name
@@ -25,9 +25,11 @@ The data-action value `click->hello#greet` is called an action descriptor. This 
 - `greet` is the name of the method to invoke
 
 ### Common Events Have a Shorthand Action Notation
+
 Stimulus defines click as the default event for actions on `<button>` elements. Certain other elements have default events, too. Here’s the full list:
 
 #### Element > Default event
+
 - `a` > `click`
 - `button` > `click`
 - `form` > `submit`
@@ -37,11 +39,13 @@ Stimulus defines click as the default event for actions on `<button>` elements. 
 - `textarea` > `change`
 
 ### Multiple Actions
+
 If an element has muliple actions you can separate each one with a space `click->hello#greet click->hello#save`.
 
 The element can even have multiple actions for multiple controllers `click->hello#greet click->history#save`.
 
 ## Targets
+
 The data-target value `hello.name` is called a target descriptor. This particular descriptor says:
 
 - `hello` is the controller identifier
@@ -54,6 +58,7 @@ When Stimulus loads your controller class, it looks for target name strings in a
 - `this.hasSourceTarget` evaluates to true if there is a source target or false if not.
 
 ### Multiple Targets
+
 If an element is a target for multiple controllers you can separate each one with a space `hello.name history.text`
 
 ## Naming Conventions
@@ -67,6 +72,7 @@ If an element is a target for multiple controllers you can separate each one wit
 | Data attributes      | camelCase + kebab-case | Thin wrapper around the HTMLElement.dataSet API; camelCase names in JS, kebab-case attributes in HTML         |
 
 ## Data API
+
 Each Stimulus controller has a `this.data` object with `has()`, `get()`, and `set()` methods. These methods provide convenient access to data attributes on the controller’s element, scoped by the controller’s identifier.
 
 For example, in our controller above:
@@ -78,53 +84,56 @@ For example, in our controller above:
 If your attribute name consists of more than one word, **reference it as camelCase in JavaScript and attribute-case in HTML**. For example, you can read the `data-slideshow-current-class-name` attribute with `this.data.get("currentClassName")`.
 
 ## HTML API
+
 ### Controller `data-controller`
+
 e.g. `<div data-controller="ControllerName">`
 
 e.g. Multiple controllers on the same element: `<div data-controller="ControllerName AnotherControllerName">`
 
 ### Target `data-target`
+
 e.g. `<input data-target="ControllerName.TargetName"`>
 
 ### Action `data-action`
+
 e.g. `<button data-action="eventName->ControllerName#methodName">Click me</button>`
 
 e.g. Multiple actions on the same element: `<button data-action="eventName->ControllerName#methodName anotherEventName->ControllerName#anotherMethodName">Click me</button>`
 
-
 ## Code snippets
 
 ### Empty class
+
 ```js
-import { Controller } from "stimulus"
+import { Controller } from 'stimulus'
 
 export default class extends Controller {
   static targets = []
 
   // or
-  static get targets () {
+  static get targets() {
     return []
   }
 
-  initialize () {}
+  initialize() {}
 
-  connect () {}
+  connect() {}
 
-  disconnect () {}
+  disconnect() {}
 }
 ```
 
 ### HTML
+
 Example HTML from the [Stimulus](https://stimulusjs.org/) home page
+
 ```html
 <div data-controller="hello">
-  <input data-target="hello.name" type="text">
+  <input data-target="hello.name" type="text" />
 
-  <button data-action="click->hello#greet">
-    Greet
-  </button>
+  <button data-action="click->hello#greet">Greet</button>
 
-  <span data-target="hello.output">
-  </span>
+  <span data-target="hello.output"> </span>
 </div>
 ```

@@ -2,8 +2,7 @@
 title: Big list of naughty strings
 emoji: 🙅
 link: 'https://github.com/minimaxir/big-list-of-naughty-strings'
-created: 2020-03-22T23:14:36.000Z
-modified: 2020-05-11T11:47:16.000Z
+date: git Last Modified
 ---
 
 ```yaml

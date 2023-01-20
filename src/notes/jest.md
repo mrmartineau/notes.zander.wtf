@@ -5,8 +5,7 @@ tags:
   - react
   - testing
 emoji: 🧪
-created: 2020-02-27T23:02:00.000Z
-modified: 2022-06-10T10:38:49Z
+date: git Last Modified
 ---
 
 ## Basic test skeleton
@@ -43,10 +42,10 @@ import { formatDate } from './formatDate'
 
 test('it should throw', () => {
   expect(() => formatDate('197901180')).toThrow(
-    'Date string wrong format/length',
+    'Date string wrong format/length'
   )
   expect(() => formatDate('abcdefgh')).toThrow(
-    'Date string must be only digits',
+    'Date string must be only digits'
   )
 })
 ```

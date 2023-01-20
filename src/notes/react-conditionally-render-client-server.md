@@ -3,8 +3,7 @@ title: Conditionally render on the client or server
 tags:
   - react
 emoji: ⚛
-created: 2022-08-17T09:08:55.000Z
-modified: 2022-08-17T09:08:55.000Z
+date: git Last Modified
 ---
 
 ```tsx

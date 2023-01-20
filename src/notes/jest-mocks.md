@@ -4,8 +4,7 @@ tags:
   - javascript
   - testing
 emoji: 🧪
-created: 2020-02-27T23:02:00.000Z
-modified: 2020-03-26T23:06:06.000Z
+date: git Last Modified
 ---
 
 ## Some useful mocks
@@ -22,13 +21,13 @@ modified: 2020-03-26T23:06:06.000Z
  * Put any mocks referencing 'window' in this 'if' block.
  */
 if (typeof window != 'undefined') {
-  window.matchMedia = jest.fn().mockImplementation(query => {
+  window.matchMedia = jest.fn().mockImplementation((query) => {
     return {
       matches: false,
       media: query,
       onchange: null,
       addListener: jest.fn(),
-      removeListener: jest.fn()
+      removeListener: jest.fn(),
     }
   })
 }
@@ -43,7 +42,7 @@ jest.mock('next/router', () => {
   return {
     push: () => {},
     replace: () => {},
-    prefetch: () => {}
+    prefetch: () => {},
   }
 })
 
@@ -54,11 +53,11 @@ import config from 'config'
 const mockPublicConfigData = {
   env: config.get('env'),
   base: config.get('base'),
-  client: config.get('client')
+  client: config.get('client'),
 }
 
 jest.mock('next/config', () => () => ({
-  publicRuntimeConfig: mockPublicConfigData
+  publicRuntimeConfig: mockPublicConfigData,
 }))
 
 global.MutationObserver = class {

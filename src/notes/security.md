@@ -3,8 +3,7 @@ title: Security
 tags:
   - node
 emoji: 👮‍♂️
-created: 2020-03-10T14:58:40.000Z
-modified: 2020-03-26T23:06:06.000Z
+date: git Last Modified
 ---
 
 [OWASP Top Ten](https://owasp.org/www-project-top-ten/)

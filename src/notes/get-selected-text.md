@@ -2,8 +2,7 @@
 title: Get selected text
 tags:
   - javascript
-created: 2020-08-04T22:51:25.000Z
-modified: 2020-08-04T22:51:25.000Z
+date: git Last Modified
 ---
 
 ```js

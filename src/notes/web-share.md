@@ -3,8 +3,7 @@ title: Web Share
 tags:
   - javascript
 emoji: "\U0001F4E4"
-created: 2020-07-04T16:03:24.000Z
-modified: 2020-12-29T10:31:54.000Z
+date: git Last Modified
 ---
 
 ![Web Share Screenshot](./images/ios-web-share.png)

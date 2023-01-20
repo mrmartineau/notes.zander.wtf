@@ -2,8 +2,7 @@
 title: Check if JavaScript object is empty
 tags:
   - javascript
-created: 2021-01-06T11:18:30.000Z
-modified: 2021-01-28T16:55:30.000Z
+date: git Last Modified
 ---
 
 ```js

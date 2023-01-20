@@ -5,8 +5,7 @@ tags:
   - javascript
 emoji: 🧪
 link: 'https://github.com/nock/nock'
-created: 2020-02-27T23:02:00.000Z
-modified: 2020-05-11T11:47:16.000Z
+date: git Last Modified
 ---
 
 ```js

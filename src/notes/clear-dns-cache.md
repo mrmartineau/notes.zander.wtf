@@ -1,8 +1,7 @@
 ---
 title: Clear DNS cache
 emoji: 💵
-created: 2020-04-30T22:14:32.000Z
-modified: 2020-04-30T22:14:32.000Z
+date: git Last Modified
 ---
 
 ## OS X 10.11, 10.12+ (El Capitan, Sierra):

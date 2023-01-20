@@ -5,8 +5,7 @@ tags:
   - storybook
 emoji: 📖
 link: 'https://storybook.js.org'
-created: 2020-02-27T23:02:00.000Z
-modified: 2021-01-16T10:31:32.000Z
+date: git Last Modified
 ---
 
 ## Stories

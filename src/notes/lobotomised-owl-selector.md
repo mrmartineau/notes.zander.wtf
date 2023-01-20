@@ -3,7 +3,7 @@ title: The “Lobotomised Owl” Selector
 tags:
   - css
 emoji: 🦉
-created: 2020-12-29T10:31:32.000Z
+date: git Last Modified
 modified: 2020-12-29T17:10:23.000Z
 ---
 

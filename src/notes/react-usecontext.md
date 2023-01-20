@@ -3,8 +3,7 @@ title: useContext
 tags:
   - react
 emoji: 🎣
-created: 2020-04-17T15:55:11.000Z
-modified: 2020-04-17T15:55:11.000Z
+date: git Last Modified
 ---
 
 - Docs: http://reactjs.org/docs/hooks-reference.html#usecontext

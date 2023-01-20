@@ -3,8 +3,7 @@ title: Favicons
 tags:
   - html
 emoji: 👍
-created: 2020-03-24T22:53:27.000Z
-modified: 2020-03-26T23:06:06.000Z
+date: git Last Modified
 ---
 
 ```html

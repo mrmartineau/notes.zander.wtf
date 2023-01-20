@@ -4,8 +4,7 @@ tags:
   - react
   - typescript
 emoji: 💅
-created: 2020-02-27T23:02:00.000Z
-modified: 2020-05-19T08:25:55.000Z
+date: git Last Modified
 ---
 
 ## Basic component

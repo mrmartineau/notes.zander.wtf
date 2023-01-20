@@ -4,8 +4,7 @@ link: https://reactjs.org/docs/error-boundaries.html
 tags:
   - react
 emoji: ⚛
-created: 2021-11-11T12:22:44.100Z
-modified: 2021-11-11T12:24:43.372Z
+date: git Last Modified
 ---
 
 From the React docs on [Error boundaries](https://reactjs.org/docs/error-boundaries.html):

@@ -1,8 +1,7 @@
 ---
 title: Vercel Serverless functions
 link: https://vercel.com/docs/concepts/functions/serverless-functions
-created: 2021-12-06T16:30:11.062Z
-modified: 2021-12-06T16:30:11.062Z
+date: git Last Modified
 ---
 
 ## Basic example
@@ -17,16 +16,16 @@ const handler = (request, response) => {
     query: request.query,
     cookies: request.cookies,
   })
-};
+}
 
-export default handler;
+export default handler
 ```
 
 ### With TypeScript
 
 ```ts
 // /api/test.ts
-import { VercelApiHandler } from './types';
+import { VercelApiHandler } from './types'
 
 const handler: VercelApiHandler = (request, response) => {
   response.status(200).json({
@@ -34,9 +33,9 @@ const handler: VercelApiHandler = (request, response) => {
     query: request.query,
     cookies: request.cookies,
   })
-};
+}
 
-export default handler;
+export default handler
 ```
 
 ## Enabling CORS

@@ -2,8 +2,7 @@
 title: Deno
 tags:
   - deno
-created: 2022-11-26T00:21:36
-modified: 2022-12-29T00:15:19
+date: git Last Modified
 link: https://deno.land
 emoji: ⚡
 ---

@@ -1,7 +1,6 @@
 ---
 title: Firebase
-created: 2021-04-22T17:45:56.352Z
-modified: 2021-07-12T05:59:03.092Z
+date: git Last Modified
 tags:
   - services
   - APIs
@@ -105,7 +104,7 @@ export const firestoreConverter = <
  * Pass it a type argument representing the 'type' (schema) of the docs in the collection
  */
 export const firestoreDataPoint = <T>(
-  collectionPath: string,
+  collectionPath: string
 ): firebase.firestore.CollectionReference => {
   return firestore
     .collection(collectionPath)

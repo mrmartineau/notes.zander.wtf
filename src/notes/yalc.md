@@ -3,8 +3,7 @@ title: Yalc
 tags:
   - javascript
 link: 'https://github.com/whitecolor/yalc'
-created: 2020-02-27T23:02:00.000Z
-modified: 2020-11-13T09:52:04.000Z
+date: git Last Modified
 ---
 
 ## Installation

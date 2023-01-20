@@ -2,8 +2,7 @@
 title: GraphQL
 tags:
   - graphql
-created: 2020-06-25T14:17:22.000Z
-modified: 2020-06-25T14:17:22.000Z
+date: git Last Modified
 ---
 
 # Essential quotes

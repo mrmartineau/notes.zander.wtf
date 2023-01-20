@@ -2,8 +2,7 @@
 title: Switch(true)
 tags:
   - javascript
-created: 2021-01-06T11:21:30.000Z
-modified: 2021-01-06T11:21:30.000Z
+date: git Last Modified
 emoji: 🔦
 ---
 

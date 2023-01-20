@@ -3,8 +3,7 @@ title: Command line tools
 tags:
   - cli
 emoji: 📟
-created: 2019-11-03T00:00:00.000Z
-modified: 2021-02-15T17:25:27.000Z
+date: git Last Modified
 ---
 
 ## Keyboard shortcuts

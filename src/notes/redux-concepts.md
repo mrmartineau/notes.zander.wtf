@@ -2,8 +2,7 @@
 title: Redux concepts
 tags:
   - react
-created: 2020-03-22T23:14:36.000Z
-modified: 2020-03-24T22:53:27.000Z
+date: git Last Modified
 ---
 
 > Notes made from reading the excellent: [Human Redux](https://reduxbook.com/) by [Henrik Joretag](https://joreteg.com/)
@@ -63,7 +62,7 @@ import { createStore } from 'redux'
 const reducer = (state, action) => {
   if (action.type === 'LOGGED_IN') {
     return {
-      loggedIn: true
+      loggedIn: true,
     }
   }
 
@@ -80,7 +79,7 @@ Combining Reducers
 // now we combine them into a single root reducer!
 const rootReducer = combineReducers({
   floodCount: floodCountReducer,
-  furniture: furnitureReducer
+  furniture: furnitureReducer,
 })
 
 // we end up with a single reducer we can pass to `createStore()`
@@ -158,7 +157,7 @@ const state = {
   lastError: null,
 
   // The type of error that occurred
-  error: null
+  error: null,
 }
 ```
 
@@ -179,7 +178,7 @@ const reducer = (state, action) => {
 
       // clear any previous error data
       lastError: null,
-      error: null
+      error: null,
     })
   }
 
@@ -223,7 +222,7 @@ Reducer
 ```js
 // starting state for our URL pathname reducer
 const initialState = {
-  pathname: typeof location !== 'undefined' ? location.pathname : '/'
+  pathname: typeof location !== 'undefined' ? location.pathname : '/',
 }
 
 // the reducer itself
@@ -235,7 +234,7 @@ const urlReducer = (state = initialState, action) => {
 }
 
 // an action creator for updating it
-const doUpdateUrl = pathname => ({ type: 'UPDATE_URL', payload: pathname })
+const doUpdateUrl = (pathname) => ({ type: 'UPDATE_URL', payload: pathname })
 ```
 
 ## Persisting state

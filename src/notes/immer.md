@@ -2,8 +2,7 @@
 title: Immer
 tags:
   - react
-created: 2020-12-01T10:18:03.000Z
-modified: 2020-12-01T10:18:03.000Z
+date: git Last Modified
 ---
 
 ## Basic example

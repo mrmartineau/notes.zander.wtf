@@ -2,8 +2,7 @@
 title: Removing items from arrays
 tags:
   - javascript
-created: 2021-01-06T11:22:00.000Z
-modified: 2021-01-06T11:22:00.000Z
+date: git Last Modified
 emoji: ❌
 ---
 

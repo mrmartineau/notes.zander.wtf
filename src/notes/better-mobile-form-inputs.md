@@ -4,7 +4,7 @@ tags:
   - html
 link: 'https://better-mobile-inputs.netlify.app'
 emoji: 🔘
-created: 2020-06-23T16:45:15.000Z
+date: git Last Modified
 modified: 2020-06-23T16:45:15.000Z
 ---
 

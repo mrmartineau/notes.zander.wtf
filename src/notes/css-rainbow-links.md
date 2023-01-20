@@ -3,7 +3,7 @@ title: Rainbow links
 tags:
   - css
 link: 'https://twitter.com/chrisbiscardi/status/1259606045858467840'
-created: 2020-05-19T08:25:55.000Z
+date: git Last Modified
 modified: 2020-05-19T08:25:55.000Z
 ---
 
@@ -22,7 +22,7 @@ modified: 2020-05-19T08:25:55.000Z
 ```
 
 <a
-  style={{
+style={{
     backgroundImage: `linear-gradient(
     90deg,
     rgba(251, 89, 74, 1) 0%,
@@ -33,9 +33,9 @@ modified: 2020-05-19T08:25:55.000Z
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'rgba(255, 255, 255, 0.46)',
   }}
->
-  This is a rainbow link
-</a>
+
+> This is a rainbow link
+> </a>
 
 With object-styles:
 

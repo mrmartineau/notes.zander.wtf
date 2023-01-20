@@ -1,6 +1,6 @@
 ---
 title: Custom inclusive/accessible Theme UI Button
-created: 2021-11-11T11:46:12.655Z
+date: git Last Modified
 modified: 2021-11-11T12:27:02.967Z
 tags:
   - react
@@ -8,13 +8,9 @@ tags:
   - a11y
 ---
 
-import { Button } from '../components/Button'
-
 This button component extends Theme UI's `Button` and add some more props/functionality. It takes all standard `<button>` attributes e.g. `disabled`, `type` etc etc **AND** also Theme UI's props like `variant` and `sx`. It is based on the guidelines at https://css-tricks.com/making-disabled-buttons-more-inclusive/
 
 ## Usage
-
-<Button>Click me</Button>
 
 ```tsx
 <Button>Click me</Button>
@@ -25,8 +21,6 @@ This button component extends Theme UI's `Button` and add some more props/functi
 
 ### With loading state
 
-<Button isLoading={true}>Click me</Button>
-
 ```tsx
 <Button isLoading={true}>Click me</Button>
 ```
@@ -34,13 +28,6 @@ This button component extends Theme UI's `Button` and add some more props/functi
 ### Inclusive/accessible disabled state
 
 Using the guidelines from https://css-tricks.com/making-disabled-buttons-more-inclusive/, this button will show a simple tooltip if the form state is not ready. Instead of passing `disabled=true` to the button, use the `isDisabled` & `disabledText` props.
-
-<Button
-  isDisabled={true}
-  disabledText="You must select a meeting for all trainees"
->
-  Request meetings
-</Button>
 
 ```tsx
 <Button
@@ -91,7 +78,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       ...rest
     },
-    ref,
+    ref
   ): JSX.Element => {
     return (
       <ThemeUIButton
@@ -185,6 +172,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ) : null}
       </ThemeUIButton>
     )
-  },
+  }
 )
 ```

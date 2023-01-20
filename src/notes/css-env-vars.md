@@ -2,8 +2,7 @@
 title: CSS environment variables
 tags:
   - css
-created: 2020-03-22T14:53:49.000Z
-modified: 2020-03-22T14:53:49.000Z
+date: git Last Modified
 ---
 
 [Browser support](https://caniuse.com/#feat=css-env-function)

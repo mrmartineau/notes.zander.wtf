@@ -4,8 +4,7 @@ tags:
   - react
   - typescript
 emoji: ⚛
-created: 2021-03-09T12:42:11.000Z
-modified: 2023-01-16T07:10:45.763Z
+date: git Last Modified
 ---
 
 [React TypeScript cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet) is my bible for all React/TypeScipt things

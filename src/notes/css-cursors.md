@@ -3,393 +3,58 @@ title: CSS cursors
 tags:
   - css
 emoji: 👆
-created: 2020-03-22T23:14:36.000Z
-modified: 2020-09-07T08:44:03.000Z
+date: git Last Modified
+link: http://developer.mozilla.org/en-US/docs/Web/CSS/cursor
 ---
 
 ## Native cursors
 
-<div
-  style={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-    gap: '10px',
-    fontFamily: 'monospace',
-    fontSize: '0.8rem',
-    textAlign: 'center',
-  }}
->
-  <div
-    style={{
-      cursor: 'none',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    none
-  </div>
-  <div
-    style={{
-      cursor: 'inherit',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    inherit
-  </div>
-  <div
-    style={{
-      cursor: 'auto',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    auto
-  </div>
-  <div
-    style={{
-      cursor: 'default',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    default
-  </div>
-  <div
-    style={{
-      cursor: 'pointer',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    pointer
-  </div>
-  <div
-    style={{
-      cursor: 'context-menu',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    context-menu
-  </div>
-  <div
-    style={{
-      cursor: 'help',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    help
-  </div>
-  <div
-    style={{
-      cursor: 'progress',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    progress
-  </div>
-  <div
-    style={{
-      cursor: 'wait',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    wait
-  </div>
-  <div
-    style={{
-      cursor: 'cell',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    cell
-  </div>
-  <div
-    style={{
-      cursor: 'crosshair',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    crosshair
-  </div>
-  <div
-    style={{
-      cursor: 'text',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    text
-  </div>
-  <div
-    style={{
-      cursor: 'vertical-text',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    vertical-text
-  </div>
-  <div
-    style={{
-      cursor: 'alias',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    alias
-  </div>
-  <div
-    style={{
-      cursor: 'copy',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    copy
-  </div>
-  <div
-    style={{
-      cursor: 'move',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    move
-  </div>
-  <div
-    style={{
-      cursor: 'no-drop',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    no-drop
-  </div>
-  <div
-    style={{
-      cursor: 'not-allowed',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    not-allowed
-  </div>
-  <div
-    style={{
-      cursor: 'all-scroll',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    all-scroll
-  </div>
-  <div
-    style={{
-      cursor: 'col-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    col-resize
-  </div>
-  <div
-    style={{
-      cursor: 'row-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    row-resize
-  </div>
-  <div
-    style={{
-      cursor: 'n-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    n-resize
-  </div>
-  <div
-    style={{
-      cursor: 'e-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    e-resize
-  </div>
-  <div
-    style={{
-      cursor: 's-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    s-resize
-  </div>
-  <div
-    style={{
-      cursor: 'w-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    w-resize
-  </div>
-  <div
-    style={{
-      cursor: 'ns-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    ns-resize
-  </div>
-  <div
-    style={{
-      cursor: 'ew-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    ew-resize
-  </div>
-  <div
-    style={{
-      cursor: 'ne-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    ne-resize
-  </div>
-  <div
-    style={{
-      cursor: 'nw-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    nw-resize
-  </div>
-  <div
-    style={{
-      cursor: 'se-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    se-resize
-  </div>
-  <div
-    style={{
-      cursor: 'sw-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    sw-resize
-  </div>
-  <div
-    style={{
-      cursor: 'nesw-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    nesw-resize
-  </div>
-  <div
-    style={{
-      cursor: 'nwse-resize',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    nwse-resize
-  </div>
-  <div
-    style={{
-      cursor: 'zoom-in',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    zoom-in
-  </div>
-  <div
-    style={{
-      cursor: 'zoom-out',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    zoom-out
-  </div>
-  <div
-    style={{
-      cursor: 'grab',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    grab
-  </div>
-  <div
-    style={{
-      cursor: 'grabbing',
-      padding: '5%',
-      border: '1px solid',
-      borderRadius: '0.2rem',
-    }}
-  >
-    grabbing
-  </div>
-</div>
+```md
+- auto
+- default
+- none
+- context-menu
+- help
+- pointer
+- progress
+- wait
+- cell
+- crosshair
+- text
+- vertical-text
+- alias
+- copy
+- move
+- no-drop
+  not-allowed
+- grab
+- grabbing
+- e-resize
+- n-resize
+- ne-resize
+- nw-resize
+  s-resize
+- se-resize
+- sw-resize
+- w-resize
+- ew-resize
+- ns-resize
+- nesw-resize
+- nwse-resize
+- col-resize
+- row-resize
+- all-scroll
+- zoom-in
+- zoom-out;
+```
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="Cursors" src="https://codepen.io/ranjithpmankada/embed/YzKRLmB?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/ranjithpmankada/pen/YzKRLmB">
+  Cursors</a> by Ranjith (<a href="https://codepen.io/ranjithpmankada">@ranjithpmankada</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+## Custom cursors
 
 ```css
 /* URL, with a keyword fallback */

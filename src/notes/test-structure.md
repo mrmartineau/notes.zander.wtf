@@ -2,8 +2,7 @@
 title: Test structure
 tags:
   - testing
-created: 2020-03-28T23:12:22.000Z
-modified: 2020-12-29T10:31:54.000Z
+date: git Last Modified
 ---
 
 https://gist.github.com/mrmartineau/84b2979d428b7581c65786f032f96a62

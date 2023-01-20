@@ -4,8 +4,7 @@ emoji: 🐠
 tags:
   - cli
 link: https://fishshell.com
-created: 2020-02-27T23:02:00.000Z
-modified: 2021-11-26T11:10:59.134Z
+date: git Last Modified
 ---
 
 My Fish config: https://github.com/mrmartineau/fish

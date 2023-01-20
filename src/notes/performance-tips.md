@@ -1,8 +1,7 @@
 ---
 title: Performance tips
 emoji: 🏎
-created: 2021-01-15
-modified: 2021-01-15
+date: git Last Modified
 ---
 
 ## Reduce Cumulative Layout Shift

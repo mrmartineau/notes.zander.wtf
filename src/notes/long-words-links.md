@@ -4,8 +4,7 @@ tags:
   - css
 link: >-
   https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container
-created: 2020-04-11T06:27:27.000Z
-modified: 2020-05-11T11:47:16.000Z
+date: git Last Modified
 ---
 
 ```css

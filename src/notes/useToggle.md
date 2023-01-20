@@ -3,8 +3,7 @@ title: useToggle React Hook
 tags:
   - react
 emoji: ⚛
-created: 2021-07-12T06:06:50.377Z
-modified: 2021-07-12T06:07:21.645Z
+date: git Last Modified
 ---
 
 ```tsx
@@ -16,7 +15,7 @@ import { useCallback, useState } from 'react'
  * @description Toggle something
  */
 export const useToggle = (
-  initialState = false,
+  initialState = false
 ): [boolean, DispatchWithoutAction, Dispatch<boolean>] => {
   // Initialize the state
   const [state, setToggleState] = useState(initialState)

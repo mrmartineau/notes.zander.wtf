@@ -2,8 +2,7 @@
 title: Pluralisation with inflect()
 tags:
   - javascript
-created: 2022-11-11T13:25:54.000Z
-modified: 2022-11-11T13:25:54.000Z
+date: git Last Modified
 link: https://kyleshevlin.com/snippets/inflect
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Run npm script from another directory
-created: 2022-07-19T16:26:06.000Z
-modified: 2022-07-19T16:26:06.000Z
+date: git Last Modified
 ---
 
 ## npm

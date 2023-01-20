@@ -3,8 +3,7 @@ title: Picture
 tags:
   - html
 emoji: 🖼
-created: 2020-02-27T23:02:00.000Z
-modified: 2020-03-26T23:06:06.000Z
+date: git Last Modified
 ---
 
 ## Webp + png usage

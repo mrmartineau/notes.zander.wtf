@@ -5,8 +5,7 @@ tags:
   - react
   - javascript
 link: 'https://greensock.com/docs/v3/GSAP'
-created: 2020-12-01T10:18:03.000Z
-modified: 2020-12-02T00:34:34.000Z
+date: git Last Modified
 ---
 
 ## GSAP

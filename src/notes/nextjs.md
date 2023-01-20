@@ -3,7 +3,7 @@ title: Next.js
 link: https://nextjs.org/docs/
 tags:
   - react
-created: 2021-03-09T20:57:49.000Z
+date: git Last Modified
 modified: 2021-03-09T20:57:49.000Z
 ---
 

@@ -2,8 +2,7 @@
 title: Array methods summarised
 tags:
   - javascript
-created: 2020-02-27T23:51:44.000Z
-modified: 2021-05-21T10:16:29.042Z
+date: git Last Modified
 ---
 
 ## Intro

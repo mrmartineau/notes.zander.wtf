@@ -3,8 +3,7 @@ title: SSR
 tags:
   - react
 emoji: ⚛
-created: 2020-09-06T07:57:42.000Z
-modified: 2020-09-06T07:57:42.000Z
+date: git Last Modified
 ---
 
 Use this to check if `window` is defined

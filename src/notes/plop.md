@@ -1,8 +1,7 @@
 ---
 title: Plop
 link: https://github.com/plopjs/plop
-created: 2020-10-19T14:01:20.000Z
-modified: 2021-07-12T05:58:17.639Z
+date: git Last Modified
 tags:
   - devops
 ---
@@ -47,7 +46,7 @@ module.exports = {
         } else if (value.length < 3) {
           message = console.error(
             'Too Short',
-            `"${value}" is not descriptive enough`,
+            `"${value}" is not descriptive enough`
           )
         }
         return message
@@ -68,8 +67,7 @@ module.exports = {
       },
       {
         type: 'add',
-        path:
-          'src/components/{{pascalCase name}}/{{pascalCase name}}.stories.tsx',
+        path: 'src/components/{{pascalCase name}}/{{pascalCase name}}.stories.tsx',
         templateFile: './generate/component/templates/story.hbs',
       },
       {
@@ -102,21 +100,17 @@ export { {{pascalCase name}} } from './{{pascalCase name}}'
 ### `./generate/component/templates/component.hbs`
 
 ```hbs
-import React from 'react'
-import { ThemeUIStyleObject, Box } from 'theme-ui'
-
-export interface {{pascalCase name}}Props {
-  sx?: ThemeUIStyleObject
-  // children: ReactNode
-}
-
-export const {{pascalCase name}} = ({ sx }: {{pascalCase name}}Props): JSX.Element => {
-  return (
-    <Box sx={{ obj "...sx" }}>
-      <Box>{{name}}</Box>
-    </Box>
-  )
-}
+import React from 'react' import { ThemeUIStyleObject, Box } from 'theme-ui'
+export interface
+{{pascalCase name}}Props { sx?: ThemeUIStyleObject // children: ReactNode }
+export const
+{{pascalCase name}}
+= ({ sx }:
+{{pascalCase name}}Props): JSX.Element => { return (
+<Box sx={{obj '...sx'}}>
+  <Box>{{name}}</Box>
+</Box>
+) }
 ```
 
 ### `./generate/component/templates/docs.hbs`
