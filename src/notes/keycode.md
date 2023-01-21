@@ -22,3 +22,22 @@ document.addEventListener('keydown', (event: Event) => {
 ```
 
 Alt link: http://keycode.info/
+
+## `isFormField()` util
+
+```ts
+export function isFormField(element: Node): boolean {
+  if (!(element instanceof HTMLElement)) {
+    return false
+  }
+
+  const name = element.nodeName.toLowerCase()
+  const type = (element.getAttribute('type') || '').toLowerCase()
+  return (
+    name === 'select' ||
+    name === 'textarea' ||
+    (name === 'input' && type !== 'submit' && type !== 'reset') ||
+    element.isContentEditable
+  )
+}
+```
