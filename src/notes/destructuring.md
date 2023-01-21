@@ -2,7 +2,7 @@
 title: Destructuring
 tags:
   - javascript
-date: git Last Modified
+date: 2020-03-22
 ---
 
 ```js

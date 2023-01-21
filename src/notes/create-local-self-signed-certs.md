@@ -1,7 +1,7 @@
 ---
 title: Create local self-signed certificate
 emoji: 📜
-date: git Last Modified
+date: 2020-04-06
 ---
 
 ## Use mkcert

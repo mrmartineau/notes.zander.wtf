@@ -3,8 +3,8 @@ title: Fetch
 tags:
   - javascript
 emoji: 🐕
-link: 'https://github.github.io/fetch/'
-date: git Last Modified
+link: https://github.github.io/fetch/
+date: 2020-12-01
 ---
 
 This documents the polyfillable parts of the [WHATWG Fetch standard](https://fetch.spec.whatwg.org/). See [Caveats](#caveats) for notable exceptions.

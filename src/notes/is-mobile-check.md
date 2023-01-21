@@ -4,6 +4,7 @@ tags:
   - javascript
 emoji: 📱
 date: git Last Modified
+link: https://github.com/faisalman/ua-parser-js
 ---
 
 ```js
@@ -14,5 +15,3 @@ function isUserAgentSignallingMobile(userAgentString) {
   return ua.device.type === 'mobile'
 }
 ```
-
-Repo: https://github.com/faisalman/ua-parser-js

@@ -2,7 +2,7 @@
 title: Vitest
 tags:
   - testing
-date: git Last Modified
+date: 2022-08-14
 link: https://vitest.dev
 emoji: ⚡
 ---

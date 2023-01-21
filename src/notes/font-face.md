@@ -3,7 +3,7 @@ title: '@font-face'
 tags:
   - css
 emoji: 📰
-date: git Last Modified
+date: 2020-03-26
 ---
 
 ## Modern browsers

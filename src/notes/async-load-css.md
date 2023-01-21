@@ -4,7 +4,7 @@ tags:
   - css
 emoji: 🥱
 link: https://www.filamentgroup.com/lab/load-css-simpler
-date: git Last Modified
+date: 2020-05-20
 ---
 
 ```html

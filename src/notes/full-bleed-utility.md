@@ -2,8 +2,7 @@
 title: Full-bleed utility
 tags:
   - css
-date: git Last Modified
-modified: 2020-03-10T14:58:40.000Z
+date: 2020-03-10
 ---
 
 ```css

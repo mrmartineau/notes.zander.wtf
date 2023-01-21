@@ -2,7 +2,7 @@
 title: ES Module import/export syntax
 tags:
   - javascript
-date: git Last Modified
+date: 2020-02-27
 ---
 
 ```js

@@ -1,7 +1,7 @@
 ---
 title: Showing/hiding content
 emoji: ♿
-date: git Last Modified
+date: 2020-12-29
 tags:
   - html
   - css

@@ -3,7 +3,7 @@ title: Docker
 emoji: 🐳
 tags:
   - devops
-date: git Last Modified
+date: 2022-09-22
 ---
 
 ## Best practices

@@ -1,7 +1,7 @@
 ---
-title: Performance tips
+title: Web performance tips
 emoji: 🏎
-date: git Last Modified
+date: 2021-01-15
 ---
 
 ## Reduce Cumulative Layout Shift

@@ -2,7 +2,7 @@
 title: Hexadecimal color code for transparency
 tags:
   - css
-date: git Last Modified
+date: 2020-09-29
 ---
 
 ### How to set transparency with hex value?

@@ -5,7 +5,7 @@ tags:
   - css
   - javascript
 emoji: 💄
-date: git Last Modified
+date: 2020-05-19
 ---
 
 Instead of writing css properties in `kebab-case` like regular css, you write them in `camelCase`, for example `background-color` would be `backgroundColor`. Object styles are especially useful with the css prop because you don’t need a css call like with string styles but object styles can also be used with styled.

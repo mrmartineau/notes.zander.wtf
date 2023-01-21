@@ -3,8 +3,8 @@ title: Theme UI
 tags:
   - react
 emoji: 🎨
-link: 'https://theme-ui.com'
-date: git Last Modified
+link: https://theme-ui.com
+date: 2020-06-11
 ---
 
 ## Theme spec

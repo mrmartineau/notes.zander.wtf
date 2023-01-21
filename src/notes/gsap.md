@@ -4,8 +4,8 @@ tags:
   - animation
   - react
   - javascript
-link: 'https://greensock.com/docs/v3/GSAP'
-date: git Last Modified
+link: https://greensock.com/docs/v3/GSAP
+date: 2020-12-02
 ---
 
 ## GSAP

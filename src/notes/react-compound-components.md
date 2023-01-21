@@ -4,8 +4,7 @@ tags:
   - react
   - js
 link: https://jjenzz.com/compound-components
-date: git Last Modified
-modified: 2021-04-22T17:50:06.559Z
+date: 2021-04-22
 ---
 
 ```tsx

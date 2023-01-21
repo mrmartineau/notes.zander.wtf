@@ -1,6 +1,6 @@
 ---
 title: Changing the default text editor on macOS
-date: git Last Modified
+date: 2022-01-19
 link: https://apple.stackexchange.com/questions/123833/replace-text-edit-as-the-default-text-editor/123834#123834
 ---
 

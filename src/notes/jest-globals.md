@@ -5,7 +5,7 @@ tags:
   - react
   - testing
 emoji: 🧪
-date: git Last Modified
+date: 2022-06-10
 ---
 
 ```js

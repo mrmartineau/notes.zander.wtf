@@ -3,7 +3,7 @@ title: CSS Filters
 tags:
   - css
 emoji: 🕶
-date: git Last Modified
+date: 2020-03-26
 ---
 
 ```css

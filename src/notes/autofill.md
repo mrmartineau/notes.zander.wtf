@@ -3,7 +3,7 @@ title: Form autofill attributes
 tags:
   - html
 date: git Last Modified
-modified: 2021-03-10T07:10:14.000Z
+modified: 2020-12-29
 ---
 
 Spec: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill

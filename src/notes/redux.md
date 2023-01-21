@@ -2,7 +2,7 @@
 title: Redux
 tags:
   - react
-date: git Last Modified
+date: 2020-03-24
 ---
 
 ## Basic example

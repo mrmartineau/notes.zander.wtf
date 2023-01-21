@@ -3,7 +3,7 @@ title: Cutting the mustard
 tags:
   - javascript
 emoji: 😋
-date: git Last Modified
+date: 2020-05-07
 ---
 
 ## Basic example

@@ -2,7 +2,7 @@
 title: Check if JavaScript array is empty
 tags:
   - javascript
-date: git Last Modified
+date: 2021-01-06
 ---
 
 You want to do the check for `undefined` first. If you do it the other way round, it will generate an error if the array is undefined.

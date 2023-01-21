@@ -3,7 +3,7 @@ title: Pure ESM packages
 link: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 tags:
   - javascript
-date: git Last Modified
+date: 2021-11-20
 ---
 
 The package linked to from here is now pure [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). It cannot be `require()`'d from CommonJS.

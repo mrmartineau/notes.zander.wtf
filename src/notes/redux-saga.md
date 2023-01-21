@@ -2,7 +2,7 @@
 title: Redux Saga
 tags:
   - react
-date: git Last Modified
+date: 2020-03-24
 ---
 
 > An alternative side effect model for Redux apps

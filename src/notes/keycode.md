@@ -3,16 +3,21 @@ title: Keycode
 tags:
   - javascript
 emoji: 🔑
-link: 'https://omatsuri.app/events-keycode'
+link: https://omatsuri.app/events-keycode
 date: git Last Modified
 ---
 
-```js
-document.addEventListener('keydown', (event) => {
-  if (event.isComposing || event.keyCode === 229) {
+```ts
+document.addEventListener('keydown', (event: Event) => {
+  if (!(event instanceof KeyboardEvent)) {
     return
   }
-  // do something
+  if (event.target instanceof Node && isFormField(event.target)) {
+    return
+  }
+  if (event.isComposing || event.keyCode === 229) {
+    // do something
+  }
 })
 ```
 

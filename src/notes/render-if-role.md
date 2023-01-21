@@ -6,6 +6,8 @@ emoji: ⚛
 date: git Last Modified
 ---
 
+This component is used to conditionally show content based on a user's role.
+
 ```tsx
 import { ReactNode } from 'react'
 import { useUserContext } from '../../providers'
@@ -38,8 +40,6 @@ export const RenderIfRole = ({
 ```
 
 ## Usage
-
-This component is used to conditionally show content based on a user's role.
 
 This link will only be shown if the current user's role matches `Roles.admin`
 

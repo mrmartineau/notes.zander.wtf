@@ -2,8 +2,8 @@
 title: Scroll-margin-top
 tags:
   - css
-link: 'https://mobile.twitter.com/JoshWComeau/status/1332015868725891076'
-date: git Last Modified
+link: https://mobile.twitter.com/JoshWComeau/status/1332015868725891076
+date: 2020-12-29
 ---
 
 You know that annoying thing when you're scrolled to an anchor and the site's sticky header covers it up?

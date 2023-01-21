@@ -2,7 +2,7 @@
 title: TypeScript catch block errors
 tags:
   - typescript
-date: git Last Modified
+date: 2021-12-06
 link: https://kentcdodds.com/blog/get-a-catch-block-error-message-with-typescript
 ---
 

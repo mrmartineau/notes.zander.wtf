@@ -4,7 +4,7 @@ tags:
   - react
 emoji: 🎣
 link: 'https://joshwcomeau.com/react/the-perils-of-rehydration/'
-date: git Last Modified
+date: 2020-06-11
 ---
 
 ## A client-only wrapper component

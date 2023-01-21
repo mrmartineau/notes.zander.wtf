@@ -3,7 +3,7 @@ title: CircleCI
 tags:
   - devops
 emoji: ⭕️
-date: git Last Modified
+date: 2020-11-04
 ---
 
 ## Basic example

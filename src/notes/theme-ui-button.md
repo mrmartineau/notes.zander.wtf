@@ -1,7 +1,6 @@
 ---
 title: Custom inclusive/accessible Theme UI Button
-date: git Last Modified
-modified: 2021-11-11T12:27:02.967Z
+date: 2021-11-11
 tags:
   - react
   - typescript

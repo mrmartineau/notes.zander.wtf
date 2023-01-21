@@ -2,7 +2,7 @@
 title: Contentful migrations
 tags:
   - javascript
-date: git Last Modified
+date: 2021-01-06
 emoji: 🦒
 ---
 

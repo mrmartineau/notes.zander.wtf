@@ -5,7 +5,7 @@ tags:
   - react
   - graphql
 emoji: ⚛
-date: git Last Modified
+date: 2021-11-11
 ---
 
 Two hooks are provided to make it easier to work with GraphQL and React Query. They use [`graphql-request`](https://github.com/prisma-labs/graphql-request) to make the requests to the GraphQL server.

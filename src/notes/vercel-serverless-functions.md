@@ -1,7 +1,7 @@
 ---
 title: Vercel Serverless functions
 link: https://vercel.com/docs/concepts/functions/serverless-functions
-date: git Last Modified
+date: 2021-12-06
 ---
 
 ## Basic example

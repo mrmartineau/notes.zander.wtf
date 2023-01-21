@@ -4,7 +4,7 @@ tags:
   - javascript
   - testing
 emoji: 🧪
-date: git Last Modified
+date: 2020-03-26
 ---
 
 ## Some useful mocks
@@ -12,7 +12,6 @@ date: git Last Modified
 ```js
 /**
  * Mocks that could be used by any jest test
- * Just add them here and they will automatically be used
  */
 
 /**

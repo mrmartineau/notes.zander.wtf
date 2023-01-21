@@ -1,5 +1,5 @@
 ---
-title: readme.md
+title: README.md snippets
 emoji: 📝
 date: git Last Modified
 ---

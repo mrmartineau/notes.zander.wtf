@@ -6,7 +6,7 @@ tags:
   - javascript
   - typescript
 emoji: 🙅‍♀️
-date: git Last Modified
+date: 2020-09-21
 ---
 
 ## ESlint

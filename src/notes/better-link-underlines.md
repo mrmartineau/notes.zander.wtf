@@ -4,10 +4,9 @@ tags:
   - css
 emoji: ⚓️
 date: git Last Modified
-modified: 2020-03-26T23:06:06.000Z
 ---
 
-```css
+```scss
 a {
   &:link,
   &:visited {

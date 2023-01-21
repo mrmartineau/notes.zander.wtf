@@ -3,7 +3,7 @@ title: IntersectionObserver
 tags:
   - javascript
 emoji: 🚸
-date: git Last Modified
+date: 2020-11-04
 ---
 
 ```js

@@ -2,7 +2,7 @@
 title: CSS font-stacks
 tags:
   - css
-date: git Last Modified
+date: 2020-02-27
 ---
 
 ## System

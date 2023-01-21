@@ -3,8 +3,8 @@ title: Fastest Google Fonts
 tags:
   - html
   - css
-link: 'https://csswizardry.com/2020/05/the-fastest-google-fonts/'
-date: git Last Modified
+link: https://csswizardry.com/2020/05/the-fastest-google-fonts/
+date: 2020-05-20
 ---
 
 ```html

@@ -4,7 +4,7 @@ tags:
   - storybook
   - react
 emoji: 📖
-date: git Last Modified
+date: 2022-01-14
 ---
 
 With a component like this:

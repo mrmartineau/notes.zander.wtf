@@ -2,7 +2,7 @@
 title: Git branching strategies
 tags:
   - git
-date: git Last Modified
+date: 2020-12-29
 ---
 
 ## Different branching strategies

@@ -5,13 +5,13 @@ tags:
 date: git Last Modified
 ---
 
-**Cheatsheets**
+## Cheatsheets
 
 - [https://github.com/hackjutsu/vim-cheatsheet](https://github.com/hackjutsu/vim-cheatsheet)
 - [https://gist.github.com/azadkuh/5d223d46a8c269dadfe4](https://gist.github.com/azadkuh/5d223d46a8c269dadfe4)
 - [https://vimsheet.com/](https://vimsheet.com/)
 
-**Substitute or Find/Replace**
+## Substitute or Find/Replace
 
 To find each occurrence of ‘pick’ in the current line only, and replace it with ‘s’, enter (first press Esc key and type):
 

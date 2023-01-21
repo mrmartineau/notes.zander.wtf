@@ -4,7 +4,7 @@ tags:
   - css
 link: >-
   https://www.bram.us/2020/11/30/native-aspect-ratio-boxes-in-css-thanks-to-aspect-ratio
-date: git Last Modified
+date: 2020-12-29
 ---
 
 ```css

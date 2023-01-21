@@ -3,8 +3,8 @@ title: Testing library
 tags:
   - testing
 emoji: 🧪
-link: 'https://testing-library.com'
-date: git Last Modified
+link: https://testing-library.com
+date: 2020-05-11
 ---
 
 ## DOM

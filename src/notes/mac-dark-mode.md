@@ -1,5 +1,5 @@
 ---
-title: Disable dark mode for Mac apps
+title: Disable dark mode for specific Mac apps
 date: git Last Modified
 ---
 
@@ -35,3 +35,5 @@ defaults write com.google.Chrome NSRequiresAquaSystemAppearance -bool no
 # or
 defaults delete com.google.Chrome NSRequiresAquaSystemAppearance
 ```
+
+Alternatively, use the [Nightowl](https://nightowlapp.co/) app to have this control in an easier way

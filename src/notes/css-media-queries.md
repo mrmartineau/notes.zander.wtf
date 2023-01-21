@@ -4,7 +4,7 @@ tags:
   - css
 link: 'https://developer.mozilla.org/en-US/docs/Web/CSS/@media'
 emoji: ↔️
-date: git Last Modified
+date: 2020-06-11
 ---
 
 ## light-level

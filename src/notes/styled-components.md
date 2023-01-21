@@ -4,7 +4,7 @@ tags:
   - react
   - typescript
 emoji: 💅
-date: git Last Modified
+date: 2020-05-19
 ---
 
 ## Basic component

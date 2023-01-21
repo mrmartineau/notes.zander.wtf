@@ -4,7 +4,7 @@ tags:
   - javascript
   - html
 link: 'https://oembed.com/'
-date: git Last Modified
+date: 2020-06-30
 ---
 
 Default providers list: https://oembed.com/providers.json

@@ -3,7 +3,7 @@ title: Native image lazy loading
 emoji: 🖼
 tags:
   - html
-date: git Last Modified
+date: 2020-02-27
 ---
 
 ```html
@@ -16,7 +16,7 @@ You can use three values with this attribute:
 - `lazy`: Defer loading of resources until it reaches a calculated distance from viewport.
 - `eager`: Load the resource immediately
 
-**Feature detection**
+## Feature detection
 
 ```js
 if ('loading' in HTMLImageElement.prototype === true) {

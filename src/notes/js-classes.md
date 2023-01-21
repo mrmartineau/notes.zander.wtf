@@ -3,7 +3,7 @@ title: Classes
 emoji: 🕺
 tags:
   - javascript
-date: git Last Modified
+date: 2020-04-11
 ---
 
 ```js

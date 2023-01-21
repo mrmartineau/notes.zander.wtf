@@ -2,7 +2,8 @@
 title: Make a directory if none exists
 tags:
   - node
-link: 'https://github.com/isaacs/node-mkdirp'
+  - cli
+link: https://github.com/isaacs/node-mkdirp
 date: git Last Modified
 ---
 

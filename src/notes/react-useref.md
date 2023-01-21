@@ -3,7 +3,7 @@ title: useRef
 tags:
   - react
 emoji: 🎣
-date: git Last Modified
+date: 2020-04-17
 ---
 
 - Docs: http://reactjs.org/docs/hooks-reference.html#useref

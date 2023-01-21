@@ -1,9 +1,10 @@
 ---
-title: Remove array duplicates
+title: Remove array duplicates with Set
 tags:
   - javascript
 emoji: ❌
 date: git Last Modified
+link: https://www.samanthaming.com/tidbits/43-3-ways-to-remove-array-duplicates
 ---
 
 ## Using `Set`
@@ -23,5 +24,3 @@ const backToArray = [...uniqueSet]
 const uniqueSet = [...new Set(array)]
 // ['🐑', 1, 2, 3]
 ```
-
-Source: https://www.samanthaming.com/tidbits/43-3-ways-to-remove-array-duplicates

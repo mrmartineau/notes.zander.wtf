@@ -4,8 +4,7 @@ tags:
   - html
 link: 'https://better-mobile-inputs.netlify.app'
 emoji: 🔘
-date: git Last Modified
-modified: 2020-06-23T16:45:15.000Z
+date: 2020-06-23
 ---
 
 This web-app makes it easy to know which form input we should use.

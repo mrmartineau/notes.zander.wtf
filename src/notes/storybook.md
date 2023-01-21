@@ -4,8 +4,8 @@ tags:
   - testing
   - storybook
 emoji: 📖
-link: 'https://storybook.js.org'
-date: git Last Modified
+link: https://storybook.js.org
+date: 2021-01-16
 ---
 
 ## Stories

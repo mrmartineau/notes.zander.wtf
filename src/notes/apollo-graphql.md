@@ -3,7 +3,7 @@ title: Apollo GraphQL
 tags:
   - graphql
 link: https://www.apollographql.com/docs/react/
-date: git Last Modified
+date: 2020-06-25T14:17:22.000Z
 ---
 
 ## Queries

@@ -1,9 +1,9 @@
 ---
-title: Security
+title: Node Security
 tags:
   - node
 emoji: 👮‍♂️
-date: git Last Modified
+date: 2020-03-26
 ---
 
 [OWASP Top Ten](https://owasp.org/www-project-top-ten/)

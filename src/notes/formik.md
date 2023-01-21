@@ -5,7 +5,7 @@ tags:
   - typescript
 link: https://formik.org/docs/overview
 emoji: ⚛
-date: git Last Modified
+date: 2021-11-11
 ---
 
 ## Simple example

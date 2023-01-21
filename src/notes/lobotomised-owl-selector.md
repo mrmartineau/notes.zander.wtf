@@ -3,8 +3,7 @@ title: The “Lobotomised Owl” Selector
 tags:
   - css
 emoji: 🦉
-date: git Last Modified
-modified: 2020-12-29T17:10:23.000Z
+date: 2020-12-29
 ---
 
 It may have a strange name but using the universal selector (`*`) with the adjacent sibling selector (`+`) can provide a powerful CSS capability:

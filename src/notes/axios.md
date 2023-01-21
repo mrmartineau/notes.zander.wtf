@@ -4,7 +4,7 @@ emoji: 🐕
 tags:
   - javascript
 link: https://github.com/axios/axios
-date: git Last Modified
+date: 2021-12-06
 ---
 
 ## Example requests

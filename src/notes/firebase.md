@@ -1,6 +1,6 @@
 ---
 title: Firebase
-date: git Last Modified
+date: 2021-07-12
 tags:
   - services
   - APIs

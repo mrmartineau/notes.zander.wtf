@@ -2,7 +2,7 @@
 title: Useful JavaScript functions & snippets
 tags:
   - javascript
-date: git Last Modified
+date: 2021-01-06
 ---
 
 ## Automatically remove an event listener after it has executed

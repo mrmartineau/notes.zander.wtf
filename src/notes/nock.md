@@ -4,8 +4,8 @@ tags:
   - testing
   - javascript
 emoji: 🧪
-link: 'https://github.com/nock/nock'
-date: git Last Modified
+link: https://github.com/nock/nock
+date: 2020-05-11
 ---
 
 ```js

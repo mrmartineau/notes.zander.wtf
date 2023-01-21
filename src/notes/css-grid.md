@@ -46,3 +46,15 @@ date: git Last Modified
   grid-gap: 20px;
 }
 ```
+
+## Fluid columns snippet
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* This is better for small screens, once min() is better supported */
+  /* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
+  gap: 1rem;
+}
+```

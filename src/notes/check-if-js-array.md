@@ -2,7 +2,7 @@
 title: Check if value is array in JavaScript
 tags:
   - javascript
-date: git Last Modified
+date: 2022-01-13
 ---
 
 ### `instanceof Array`

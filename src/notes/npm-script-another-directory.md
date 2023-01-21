@@ -1,6 +1,6 @@
 ---
 title: Run npm script from another directory
-date: git Last Modified
+date: 2022-07-19
 ---
 
 ## npm

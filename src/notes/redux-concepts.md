@@ -2,7 +2,7 @@
 title: Redux concepts
 tags:
   - react
-date: git Last Modified
+date: 2020-03-24
 ---
 
 > Notes made from reading the excellent: [Human Redux](https://reduxbook.com/) by [Henrik Joretag](https://joreteg.com/)

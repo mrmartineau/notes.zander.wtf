@@ -1,7 +1,7 @@
 ---
 title: Cleanup / optimise computer
 emoji: 🧼
-date: git Last Modified
+date: 2020-03-26
 ---
 
 - https://medium.freecodecamp.org/how-to-free-up-space-on-your-developer-mac-f542f66ddfb

@@ -1,6 +1,6 @@
 ---
 title: Schema.org structured data
-date: git Last Modified
+date: 2020-06-04
 ---
 
 ## JSON-LD

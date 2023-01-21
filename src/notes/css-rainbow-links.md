@@ -2,9 +2,8 @@
 title: Rainbow links
 tags:
   - css
-link: 'https://twitter.com/chrisbiscardi/status/1259606045858467840'
-date: git Last Modified
-modified: 2020-05-19T08:25:55.000Z
+link: https://twitter.com/chrisbiscardi/status/1259606045858467840
+date: 2020-05-19
 ---
 
 ```css

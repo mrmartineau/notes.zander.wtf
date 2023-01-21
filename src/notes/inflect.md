@@ -2,7 +2,7 @@
 title: Pluralisation with inflect()
 tags:
   - javascript
-date: git Last Modified
+date: 2022-11-11
 link: https://kyleshevlin.com/snippets/inflect
 ---
 

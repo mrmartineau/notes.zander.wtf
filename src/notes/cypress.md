@@ -3,7 +3,8 @@ title: Cypress
 tags:
   - testing
 emoji: "\U0001F333"
-date: git Last Modified
+date: 2020-12-29
+published: false
 ---
 
 ## CI

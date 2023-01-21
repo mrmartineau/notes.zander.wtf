@@ -1,7 +1,7 @@
 ---
 title: Commit message guidelines
 emoji: 📝
-date: git Last Modified
+date: 2020-12-01
 tags:
   - git
 ---

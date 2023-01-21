@@ -1,9 +1,9 @@
 ---
-title: Video
+title: HTML Video
 emoji: 🎬
 tags:
   - html
-date: git Last Modified
+date: 2020-02-27
 ---
 
 ```html

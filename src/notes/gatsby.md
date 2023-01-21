@@ -3,7 +3,7 @@ title: Gatsby
 tags:
   - react
   - graphql
-date: git Last Modified
+date: 2021-01-19
 ---
 
 ## `gatsby-ssr.js`

@@ -6,31 +6,15 @@ emoji: 🤷‍♂️
 date: git Last Modified
 ---
 
-### Best
+### Add to `<body>`
 
 ```js
-window.document.documentElement.className =
-  window.document.documentElement.className.replace(/\bno-js\b/g, '') + ' js '
-;(function (H) {
-  H.className = H.className.replace(/\bno-js\b/, 'js')
-})(document.documentElement)
+window.document.body.classList.add('some-class')
+window.document.body.classList.replace('no-js', 'js')
 ```
 
 ### Add to `<html>`
 
-```html
-<script>
-  document.body.parentElement.className =
-    document.body.parentElement.className.replace('no-js', 'js')
-</script>
-```
-
-### Add to `<body>`
-
-```html
-<script type="text/javascript">
-  document.body.className = document.body.className
-    ? document.body.className + ' js'
-    : 'no-js'
-</script>
+```js
+window.document.documentElement.classList.replace('no-js', 'js')
 ```
