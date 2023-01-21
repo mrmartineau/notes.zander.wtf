@@ -50,7 +50,7 @@ module.exports = function (eleventyConfig) {
       })
     return results
   })
-  /* eleventyConfig.addPlugin(pluginJsonFeed, {
+  eleventyConfig.addPlugin(pluginJsonFeed, {
     // banner_image_metadata_field_name: 'banner_image',
     content_html: false,
     content_text: true,
@@ -58,7 +58,7 @@ module.exports = function (eleventyConfig) {
     // image_metadata_field_name: 'image',
     // summary_metadata_field_name: 'summary',
     tags_metadata_field_name: 'tags',
-  }) */
+  })
 
   eleventyConfig.setLibrary(
     'md',
@@ -143,13 +143,12 @@ module.exports = function (eleventyConfig) {
 
   // Notes
   eleventyConfig.addCollection('notes', (collection) => {
-    return collection.getFilteredByGlob('src/notes/*.md').sort((a, b) => {
-      const aDate = new Date(a.data.modified) || new Date(a.data.created)
-      const bDate = new Date(b.data.modified) || new Date(b.data.created)
-      return aDate.getTime() / 1000 < bDate.getTime() / 1000 ? 1 : -1
+    return collection.getFilteredByGlob('src/notes/*.md').filter((item) => {
+      return item.data.published !== false
     })
   })
 
+  // Short codes
   eleventyConfig.addShortcode('tagDisplay', function (tag) {
     const tagName = slugify(tag)
     const tagColor = getColourFromString(tagName)
