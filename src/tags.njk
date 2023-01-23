@@ -1,7 +1,10 @@
 ---
 layout: layouts/base.njk
-eleventyExcludeFromCollections: true
-addAllPagesToCollections: true
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  addAllPagesToCollections: true
 eleventyComputed:
   title: Tagged “{{ tag }}”
 permalink: /tags/{{ tag | slugify }}/
