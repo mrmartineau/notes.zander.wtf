@@ -1,16 +1,7 @@
 ---
 layout: layouts/base.njk
-pagination:
-  data: collections
-  size: 1
-  alias: tag
-  filter:
-    - all
-    - nav
-    - post
-    - posts
-    - tagList
-  addAllPagesToCollections: true
+eleventyExcludeFromCollections: true
+addAllPagesToCollections: true
 eleventyComputed:
   title: Tagged “{{ tag }}”
 permalink: /tags/{{ tag | slugify }}/

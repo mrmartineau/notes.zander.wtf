@@ -40,10 +40,9 @@ module.exports = function (eleventyConfig) {
     functionsDir: './netlify/functions/',
   })
   eleventyConfig.addAsyncFilter('getResults', function (query) {
-    console.log('getResults query', query)
     const results = index
       .search(query, {
-        attributesToRetrieve: ['title', 'url', 'date', 'description'],
+        attributesToRetrieve: ['title', 'url', 'date_published', 'tags'],
       })
       .then((res) => {
         return res.hits
@@ -51,12 +50,9 @@ module.exports = function (eleventyConfig) {
     return results
   })
   eleventyConfig.addPlugin(pluginJsonFeed, {
-    // banner_image_metadata_field_name: 'banner_image',
     content_html: false,
     content_text: true,
     filter_posts_tag: true,
-    // image_metadata_field_name: 'image',
-    // summary_metadata_field_name: 'summary',
     tags_metadata_field_name: 'tags',
   })
 
@@ -110,21 +106,31 @@ module.exports = function (eleventyConfig) {
     )
   })
 
+  eleventyConfig.addFilter('dateFromISO', (timestamp) => {
+    return DateTime.fromISO(timestamp, { zone: 'utc' }).toJSDate()
+  })
+
   // Collections
   // Tags
   eleventyConfig.addCollection('tagList', (collection) => {
-    const tagsObject = {}
-    collection.getAll().forEach((item) => {
-      if (!item.data.tags) return
-      item.data.tags
-        .filter((tag) => !['post', 'all'].includes(tag))
-        .forEach((tag) => {
-          if (typeof tagsObject[tag] === 'undefined') {
-            tagsObject[tag] = 1
-          } else {
-            tagsObject[tag] += 1
-          }
-        })
+    const tagsObject = {
+      untagged: 0,
+    }
+    collection.getFilteredByGlob('src/notes/*.md').forEach((item) => {
+      if (item.data.draft) {
+        return
+      }
+      if (!item.data.tags) {
+        tagsObject.untagged += 1
+        return
+      }
+      item.data.tags.forEach((tag) => {
+        if (typeof tagsObject[tag] === 'undefined') {
+          tagsObject[tag] = 1
+        } else {
+          tagsObject[tag] += 1
+        }
+      })
     })
 
     const tagList = []
@@ -144,7 +150,14 @@ module.exports = function (eleventyConfig) {
   // Notes
   eleventyConfig.addCollection('notes', (collection) => {
     return collection.getFilteredByGlob('src/notes/*.md').filter((item) => {
-      return item.data.published !== false
+      return !item.data.draft
+    })
+  })
+  eleventyConfig.addCollection('untagged', (collection) => {
+    return collection.getFilteredByGlob('src/notes/*.md').filter((item) => {
+      return (
+        (!item.data.tags || item.data.tags.length === 0) && !item.data.draft
+      )
     })
   })
 
@@ -160,6 +173,9 @@ module.exports = function (eleventyConfig) {
     return `<a href="/tags/${tagName}" class="tag" style="background-color: ${tagColor};">${tag}</a>`
   })
   eleventyConfig.addShortcode('tagDot', function (tag) {
+    if (!tag) {
+      return `<span class="tagDot" style="background-color: #ddd;"></span>`
+    }
     const tagName = slugify(tag)
     const tagColor = getColourFromString(tagName)
     return `<span class="tagDot" style="background-color: ${tagColor};"></span>`

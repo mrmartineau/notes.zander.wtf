@@ -1,13 +1,9 @@
 ---
-title: "Home"
+title: 'Home'
 layout: layouts/base.njk
 permalink: /
-eleventyNavigation:
-  key: Home
-  weight: 0
 ---
 
 <div class="container">
-  {% set notes = collections.notes %}
-  {% include "components/note-list.njk" %}
+  {% set notes = collections.notes %} {% include "components/note-list.njk" %}
 </div>

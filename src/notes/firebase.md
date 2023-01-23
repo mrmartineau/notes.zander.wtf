@@ -3,7 +3,7 @@ title: Firebase
 date: 2021-07-12
 tags:
   - services
-  - APIs
+  - api
 ---
 
 ## Client side

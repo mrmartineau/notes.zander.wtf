@@ -1,0 +1,16 @@
+.searchInput {
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  transition: all 200ms ease-in-out;
+  line-height: 1.4rem;
+  padding: 0.3rem 0.5rem;
+  display: block;
+  width: 100%;
+
+  &:focus {
+    /* boxShadow: (theme) => `0 2px 0 ${theme.colors.primary}`; */
+    outline: none;
+    border-color: var(--color-accent);
+  }
+}

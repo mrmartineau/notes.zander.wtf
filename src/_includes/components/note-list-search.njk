@@ -1,0 +1,20 @@
+<div>
+  {% for note in notes | reverse %}
+  <a href="{{ note.url | url }}" class="noteListItem">
+    <h3 class="flex gap-2 items-center">
+      {{ note.emoji }}
+      {{ note.title }}
+    </h3>
+    <div class="flex gap-2 items-center">
+      {% if note.tags.length %}
+      <div class="noteListItem__tags">
+        {% for tag in note.tags %} {% tagDisplay tag %} {% endfor %}
+      </div>
+      {% endif %}
+      <div class="noteListItem__date">
+        {{ note.date_published | dateFromISO | readableDate }}
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>

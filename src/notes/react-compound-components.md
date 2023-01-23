@@ -2,7 +2,7 @@
 title: React compound components
 tags:
   - react
-  - js
+  - javascript
 link: https://jjenzz.com/compound-components
 date: 2021-04-22
 ---

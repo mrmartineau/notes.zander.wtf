@@ -9,6 +9,7 @@
     monospace;
   --bg-code: #fff;
   --bg-code-highlight: #f1f1f1;
+  --color-accent: 'hsl(334, 86%, 48%)';
 }
 
 @media (prefers-color-scheme: dark) {
