@@ -1,5 +1,11 @@
-<form class="mb-4" action="/search">
+<form class="mb-4" action="/search/">
   <label class="visually-hidden">Search notes</label>
-  <input type="search" name="query" placeholder="Search" class="searchInput" />
+  <input
+    type="search"
+    name="query"
+    placeholder="Search"
+    value="{{ eleventy.serverless.query.query }}"
+    class="searchInput"
+  />
   <button class="visually-hidden">Search</button>
 </form>

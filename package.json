@@ -38,15 +38,15 @@
     "postcss": "^8.4.19",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0",
+    "eleventy-plugin-json-feed": "^0.0.7",
     "postcss-import-ext-glob": "^2.1.1",
     "tailwindcss": "^3.2.4",
-    "watch": "^1.0.2"
+    "watch": "^1.0.2",
+    "lodash": "^4.17.21"
   },
   "dependencies": {
-    "eleventy-plugin-json-feed": "^0.0.7",
     "@netlify/functions": "^1.4.0",
     "algoliasearch": "^4.14.3",
-    "dotenv": "^16.0.3",
-    "lodash": "^4.17.21"
+    "dotenv": "^16.0.3"
   }
 }

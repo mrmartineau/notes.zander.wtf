@@ -38,6 +38,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
     name: 'search',
     functionsDir: './netlify/functions/',
+    excludeDependencies: ['eleventy-plugin-json-feed'],
   })
   eleventyConfig.addAsyncFilter('getResults', function (query) {
     const results = index
