@@ -1,5 +1,6 @@
 :root {
   color-scheme: light;
+  background-color: var(--bg);
 }
 
 @media (prefers-color-scheme: dark) {

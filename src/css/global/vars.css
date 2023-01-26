@@ -1,6 +1,8 @@
 :root {
+  --color-yellow: #ffd200;
+  --color-accent: hsl(334, 86%, 48%);
   --sidebar-width: 250px;
-  --bg: theme(colors.zinc.50);
+  --bg: white;
   --bg-main: theme(colors.zinc.100);
   --bg-nav-active: theme(colors.zinc.200);
   --bg-note-hover: theme(colors.zinc.200);
@@ -9,7 +11,6 @@
     monospace;
   --bg-code: #fff;
   --bg-code-highlight: #f1f1f1;
-  --color-accent: 'hsl(334, 86%, 48%)';
 }
 
 @media (prefers-color-scheme: dark) {

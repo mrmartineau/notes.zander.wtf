@@ -7,11 +7,13 @@
     "dev": "concurrently 'npm run serve' 'npm run css:watch'",
     "serve": "npx @11ty/eleventy --serve --incremental",
     "serve:debug": "DEBUG=Eleventy* npx @11ty/eleventy --serve",
+    "prebuild": "npm run clean  ",
     "build": "npx @11ty/eleventy && npm run css",
     "test": "echo \"Error: no test specified\" && exit 1",
     "css": "postcss src/css/index.css --o _site/css/index.css",
     "css:watch": "watch 'npm run css' src",
-    "buildJson": "BUILD_JSON=true npx @11ty/eleventy --to=json"
+    "buildJson": "BUILD_JSON=true npx @11ty/eleventy --to=json",
+    "clean": "rimraf _site"
   },
   "keywords": [],
   "author": "Zander Martineau",
@@ -28,8 +30,10 @@
     "color-hash": "^2.0.2",
     "concurrently": "^7.6.0",
     "eleventy-plugin-heroicons": "^1.1.0",
+    "eleventy-plugin-json-feed": "^0.0.7",
     "eleventy-plugin-nesting-toc": "^1.3.0",
     "eleventy-plugin-shiki-twoslash": "^1.1.0",
+    "lodash": "^4.17.21",
     "luxon": "^3.1.1",
     "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.6",
@@ -38,11 +42,10 @@
     "postcss": "^8.4.19",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0",
-    "eleventy-plugin-json-feed": "^0.0.7",
     "postcss-import-ext-glob": "^2.1.1",
+    "rimraf": "^4.1.1",
     "tailwindcss": "^3.2.4",
-    "watch": "^1.0.2",
-    "lodash": "^4.17.21"
+    "watch": "^1.0.2"
   },
   "dependencies": {
     "@netlify/functions": "^1.4.0",

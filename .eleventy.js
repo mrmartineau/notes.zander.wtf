@@ -12,7 +12,6 @@ const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const markdownItWikilinks = require('markdown-it-wikilinks')
 const markdownItCopyCode = require('markdown-it-copy')
-const pluginJsonFeed = require('eleventy-plugin-json-feed')
 const algoliasearch = require('algoliasearch')
 
 const client = algoliasearch(
@@ -38,7 +37,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
     name: 'search',
     functionsDir: './netlify/functions/',
-    excludeDependencies: ['eleventy-plugin-json-feed'],
   })
   eleventyConfig.addAsyncFilter('getResults', function (query) {
     const results = index
@@ -49,12 +47,6 @@ module.exports = function (eleventyConfig) {
         return res.hits
       })
     return results
-  })
-  eleventyConfig.addPlugin(pluginJsonFeed, {
-    content_html: false,
-    content_text: true,
-    filter_posts_tag: true,
-    tags_metadata_field_name: 'tags',
   })
 
   eleventyConfig.setLibrary(
@@ -109,6 +101,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter('dateFromISO', (timestamp) => {
     return DateTime.fromISO(timestamp, { zone: 'utc' }).toJSDate()
+  })
+
+  eleventyConfig.addFilter('jsonify', (data) => {
+    return JSON.stringify(data)
   })
 
   // Collections
@@ -180,6 +176,22 @@ module.exports = function (eleventyConfig) {
     const tagName = slugify(tag)
     const tagColor = getColourFromString(tagName)
     return `<span class="tagDot" style="background-color: ${tagColor};"></span>`
+  })
+  eleventyConfig.addShortcode('algoliaIndex', function (notes) {
+    const algoliaIndex = notes.map((note) => {
+      console.log(note.data.tags)
+      return {
+        title: note.data.title,
+        url: note.url,
+        date: DateTime.fromJSDate(note.date, { zone: 'utc' }).toFormat(
+          'yyyy-LL-dd'
+        ),
+        emoji: note.data.emoji,
+        content: note.template.frontMatter.content,
+        tags: note.data?.tags?.length ? note.data.tags : [],
+      }
+    })
+    return JSON.stringify(algoliaIndex)
   })
 
   eleventyConfig.setServerOptions({
