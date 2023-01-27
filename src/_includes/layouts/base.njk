@@ -45,10 +45,37 @@
       const mainEl = document.querySelector('.cn-main')
       burger.addEventListener('click', () => {
         mainEl.toggleAttribute('open')
-        // menu.classList.toggle('navbar__mobile-links--open')
-        // let prevState = JSON.parse(burger.getAttribute('aria-expanded'))
-        // burger.setAttribute('aria-expanded', !prevState)
       })
+
+      function isFormField(element) {
+        if (!(element instanceof HTMLElement)) {
+          return false
+        }
+
+        const name = element.nodeName.toLowerCase()
+        const type = (element.getAttribute('type') || '').toLowerCase()
+        return (
+          name === 'select' ||
+          name === 'textarea' ||
+          (name === 'input' && type !== 'submit' && type !== 'reset') ||
+          element.isContentEditable
+        )
+      }
+
+      const inputEl = document.querySelector('.searchInput')
+      document.addEventListener('keydown', (event) => {
+        if (!(event instanceof KeyboardEvent)) {
+          return
+        }
+        if (event.target instanceof Node && isFormField(event.target)) {
+          return
+        }
+        if (event.isComposing || event.key === '/') {
+          event.preventDefault()
+          inputEl.focus()
+        }
+      })
+
       // const menu = document.querySelector('.navbar__mobile-links')
       // const darkToggleButtons = document.querySelectorAll('.dark-toggle')
       // function changeDarkToggleBtnIcon() {

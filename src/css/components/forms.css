@@ -4,13 +4,14 @@
   border-radius: 0;
   transition: all 200ms ease-in-out;
   line-height: 1.4rem;
-  padding: 0.3rem 0.5rem;
+  padding: var(--space-2xs) var(--space-xs);
   display: block;
   width: 100%;
+  background: transparent;
+  font-size: var(--step-1);
 
   &:focus {
-    /* boxShadow: (theme) => `0 2px 0 ${theme.colors.primary}`; */
+    box-shadow: 0 2px 0 var(--color-accent);
     outline: none;
-    border-color: var(--color-accent);
   }
 }

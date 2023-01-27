@@ -41,7 +41,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addAsyncFilter('getResults', function (query) {
     const results = index
       .search(query, {
-        attributesToRetrieve: ['title', 'url', 'date_published', 'tags'],
+        attributesToRetrieve: ['title', 'url', 'date', 'tags', 'emoji'],
       })
       .then((res) => {
         return res.hits
@@ -179,13 +179,10 @@ module.exports = function (eleventyConfig) {
   })
   eleventyConfig.addShortcode('algoliaIndex', function (notes) {
     const algoliaIndex = notes.map((note) => {
-      console.log(note.data.tags)
       return {
         title: note.data.title,
         url: note.url,
-        date: DateTime.fromJSDate(note.date, { zone: 'utc' }).toFormat(
-          'yyyy-LL-dd'
-        ),
+        date: note.date,
         emoji: note.data.emoji,
         content: note.template.frontMatter.content,
         tags: note.data?.tags?.length ? note.data.tags : [],

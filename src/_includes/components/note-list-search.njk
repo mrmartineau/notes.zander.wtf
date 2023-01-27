@@ -1,8 +1,9 @@
 <div>
   {% for note in notes %}
   <a href="{{ note.url | url }}" class="noteListItem">
-    <h3 class="flex gap-2 items-center">
-      {{ note.emoji }}
+    <h3 class="flex gap-3 items-center">
+      {% if note.emoji %}<span>{{ note.emoji }}</span
+      >{% endif %}
       {{ note.title }}
     </h3>
     <div class="flex gap-2 items-center">
@@ -12,7 +13,7 @@
       </div>
       {% endif %}
       <div class="noteListItem__date">
-        {{ note.date_published | dateFromISO | readableDate }}
+        {{ note.date | dateFromISO | readableDate | log }}
       </div>
     </div>
   </a>

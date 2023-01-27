@@ -1,8 +1,9 @@
 <div>
   {% for note in notes | reverse %}
   <a href="{{ note.url | url }}" class="noteListItem">
-    <h3 class="flex gap-2 items-center">
-      {{ note.data.emoji }}
+    <h3 class="flex gap-3 items-center">
+      {% if note.data.emoji %}<span>{{ note.data.emoji }}</span
+      >{% endif %}
       {{ note.data.title }}
     </h3>
     <div class="flex gap-2 items-center">

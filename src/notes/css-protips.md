@@ -3,60 +3,12 @@ title: CSS Protips
 tags:
   - css
 link: https://github.com/AllThingsSmitty/css-protips
-date: 2020-12-05
+date: git Last Modified
 ---
-
-<p align="center">
-  <img src="https://rawgit.com/AllThingsSmitty/css-protips/master/media/logo.svg" width="200" alt="light bulb icon"/>
-</p>
 
 A collection of tips to help take your CSS skills pro.
 
-## Protips
-
-- [Protips](#protips)
-  - [Use a CSS Reset](#use-a-css-reset)
-    - [Demo](#demo)
-  - [Inherit `box-sizing`](#inherit-box-sizing)
-    - [Demo](#demo-1)
-  - [Use `unset` Instead of Resetting All Properties](#use-unset-instead-of-resetting-all-properties)
-  - [Use `:not()` to Apply/Unapply Borders on Navigation](#use-not-to-applyunapply-borders-on-navigation)
-    - [Demo](#demo-2)
-  - [Check If Font Is Installed Locally](#check-if-font-is-installed-locally)
-  - [Add `line-height` to `body`](#add-line-height-to-body)
-    - [Demo](#demo-3)
-  - [Set `:focus` for Form Elements](#set-focus-for-form-elements)
-    - [Demo](#demo-4)
-  - [Vertically-Center Anything](#vertically-center-anything)
-    - [Demo](#demo-5)
-  - [Comma-Separated Lists](#comma-separated-lists)
-  - [Select Items Using Negative `nth-child`](#select-items-using-negative-nth-child)
-    - [Demo](#demo-6)
-  - [Use SVG for Icons](#use-svg-for-icons)
-  - [Use the "Lobotomized Owl" Selector](#use-the-lobotomized-owl-selector)
-    - [Demo](#demo-7)
-  - [Use `max-height` for Pure CSS Sliders](#use-max-height-for-pure-css-sliders)
-  - [Equal-Width Table Cells](#equal-width-table-cells)
-    - [Demo](#demo-8)
-  - [Get Rid of Margin Hacks With Flexbox](#get-rid-of-margin-hacks-with-flexbox)
-  - [Use Attribute Selectors with Empty Links](#use-attribute-selectors-with-empty-links)
-    - [Demo](#demo-9)
-  - [Style "Default" Links](#style-default-links)
-  - [Consistent Vertical Rhythm](#consistent-vertical-rhythm)
-  - [Intrinsic Ratio Boxes](#intrinsic-ratio-boxes)
-    - [Demo](#demo-10)
-  - [Style Broken Images](#style-broken-images)
-  - [Use `rem` for Global Sizing; Use `em` for Local Sizing](#use-rem-for-global-sizing-use-em-for-local-sizing)
-  - [Hide Autoplay Videos That Aren't Muted](#hide-autoplay-videos-that-arent-muted)
-  - [Use `:root` for Flexible Type](#use-root-for-flexible-type)
-    - [Demo](#demo-11)
-  - [Set `font-size` on Form Elements for a Better Mobile Experience](#set-font-size-on-form-elements-for-a-better-mobile-experience)
-  - [Use Pointer Events to Control Mouse Events](#use-pointer-events-to-control-mouse-events)
-  - [Set `display: none` on Line Breaks Used as Spacing](#set-display-none-on-line-breaks-used-as-spacing)
-- [Support](#support)
-- [Translations](#translations)
-
-### Use a CSS Reset
+## Use a CSS Reset
 
 CSS resets help enforce style consistency across different browsers with a clean slate for styling elements. You can use a CSS reset library like [Normalize](http://necolas.github.io/normalize.css/), _et al._, or you can use a more simplified reset approach:
 
@@ -72,11 +24,11 @@ CSS resets help enforce style consistency across different browsers with a clean
 
 Now elements will be stripped of margins and padding, and `box-sizing` lets you manage layouts with the CSS box model.
 
-#### [Demo](http://codepen.io/AllThingsSmitty/pen/kkrkLL)
+[Demo](http://codepen.io/AllThingsSmitty/pen/kkrkLL)
 
 **Note:** If you follow the [Inherit `box-sizing`](#inherit-box-sizing) tip below you might opt to not include the `box-sizing` property in your CSS reset.
 
-### Inherit `box-sizing`
+## Inherit `box-sizing`
 
 Let `box-sizing` be inherited from `html`:
 
@@ -94,9 +46,9 @@ html {
 
 This makes it easier to change `box-sizing` in plugins or other components that leverage other behavior.
 
-#### [Demo](https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/)
+[Demo](https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/)
 
-### Use `unset` Instead of Resetting All Properties
+## Use `unset` Instead of Resetting All Properties
 
 When resetting an element's properties, it's not necessary to reset each individual property:
 
@@ -121,7 +73,7 @@ button {
 
 **Note:** the `all` shorthand isn't supported in IE11 and is currently under consideration for support in Edge. `unset` isn't supported in IE11.
 
-### Use `:not()` to Apply/Unapply Borders on Navigation
+## Use `:not()` to Apply/Unapply Borders on Navigation
 
 Instead of putting on the border...
 
@@ -151,9 +103,9 @@ Instead of putting on the border...
 
 Here, the CSS selector is read as a human would describe it.
 
-#### [Demo](http://codepen.io/AllThingsSmitty/pen/LkymvO)
+[Demo](http://codepen.io/AllThingsSmitty/pen/LkymvO)
 
-### Check If Font Is Installed Locally
+## Check If Font Is Installed Locally
 
 You can check if a font is installed locally before fetching it remotely, which is a good performance tip, too.
 
@@ -172,7 +124,7 @@ code {
 
 H/T to Adam Argyle for sharing this protip and [demo](https://codepen.io/argyleink/pen/VwYJpgR).
 
-### Add `line-height` to `body`
+## Add `line-height` to `body`
 
 You don't need to add `line-height` to each `<p>`, `<h*>`, _et al_. separately. Instead, add it to `body`:
 
@@ -184,9 +136,9 @@ body {
 
 This way textual elements can inherit from `body` easily.
 
-#### [Demo](http://codepen.io/AllThingsSmitty/pen/VjbdYd)
+[Demo](http://codepen.io/AllThingsSmitty/pen/VjbdYd)
 
-### Set `:focus` for Form Elements
+## Set `:focus` for Form Elements
 
 Sighted keyboard users rely on focus to determine where keyboard events go in the page. Make focus for form elements stand out and consistent then a browser's default implementation:
 
@@ -202,9 +154,9 @@ textarea:focus {
 }
 ```
 
-#### [Demo](https://codepen.io/AllThingsSmitty/pen/ePzoOP/)
+[Demo](https://codepen.io/AllThingsSmitty/pen/ePzoOP/)
 
-### Vertically-Center Anything
+## Vertically-Center Anything
 
 No, it's not black magic, you really can center elements vertically. You can do this with flexbox...
 
@@ -216,10 +168,7 @@ body {
 }
 
 body {
-  -webkit-align-items: center;
-  -ms-flex-align: center;
   align-items: center;
-  display: -webkit-flex;
   display: flex;
 }
 ```
@@ -239,9 +188,9 @@ Want to center something else? Vertically, horizontally...anything, anytime, any
 
 **Note:** Watch for some [buggy behavior](https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items) with flexbox in IE11.
 
-#### [Demo](http://codepen.io/AllThingsSmitty/pen/GqmGqZ)
+[Demo](http://codepen.io/AllThingsSmitty/pen/GqmGqZ)
 
-### Comma-Separated Lists
+## Comma-Separated Lists
 
 Make list items look like a real, comma-separated list:
 
@@ -255,7 +204,7 @@ Use the `:not()` pseudo-class and no comma will be added to the last item.
 
 **Note:** This tip may not be ideal for accessibility, specifically screen readers. And copy/paste from the browser doesn't work with CSS-generated content. Proceed with caution.
 
-### Select Items Using Negative `nth-child`
+## Select Items Using Negative `nth-child`
 
 Use negative `nth-child` in CSS to select items 1 through n.
 
@@ -279,9 +228,9 @@ li:not(:nth-child(-n + 3)) {
 }
 ```
 
-#### [Demo](http://codepen.io/AllThingsSmitty/pen/WxjKZp)
+[Demo](http://codepen.io/AllThingsSmitty/pen/WxjKZp)
 
-### Use SVG for Icons
+## Use SVG for Icons
 
 There's no reason not to use SVG for icons:
 
@@ -301,7 +250,7 @@ SVG scales well for all resolution types and is supported in all browsers [back 
 }
 ```
 
-### Use the "Lobotomized Owl" Selector
+## Use the "Lobotomized Owl" Selector
 
 It may have a strange name but using the universal selector (`*`) with the adjacent sibling selector (`+`) can provide a powerful CSS capability:
 
@@ -315,9 +264,9 @@ In this example, all elements in the flow of the document that follow other elem
 
 For more on the "lobotomized owl" selector, read [Heydon Pickering's post](http://alistapart.com/article/axiomatic-css-and-lobotomized-owls) on _A List Apart_.
 
-#### [Demo](http://codepen.io/AllThingsSmitty/pen/grRvWq)
+[Demo](http://codepen.io/AllThingsSmitty/pen/grRvWq)
 
-### Use `max-height` for Pure CSS Sliders
+## Use `max-height` for Pure CSS Sliders
 
 Implement CSS-only sliders using `max-height` with overflow hidden:
 
@@ -336,7 +285,7 @@ Implement CSS-only sliders using `max-height` with overflow hidden:
 
 The element expands to the `max-height` value on hover and the slider displays as a result of the overflow.
 
-### Equal-Width Table Cells
+## Equal-Width Table Cells
 
 Tables can be a pain to work with. Try using `table-layout: fixed` to keep cells at equal width:
 
@@ -348,9 +297,9 @@ Tables can be a pain to work with. Try using `table-layout: fixed` to keep cells
 
 Pain-free table layouts.
 
-#### [Demo](http://codepen.io/AllThingsSmitty/pen/jALALm)
+[Demo](http://codepen.io/AllThingsSmitty/pen/jALALm)
 
-### Get Rid of Margin Hacks With Flexbox
+## Get Rid of Margin Hacks With Flexbox
 
 When working with column gutters you can get rid of `nth-`, `first-`, and `last-child` hacks by using flexbox's `space-between` property:
 
@@ -367,7 +316,7 @@ When working with column gutters you can get rid of `nth-`, `first-`, and `last-
 
 Now column gutters always appear evenly-spaced.
 
-### Use Attribute Selectors with Empty Links
+## Use Attribute Selectors with Empty Links
 
 Display links when the `<a>` element has no text value but the `href` attribute has a link:
 
@@ -379,9 +328,9 @@ a[href^='http']:empty::before {
 
 That's pretty convenient.
 
-#### [Demo](http://codepen.io/AllThingsSmitty/pen/zBzXRx)
+[Demo](http://codepen.io/AllThingsSmitty/pen/zBzXRx)
 
-### Style "Default" Links
+## Style "Default" Links
 
 Add a style for "default" links:
 
@@ -394,7 +343,7 @@ a[href]:not([class]) {
 
 Now links that are inserted via a CMS, which don't usually have a `class` attribute, will have a distinction without generically affecting the cascade.
 
-### Consistent Vertical Rhythm
+## Consistent Vertical Rhythm
 
 Use a universal selector (`*`) within an element to create a consistent vertical rhythm:
 
@@ -406,7 +355,7 @@ Use a universal selector (`*`) within an element to create a consistent vertical
 
 Consistent vertical rhythm provides a visual aesthetic that makes content far more readable.
 
-### Intrinsic Ratio Boxes
+## Intrinsic Ratio Boxes
 
 To create a box with an intrinsic ratio, all you need to do is apply top or bottom padding to a div:
 
@@ -429,9 +378,9 @@ To create a box with an intrinsic ratio, all you need to do is apply top or bott
 
 Using 20% for padding makes the height of the box equal to 20% of its width. No matter the width of the viewport, the child div will keep its aspect ratio (100% / 20% = 5:1).
 
-#### [Demo](http://codepen.io/AllThingsSmitty/pen/jALZvE)
+[Demo](http://codepen.io/AllThingsSmitty/pen/jALZvE)
 
-### Style Broken Images
+## Style Broken Images
 
 Make broken images more aesthetically-pleasing with a little bit of CSS:
 
@@ -466,7 +415,7 @@ img::after {
 
 Learn more about styling for this pattern in [Ire Aderinokun](https://github.com/ireade/)'s [original post](http://bitsofco.de/styling-broken-images/).
 
-### Use `rem` for Global Sizing; Use `em` for Local Sizing
+## Use `rem` for Global Sizing; Use `em` for Local Sizing
 
 After setting the base font size at the root (`html { font-size: 100%; }`), set the font size for textual elements to `em`:
 
@@ -494,7 +443,7 @@ aside .module {
 
 Now each module becomes compartmentalized and easier to style, more maintainable, and flexible.
 
-### Hide Autoplay Videos That Aren't Muted
+## Hide Autoplay Videos That Aren't Muted
 
 This is a great trick for a custom user stylesheet. Avoid overloading a user with sound from a video that autoplays when the page is loaded. If the sound isn't muted, don't show the video:
 
@@ -506,7 +455,7 @@ video[autoplay]:not([muted]) {
 
 Once again, we're taking advantage of using the [`:not()`](#use-not-to-applyunapply-borders-on-navigation) pseudo-class.
 
-### Use `:root` for Flexible Type
+## Use `:root` for Flexible Type
 
 The type font size in a responsive layout should be able to adjust with each viewport. You can calculate the font size based on the viewport height and width using `:root`:
 
@@ -524,9 +473,9 @@ body {
 }
 ```
 
-#### [Demo](http://codepen.io/AllThingsSmitty/pen/XKgOkR)
+[Demo](http://codepen.io/AllThingsSmitty/pen/XKgOkR)
 
-### Set `font-size` on Form Elements for a Better Mobile Experience
+## Set `font-size` on Form Elements for a Better Mobile Experience
 
 To avoid mobile browsers (iOS Safari, _et al_.) from zooming in on HTML form elements when a `<select>` drop-down is tapped, add `font-size` to the selector rule:
 
@@ -541,7 +490,7 @@ textarea {
 
 :dancer:
 
-### Use Pointer Events to Control Mouse Events
+## Use Pointer Events to Control Mouse Events
 
 [Pointer events](https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events) allow you to specify how the mouse interacts with the element it's touching. To disable the default pointer event on a button, for instance:
 
@@ -554,7 +503,7 @@ textarea {
 
 It's that simple.
 
-### Set `display: none` on Line Breaks Used as Spacing
+## Set `display: none` on Line Breaks Used as Spacing
 
 As [Harry Roberts pointed out](https://twitter.com/csswizardry/status/1170835532584235008), this can help prevent CMS users from using extra line breaks for spacing:
 
@@ -564,23 +513,14 @@ br + br {
 }
 ```
 
-## Support
+## Use `:empty` to Hide Empty HTML Elements
 
-Current versions of Chrome, Firefox, Safari, Opera, Edge, and IE11.
+If you have HTML elements that are empty, i.e., the content has yet to be set either by a CMS or dynamically injected (e.g., `<p class="error-message"></p>`) and it's creating unwanted space on your layout, use the `:empty` pseudo-class to hide the element on the layout.
 
-## Translations
+```css
+:empty {
+  display: none;
+}
+```
 
-- [简体中文](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/zh-CN)
-- [正體中文](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/zh-TW)
-- [Deutsch](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/de-DE)
-- [Español](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/es-ES)
-- [Français](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/fr-FR)
-- [ગુજરાતી](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/gu-IND)
-- [हिन्दी](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/hi-IND)
-- [Italiano](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/it-IT)
-- [日本語](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/ja-JP)
-- [한국어](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/ko-KR)
-- [Polskie](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/pl-PL)
-- [Português do Brasil](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/pt-BR)
-- [Português do Europe](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/pt-PT)
-- [Русский](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/ru-RU)
+**Note:** Keep in mind that elements with whitespace aren't considered empty, e.g., `<p class="error-message"> </p>`.
