@@ -14,12 +14,6 @@ const markdownItWikilinks = require('markdown-it-wikilinks')
 const markdownItCopyCode = require('markdown-it-copy')
 const algoliasearch = require('algoliasearch')
 
-console.log(`🚀 ~ process.env.ALGOLIA_APP`, process.env.ALGOLIA_APP)
-console.log(
-  `🚀 ~ process.env.ALGOLIA_SEARCH_KEY`,
-  process.env.ALGOLIA_SEARCH_KEY
-)
-console.log(`🚀 ~ process.env.ALGOLIA_INDEX`, process.env.ALGOLIA_INDEX)
 const client = algoliasearch(
   process.env.ALGOLIA_APP,
   process.env.ALGOLIA_SEARCH_KEY
