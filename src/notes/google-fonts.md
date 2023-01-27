@@ -4,7 +4,7 @@ tags:
   - html
   - css
 link: https://csswizardry.com/2020/05/the-fastest-google-fonts/
-date: 2020-05-20
+date: git Last Modified
 ---
 
 ```html
@@ -23,5 +23,3 @@ date: 2020-05-20
   onload="this.media='all'"
 />
 ```
-
-This makes use of Filament Group's [async CSS loading method](/async-load-css).

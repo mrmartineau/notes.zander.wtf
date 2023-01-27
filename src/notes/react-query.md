@@ -9,7 +9,7 @@ date: 2021-11-11
 
 ## useQuery
 
-Given a fetch function like this (that uses [axios](axios.html)):
+Given a fetch function like this (that uses [[/axios]]):
 
 ```ts
 import axios from 'axios'

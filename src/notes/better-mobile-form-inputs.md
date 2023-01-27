@@ -2,7 +2,7 @@
 title: Better mobile form inputs
 tags:
   - html
-link: 'https://better-mobile-inputs.netlify.app'
+link: https://better-mobile-inputs.netlify.app
 emoji: 🔘
 date: 2020-06-23
 ---
