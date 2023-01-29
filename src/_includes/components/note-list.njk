@@ -1,18 +1,18 @@
 <div class="flex flex-col gap-1">
   {% for note in notes | reverse %}
   <a href="{{ note.url | url }}" class="noteListItem">
-    <h3 class="flex gap-3 items-center">
+    <div class="noteListItem-title flex gap-3 items-center">
       {% if note.data.emoji %}<span>{{ note.data.emoji }}</span
       >{% endif %}
       {{ note.data.title }}
-    </h3>
+    </div>
     <div class="flex gap-2 items-center">
       {% if note.data.tags.length %}
-      <div class="noteListItem__tags">
+      <div class="noteListItem-tags">
         {% for tag in note.data.tags %} {% tagDisplay tag %} {% endfor %}
       </div>
       {% endif %}
-      <div class="noteListItem__date">
+      <div class="noteListItem-date">
         {{ note.date | readableDate }}
       </div>
     </div>
