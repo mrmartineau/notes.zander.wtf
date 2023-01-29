@@ -1,15 +1,15 @@
 ---
 title: React Query
-link: https://react-query.tanstack.com
+link: https://tanstack.com/query/v3/docs/react/overview
 tags:
   - react
 emoji: ⚛
-date: 2021-11-11
+date: git Last Modified
 ---
 
 ## useQuery
 
-Given a fetch function like this (that uses [[/axios]]):
+Given a fetch function like this (that uses [axios](/notes/axios)):
 
 ```ts
 import axios from 'axios'
