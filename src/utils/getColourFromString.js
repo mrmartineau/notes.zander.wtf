@@ -9,7 +9,7 @@ const getColourFromString = (item) => {
   const tagHsl = colorHash.hsl(item)
   const tagColor = `hsla(${tagHsl[0]},${tagHsl[1] * 100}%,${
     tagHsl[2] * 100
-  }%,0.5)`
+  }%,0.6)`
   return tagColor
 }
 

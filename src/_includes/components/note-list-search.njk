@@ -1,5 +1,5 @@
 <div>
-  {% for note in notes %}
+  {% for note in searchResults %}
   <a href="{{ note.url | url }}" class="noteListItem">
     <h3 class="flex gap-3 items-center">
       {% if note.emoji %}<span>{{ note.emoji }}</span

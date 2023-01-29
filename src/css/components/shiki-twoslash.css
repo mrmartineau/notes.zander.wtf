@@ -13,12 +13,16 @@ Code blocks structurally look like:
 
 pre.shiki {
   padding: var(--space-s);
-  padding-top: var(--space-l);
   margin-bottom: var(--space-l);
   overflow-x: auto;
   position: relative;
   font-family: var(--f-mono);
   overflow-x: auto;
+  background-color: var(--bg) !important;
+
+  &:has(.language-id) {
+    padding-top: var(--space-l);
+  }
 }
 pre.shiki:hover .dim {
   opacity: 1;
@@ -68,7 +72,7 @@ pre.twoslash data-lsp:hover::before {
   content: attr(lsp);
   position: absolute;
   transform: translate(0, var(--step-2));
-  background-color: var(--bg-code-highlight);
+  background-color: var(--bg-main);
   color: theme(colors.current);
   text-align: left;
   padding: var(--space-3xs) var(--space-2xs);
@@ -168,13 +172,13 @@ pre .error-behind {
 /* Queries */
 pre .arrow {
   /* Transparent background */
-  background-color: var(--bg-code-highlight);
+  background-color: var(--bg-main);
   position: absolute;
   top: -6px;
   margin-left: 0.1rem;
   /* Edges */
-  border-left: 1px solid var(--bg-code-highlight);
-  border-top: 1px solid var(--bg-code-highlight);
+  border-left: 1px solid var(--bg-main);
+  border-top: 1px solid var(--bg-main);
   transform: translateY(25%) rotate(45deg);
   /* Size */
   height: 8px;
@@ -184,7 +188,7 @@ pre .popover {
   position: relative;
   margin-bottom: var(--space-xs);
   margin-top: var(--space-xs);
-  background-color: var(--bg-code-highlight);
+  background-color: var(--bg-main);
   display: inline-block;
   padding: var(--space-3xs) var(--space-2xs);
   border-radius: var(--space-3xs);

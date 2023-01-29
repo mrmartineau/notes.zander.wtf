@@ -24,7 +24,7 @@ module.exports = {
             fontSize: 'var(--step-0)',
             a: {
               '&:hover': {
-                color: 'hsl(334, 86%, 48%)',
+                color: 'var(--color-accent)',
               },
             },
           },

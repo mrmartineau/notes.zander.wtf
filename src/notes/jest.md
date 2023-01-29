@@ -25,7 +25,7 @@ describe('Given a xxx', () => {
 })
 ```
 
-### Use Jest globals
+## Use Jest globals
 
 ```js
 import { expect, test } from '@jest/globals'
@@ -35,7 +35,7 @@ test('two plus two is four', () => {
 })
 ```
 
-### Throw
+## Throw
 
 ```js
 import { formatDate } from './formatDate'

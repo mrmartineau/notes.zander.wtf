@@ -2,3 +2,19 @@
   border-bottom: 1px solid var(--border);
   padding-bottom: var(--space-m);
 }
+
+.note header {
+  position: sticky;
+  top: 0;
+}
+
+.oldNoteWarning {
+  /*  background-color: hsl(53deg 100% 79% / 30%); #fefce8; */
+  padding: var(--space-xs) var(--space-s);
+  /* color: #a16207; */
+  border-radius: 0.5rem;
+  margin: var(--space-m) 0;
+  font-size: var(--step--1);
+  text-align: center;
+  border: 2px solid var(--border);
+}

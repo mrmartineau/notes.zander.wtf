@@ -7,6 +7,11 @@
     font-weight: normal;
   }
 
+  a.tag:hover {
+    color: currentColor;
+    opacity: 0.6;
+  }
+
   .tagDot {
     @apply w-2.5 h-2.5 rounded-xl;
     display: inline-block;

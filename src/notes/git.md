@@ -114,7 +114,7 @@ By adding these aliases to your git config, you will be able to simplify rebasin
   # *********************
   # Rebase workflow
     mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
-    synced = "!git pull origin $(git mainbranch) --rebase"
+    sync = "!git pull origin $(git mainbranch) --rebase"
     update = "!git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase"
     squash = "!git rebase -v -i $(git mainbranch)"
     publish = push origin HEAD --force-with-lease
@@ -123,10 +123,10 @@ By adding these aliases to your git config, you will be able to simplify rebasin
 
 #### Sync your branch with `main`
 
-The `synced` command will get your local branch up to date with your main branch (main or master) at origin (ie Github).
+The `sync` command will get your local branch up to date with your main branch (main or master) at origin (ie Github).
 
 ```sh
-git synced
+git sync
 ```
 
 #### Publish your branch’s changes to the world

@@ -1,14 +1,15 @@
 .searchInput {
+  appearance: none;
   border: 0;
-  border-bottom: 1px solid var(--border);
   border-radius: 0;
-  transition: all 200ms ease-in-out;
+  transition: box-shadow 200ms ease-in-out;
   line-height: 1.4rem;
   padding: var(--space-2xs) var(--space-xs);
   display: block;
   width: 100%;
   background: transparent;
   font-size: var(--step-1);
+  box-shadow: 0 2px 0 var(--border);
 
   &:focus {
     box-shadow: 0 2px 0 var(--color-accent);

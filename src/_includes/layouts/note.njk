@@ -1,35 +1,38 @@
 ---
 layout: layouts/base.njk
+eleventyImport:
+  collections: ['notes']
 ---
 
 <article class="note mx-auto mt-6">
-  <div class="prose prose-zinc dark:prose-invert mb-6">
-    <h1>{% if emoji %}{{ emoji }} {% endif %}{{ title }}</h1>
-  </div>
-
-  <div class="noteMetadata text-xs mt-6 mb-6 flex flex-col gap-2">
-    <div class="flex items-center gap-5">
-      {% if link %}
-      <div class="flex items-center gap-2">
-        {% heroicon "outline", "link", "Link", { width: 18 } %}
-        <a href="{{ link }}">{{ link }}</a>
+  <header>
+    <div class="prose prose-zinc dark:prose-invert mb-6">
+      <h1>{% if emoji %}{{ emoji }} {% endif %}{{ title }}</h1>
+    </div>
+    <div class="noteMetadata text-xs mt-6 mb-6 flex flex-col gap-2">
+      <div class="flex items-center gap-x-5 gap-y-2 flex-wrap">
+        {% if link %}
+        <div class="flex items-center gap-2">
+          {% heroicon "outline", "link", "Link", { width: 18 } %}
+          <a href="{{ link }}">{{ link }}</a>
+        </div>
+        {% endif %}
+        <div class="flex items-center gap-2">
+          {% heroicon "outline", "calendar", "Note date", { width: 18 } %}
+          {{ page.date | readableDate }}
+        </div>
+      </div>
+      {% if tags.length %}
+      <div class="tags flex items-center gap-2">
+        {% heroicon "outline", "tag", "Tags", { width: 18 } %} {% for tag in
+        tags %} {% tagLink tag %} {% endfor %}
       </div>
       {% endif %}
-      <div class="flex items-center gap-2">
-        {% heroicon "outline", "calendar", "Note date", { width: 18 } %}
-        {{ page.date | readableDate }}
-      </div>
     </div>
-    {% if tags.length %}
-    <div class="tags flex items-center gap-2">
-      {% heroicon "outline", "tag", "Tags", { width: 18 } %} {% for tag in tags
-      %} {% tagLink tag %} {% endfor %}
-    </div>
-    {% endif %}
-  </div>
+  </header>
 
   <div class="prose prose-zinc dark:prose-invert">
-    {% if content | toc %}
+    {% oldNoteWarning page.date %} {% if content | toc %}
     <details class="tocWrapper">
       <summary>On this page</summary>
       {{ content | toc | safe }}

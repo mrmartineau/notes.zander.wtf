@@ -2,19 +2,23 @@
   <div class="cn-sidebar-contentWrapper">
     <div class="cn-sidebar-top">
       <div class="cn-sidebar-wrapper prose prose-zinc dark:prose-invert">
+        {% if site.meta.title %}
         <h1 class="cn-logo">
           <a href="{{ '/' | url }}">
             {{ site.meta.title }}
           </a>
         </h1>
-        {% if site.meta.description %}
+        {% endif %} {% if site.meta.description %}
         <div class="cn-siteDescription">
           {{ site.meta.description }}
         </div>
         {% endif %}
       </div>
       <nav>
-        <a class="cn-sidebar-link uppercase" href="{{ '/' | url }}">
+        <a
+          class="cn-sidebar-link uppercase {{ 'active' if '/' === page.url }}"
+          href="{{ '/' | url }}"
+        >
           {% heroicon "outline", "collection", "All tags", { width: 20 } %} All
           notes
         </a>
@@ -42,8 +46,8 @@
       </nav>
     </div>
     <div class="cn-sidebar-bottom cn-sidebar-wrapper text-sm">
-      Made with <a href="https://www.11ty.dev/">11ty</a> by
-      <a href="https://zander.wtf">Zander</a>
+      Made by <a href="https://zander.wtf">Zander</a> •
+      <a href="/colophon">Colophon</a>
     </div>
   </div>
 </aside>

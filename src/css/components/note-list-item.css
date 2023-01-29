@@ -3,7 +3,7 @@
     @apply block md:flex justify-between rounded items-center gap-3;
     transition: all 200ms ease-in-out;
     overflow: hidden;
-    padding: var(--space-2xs) var(--space-xs);
+    padding: var(--space-3xs) var(--space-xs);
 
     h3 {
       font-size: var(--step-0);
@@ -13,6 +13,7 @@
   }
   .noteListItem:hover {
     background-color: var(--bg-note-hover);
+    color: currentColor;
   }
   .noteListItem__title {
     min-width: 260px;

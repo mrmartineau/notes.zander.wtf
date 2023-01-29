@@ -11,60 +11,22 @@ date: git Last Modified
 
 ### Types of queries ([docs](https://testing-library.com/docs/queries/about/#types-of-queries))
 
-https://testing-library.com/docs/dom-testing-library/api-queries
-
 #### Single elements
 
-##### getBy
+- `getBy...`: Returns the matching node for a query, and throw a descriptive error if no elements match or if more than one match is found (use `getAllBy` instead if more than one element is expected).
+- `queryBy...`: Returns the matching node for a query, and return `null` if no elements match. This is useful for asserting an element that is not present. Throws an error if more than one match is found (use `queryAllBy` instead if this is OK).
+- `findBy...`: Returns a Promise which resolves when an element is found which matches the given query. The promise is rejected if no element is found or if more than one element is found after a default timeout of 1000ms. If you need to find more than one element, use `findAllBy`.
 
-`getBy...`: Returns the matching node for a query, and throw a descriptive error if no elements match or if more than one match is found (use `getAllBy` instead if more than one element is expected).
-
-##### queryBy
-
-`queryBy...`: Returns the matching node for a query, and return `null` if no elements match. This is useful for asserting an element that is not present. Throws an error if more than one match is found (use `queryAllBy` instead if this is OK).
-
-##### findBy
-
-`findBy...`: Returns a Promise which resolves when an element is found which matches the given query. The promise is rejected if no element is found or if more than one element is found after a default timeout of 1000ms. If you need to find more than one element, use `findAllBy`.
-
-### Multiple Elements
+#### Multiple Elements
 
 - `getAllBy...`: Returns an array of all matching nodes for a query, and throws an error if no elements match.
 - `queryAllBy...`: Returns an array of all matching nodes for a query, and return an empty array ([]) if no elements match.
 - `findAllBy...`: Returns a promise which resolves to an array of elements when any elements are found which match the given query. The promise is rejected if no elements are found after a default timeout of 1000ms.
-  - `findBy` methods are a combination of `getBy*` queries and [`waitFor`](https://testing-library.com/docs/dom-testing-library/api-async#waitfor). They accept the z options as the last argument (i.e. await `screen.findByText('text', queryOptions, waitForOptions)`)
-
-## React
-
-https://testing-library.com/docs/react-testing-library/intro
-
-```js
-import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
-
-import { Button } from './Button'
-
-describe('Given a Button component', () => {
-  describe('when it is rendered', () => {
-    test('should have the text `This is a button`', () => {
-      // Arrange
-      const { getByText } = render(<Button>This is a button</Button>)
-
-      // Act
-      fireEvent.click(getByText('This is a button'))
-
-      // Assert
-      expect(getByText('This is a button')).toHaveTextContent(
-        'This is a button'
-      )
-    })
-  })
-})
-```
+  - `findBy` methods are a combination of `getBy*` queries and [`waitFor`](https://testing-library.com/docs/dom-testing-library/api-async#waitfor). They accept the `waitFor` options as the last argument (i.e. `await screen.findByText('text', queryOptions, waitForOptions)`)
 
 ## Frameworks
 
-### React testing library ([docs](https://testing-library.com/docs/react-testing-library/intro))
+### [React](https://testing-library.com/docs/react-testing-library/intro)
 
 ```sh
 npm install --save-dev @testing-library/react
@@ -90,7 +52,7 @@ test('loads and displays greeting', async () => {
 })
 ```
 
-### Cypress testing library ([docs](https://testing-library.com/docs/cypress-testing-library/intro))
+### [Cypress](https://testing-library.com/docs/cypress-testing-library/intro)
 
 #### Install
 

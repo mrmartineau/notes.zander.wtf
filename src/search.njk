@@ -11,6 +11,6 @@ permalink:
       You searched for: "{{ eleventy.serverless.query.query }}"
     </h2>
   </div>
-  {% set notes = eleventy.serverless.query.query | getResults %} {% include
-  'components/note-list-search.njk' %}
+  {% set searchResults = eleventy.serverless.query.query | getResults %} {%
+  include 'components/note-list-search.njk' %}
 </div>
