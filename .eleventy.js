@@ -13,6 +13,7 @@ const markdownItAnchor = require('markdown-it-anchor')
 const markdownItWikilinks = require('markdown-it-wikilinks')
 const markdownItCopyCode = require('markdown-it-copy')
 const algoliasearch = require('algoliasearch')
+const UpgradeHelper = require('@11ty/eleventy-upgrade-help')
 
 const client = algoliasearch(
   process.env.ALGOLIA_APP,
@@ -22,6 +23,7 @@ const index = client.initIndex(process.env.ALGOLIA_INDEX)
 
 module.exports = function (eleventyConfig) {
   // Plugins
+  eleventyConfig.addPlugin(UpgradeHelper)
   eleventyConfig.addPlugin(rssPlugin)
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
   eleventyConfig.addPlugin(shikiTwoslash, {

@@ -9,11 +9,9 @@ This site is my second brain. It's a place to collect my thoughts, ideas, and no
 
 The first version of this site was built and released as a [Gatsby](https://gatsbyjs.com) theme ([Code Notes](https://github.com/mrmartineau/gatsby-theme-code-notes)) but I've since rebuilt it using [Eleventy](https://www.11ty.dev). This is a list of tools and resources I use to build this site.
 
-- [11ty](https://www.11ty.dev)
-  - [Shiki Twoslash](https://shikijs.github.io/twoslash/)
+- [11ty](https://www.11ty.dev) static site generator
+- [Shiki Twoslash](https://shikijs.github.io/twoslash/) syntax highlighting
 - [Algolia search](https://algolia.com)
 - [Tailwind](https://tailwindcss.com)
-- CSS
-  - [Utopia.fyi](https://utopia.fyi)
-  - [PostCSS](https://postcss.org)
-- HTML
+- [Utopia.fyi](https://utopia.fyi)
+- [PostCSS](https://postcss.org)
