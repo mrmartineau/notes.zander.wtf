@@ -11,7 +11,7 @@ The first version of this site was built and released as a [Gatsby](https://gats
 
 - [11ty](https://www.11ty.dev) static site generator
 - [Shiki Twoslash](https://shikijs.github.io/twoslash/) syntax highlighting
-- [Algolia search](https://algolia.com)
-- [Tailwind](https://tailwindcss.com)
+- [Algolia search](https://algolia.com) using [this tutorial](https://www.raymondcamden.com/2020/06/24/adding-algolia-search-to-eleventy-and-netlify) as a base
 - [Utopia.fyi](https://utopia.fyi)
 - [PostCSS](https://postcss.org)
+- [Tailwind](https://tailwindcss.com)
