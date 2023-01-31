@@ -4,7 +4,9 @@
     Code Notes
   </h1>
 
-> This is a new version of my notes site ([notes.zander.wtf](https://notes.zander.wtf)) built with [Eleventy](https://www.11ty.dev/). Soon, the old one will be archived and the domain transferred to this one.
+<h2>Notes on code, TILs, my digital garden. By Zander Martineau</h2>
+
+> This is a new version of my old notes site ([notes.zander.wtf](https://notes.zander.wtf)) built with [Eleventy](https://www.11ty.dev/). Soon, the old one will be archived and the domain transferred to this one.
 
 </div>
 

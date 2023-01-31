@@ -2,13 +2,13 @@
   <div class="cn-sidebar-contentWrapper">
     <div class="cn-sidebar-top">
       <div class="cn-sidebar-wrapper prose prose-zinc dark:prose-invert">
-        {% if site.meta.title %}
+        {% if site.meta.showTitleInSidebar === true %} {% if site.meta.title %}
         <h1 class="cn-logo">
           <a href="{{ '/' | url }}">
             {{ site.meta.title }}
           </a>
         </h1>
-        {% endif %} {% if site.meta.description %}
+        {% endif %} {% endif %}{% if site.meta.description %}
         <div class="cn-siteDescription">
           {{ site.meta.description }}
         </div>
@@ -45,9 +45,7 @@
         {% endif %} {% endfor %}
       </nav>
     </div>
-    <div class="cn-sidebar-bottom cn-sidebar-wrapper text-sm">
-      Made by <a href="https://zander.wtf">Zander</a> •
-      <a href="/colophon">Colophon</a>
-    </div>
+
+    {% include 'components/footer.njk' %}
   </div>
 </aside>
