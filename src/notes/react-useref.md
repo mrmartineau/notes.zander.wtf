@@ -3,19 +3,21 @@ title: useRef
 tags:
   - react
 emoji: 🎣
-date: 2020-04-17
+date: git Last Modified
+link: https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks/#useref
 ---
 
-- Docs: http://reactjs.org/docs/hooks-reference.html#useref
-- TS/React docs: https://github.com/typescript-cheatsheets/react-typescript-cheatsheet/blob/master/README.md#hooks
+- Docs: https://beta.reactjs.org/reference/react/useRef
 
 ## TypeScript
 
 When using useRef, you have two options when creating a ref container that does not have an initial value:
 
 ```ts
-const ref1 = useRef<HTMLElement>(null!)
-const ref2 = useRef<HTMLElement | null>(null)
+const ref1 = useRef<HTMLElement>(null)
+
+// Or, if you are sure that ref2.current will never be `null`, it is also possible to use the non-null assertion operator !
+const ref2 = useRef<HTMLElement>(null!)
 ```
 
 The first option will make `ref1.current` read-only, and is intended to be passed in to built-in ref attributes that React will manage (because React handles setting the current value for you).
@@ -25,25 +27,22 @@ The second option will make `ref2.current` mutable, and is intended for "instanc
 ## Example
 
 ```tsx
-import React, { useRef } from 'react'
+function Foo() {
+  // - If possible, prefer as specific as possible. For example, HTMLDivElement
+  //   is better than HTMLElement and way better than Element.
+  // - Technical-wise, this returns RefObject<HTMLDivElement>
+  const divRef = useRef<HTMLDivElement>(null)
 
-export const TextInputWithFocusButton = () => {
-  // initialise with null, but tell TypeScript we are looking for an HTMLInputElement
-  const inputEl = React.useRef<HTMLInputElement | null>(null)
-  const onButtonClick = () => {
-    // strict null checks need us to check if inputEl and current exist.
-    // but once current exists, it is of type HTMLInputElement, thus it
-    // has the method focus! ✅
-    if (inputEl && inputEl.current) {
-      inputEl.current.focus()
-    }
-  }
-  return (
-    <>
-      {/* in addition, inputEl only can be used with input elements. Yay! */}
-      <input ref={inputEl} type="text" />
-      <button onClick={onButtonClick}>Focus the input</button>
-    </>
-  )
+  useEffect(() => {
+    // Note that ref.current may be null. This is expected, because you may
+    // conditionally render the ref-ed element, or you may forgot to assign it
+    if (!divRef.current) throw Error('divRef is not assigned')
+
+    // Now divRef.current is sure to be HTMLDivElement
+    doSomethingWith(divRef.current)
+  })
+
+  // Give the ref to an element so React can manage it for you
+  return <div ref={divRef}>etc</div>
 }
 ```
