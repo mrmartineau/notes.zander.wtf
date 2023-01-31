@@ -11,7 +11,7 @@ link: https://beta.reactjs.org/reference/react/forwardRef
 Example of a component that uses `forwardRef`:
 
 ```ts
-import { ComponentPropsWithoutRef } from 'react'
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
 import { clsx } from 'clsx'
 import './Button.css'
 
