@@ -10,7 +10,6 @@ const pluginTOC = require('eleventy-plugin-nesting-toc')
 const heroIcons = require('eleventy-plugin-heroicons')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
-const markdownItWikilinks = require('markdown-it-wikilinks')
 const markdownItCopyCode = require('markdown-it-copy')
 const algoliasearch = require('algoliasearch')
 const UpgradeHelper = require('@11ty/eleventy-upgrade-help')
@@ -76,7 +75,6 @@ module.exports = function (eleventyConfig) {
       slugify: (s) => slugify(s),
     })
   )
-  eleventyConfig.amendLibrary('md', (mdLib) => mdLib.use(markdownItWikilinks()))
   eleventyConfig.amendLibrary('md', (mdLib) =>
     mdLib.use(markdownItCopyCode, {
       successText: `<svg xmlns="http://www.w3.org/2000/svg" class="icon inline-block" width="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
