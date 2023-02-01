@@ -39,15 +39,11 @@ module.exports = function (eleventyConfig) {
     name: 'search',
     functionsDir: './netlify/functions/',
   })
-  eleventyConfig.addAsyncFilter('getResults', function (query) {
-    const results = index
-      .search(query, {
-        attributesToRetrieve: ['title', 'url', 'date', 'tags', 'emoji'],
-      })
-      .then((res) => {
-        return res.hits
-      })
-    return results
+  eleventyConfig.addAsyncFilter('getResults', async function (query) {
+    const results = await index.search(query, {
+      attributesToRetrieve: ['title', 'url', 'date', 'tags', 'emoji'],
+    })
+    return results.hits
   })
 
   eleventyConfig.setLibrary(

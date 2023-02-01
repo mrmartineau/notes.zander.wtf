@@ -1,18 +1,18 @@
 <div>
   {% for note in searchResults %}
   <a href="{{ note.url | url }}" class="noteListItem">
-    <h3 class="flex gap-3 items-center">
+    <div class="noteListItem-title flex gap-3 items-center">
       {% if note.emoji %}<span>{{ note.emoji }}</span
       >{% endif %}
       {{ note.title }}
-    </h3>
+    </div>
     <div class="flex gap-2 items-center">
       {% if note.tags.length %}
-      <div class="noteListItem__tags">
+      <div class="noteListItem-tags">
         {% for tag in note.tags %} {% tagDisplay tag %} {% endfor %}
       </div>
       {% endif %}
-      <div class="noteListItem__date">
+      <div class="noteListItem-date">
         {{ note.date | dateFromISO | readableDate }}
       </div>
     </div>
