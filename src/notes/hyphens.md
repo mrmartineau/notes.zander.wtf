@@ -5,8 +5,6 @@ tags:
 date: git Last Modified
 ---
 
-# Hyphens and dashes
-
 from [Typography for Lawyers](https://typographyforlawyers.com/hyphens-and-dashes.html)
 
 |     |         | windows  | mac os                  | html      |
