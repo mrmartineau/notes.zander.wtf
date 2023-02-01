@@ -2,6 +2,7 @@
 title: Fluid typography
 tags:
   - css
+  - typography
 date: git Last Modified
 emoji: 💦
 ---
