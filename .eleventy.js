@@ -12,7 +12,7 @@ const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const markdownItCopyCode = require('markdown-it-copy')
 const algoliasearch = require('algoliasearch')
-const UpgradeHelper = require('@11ty/eleventy-upgrade-help')
+// const UpgradeHelper = require('@11ty/eleventy-upgrade-help')
 
 const client = algoliasearch(
   process.env.ALGOLIA_APP,
@@ -22,7 +22,7 @@ const index = client.initIndex(process.env.ALGOLIA_INDEX)
 
 module.exports = function (eleventyConfig) {
   // Plugins
-  eleventyConfig.addPlugin(UpgradeHelper)
+  // eleventyConfig.addPlugin(UpgradeHelper)
   eleventyConfig.addPlugin(rssPlugin)
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
   eleventyConfig.addPlugin(shikiTwoslash, {
@@ -40,16 +40,19 @@ module.exports = function (eleventyConfig) {
     functionsDir: './netlify/functions/',
   })
   eleventyConfig.addAsyncFilter('getResults', function (query) {
+    console.log(`🚀 ~ query`, query)
     const results = index
       .search(query, {
         attributesToRetrieve: ['title', 'url', 'date', 'tags', 'emoji'],
       })
       .then((res) => {
+        console.log(`🚀 ~ .then ~ res.hits`, res.hits)
         return res.hits
       })
       .catch((err) => {
         console.log(err)
       })
+    console.log(`🚀 ~ results`, results)
     return results
   })
 
