@@ -5,6 +5,7 @@ tags:
   - css
 link: https://csswizardry.com/2020/05/the-fastest-google-fonts/
 date: git Last Modified
+emoji: 🏎️
 ---
 
 ```html

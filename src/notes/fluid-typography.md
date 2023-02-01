@@ -3,6 +3,7 @@ title: Fluid typography
 tags:
   - css
 date: git Last Modified
+emoji: 💦
 ---
 
 ```css
@@ -44,7 +45,7 @@ Source: https://css-tricks.com/simplified-fluid-typography/
 
 ## [Utopia](https://utopia.fyi)
 
-Here's an example Utopia for fluid typography
+Here's an example from Utopia.fyi for fluid typography
 
 ```css
 /* @link https://utopia.fyi/type/calculator?c=320,17,1.2,1240,20,1.25,10,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */

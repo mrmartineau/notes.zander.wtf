@@ -2,7 +2,9 @@
 title: Full-bleed utility
 tags:
   - css
+  - html
 date: git Last Modified
+emoji: 🩸
 ---
 
 Based on [this article](https://ryanmulligan.dev/blog/x-scrolling-centered-max-width-container/) by Ryan Mulligan

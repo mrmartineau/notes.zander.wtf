@@ -3,7 +3,7 @@ title: VS Code Snippets
 tags:
   - vscode
   - react
-emoji: ⚛
+emoji: ✂️
 date: git Last Modified
 ---
 

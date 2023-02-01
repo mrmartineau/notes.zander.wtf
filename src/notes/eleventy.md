@@ -4,6 +4,7 @@ link: https://www.11ty.dev/docs/
 tags:
   - 11ty
 date: git Last Modified
+emoji: ⓫
 ---
 
 ## Eleventy config
