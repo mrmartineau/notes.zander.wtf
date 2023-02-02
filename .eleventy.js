@@ -39,7 +39,7 @@ module.exports = function (eleventyConfig) {
     name: 'search',
     functionsDir: './netlify/functions/',
   })
-  eleventyConfig.addAsyncFilter('getResults', async function (query) {
+  eleventyConfig.addFilter('getResults', async function (query) {
     console.log(`🚀 ~ query`, query)
     // const results = await index
     //   .search(query, {
@@ -60,13 +60,6 @@ module.exports = function (eleventyConfig) {
         date: '2020-02-27T00:00:00.000Z',
         tags: ['css'],
         objectID: '44fff048fada8_dashboard_generated_id',
-        _highlightResult: {
-          title: [Object],
-          url: [Object],
-          date: [Object],
-          content: [Object],
-          tags: [Array],
-        },
       },
     ]
   })
