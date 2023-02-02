@@ -41,19 +41,34 @@ module.exports = function (eleventyConfig) {
   })
   eleventyConfig.addAsyncFilter('getResults', async function (query) {
     console.log(`🚀 ~ query`, query)
-    const results = await index
-      .search(query, {
-        attributesToRetrieve: ['title', 'url', 'date', 'tags', 'emoji'],
-      })
-      .then((res) => {
-        console.log(`🚀 ~ .then ~ res.hits`, res.hits)
-        return res.hits
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-    console.log(`🚀 ~ results`, results)
-    return results
+    // const results = await index
+    //   .search(query, {
+    //     attributesToRetrieve: ['title', 'url', 'date', 'tags', 'emoji'],
+    //   })
+    //   .then((res) => {
+    //     console.log(`🚀 ~ .then ~ res.hits`, res.hits)
+    //     return res.hits
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //   })
+    // console.log(`🚀 ~ results`, results)
+    return [
+      {
+        title: 'CSS font-stacks',
+        url: '/notes/css-font-stacks/',
+        date: '2020-02-27T00:00:00.000Z',
+        tags: ['css'],
+        objectID: '44fff048fada8_dashboard_generated_id',
+        _highlightResult: {
+          title: [Object],
+          url: [Object],
+          date: [Object],
+          content: [Object],
+          tags: [Array],
+        },
+      },
+    ]
   })
 
   eleventyConfig.setLibrary(
