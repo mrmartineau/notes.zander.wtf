@@ -40,20 +40,28 @@ module.exports = function (eleventyConfig) {
     name: 'search',
     functionsDir: './netlify/functions/',
   })
+  // eleventyConfig.addFilter('getResults', async function (query) {
+  //   console.log(`🚀 ~ query`, query)
+  //   const results = await index
+  //     .search(query, {
+  //       attributesToRetrieve: ['title', 'url', 'date', 'tags', 'emoji'],
+  //     })
+  //     .then((res) => {
+  //       console.log(`🚀 ~ .then ~ res.hits`, res.hits)
+  //       return res.hits
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  //   return results
+  // })
   eleventyConfig.addFilter('getResults', async function (query) {
     console.log(`🚀 ~ query`, query)
-    const results = await index
-      .search(query, {
-        attributesToRetrieve: ['title', 'url', 'date', 'tags', 'emoji'],
-      })
-      .then((res) => {
-        console.log(`🚀 ~ .then ~ res.hits`, res.hits)
-        return res.hits
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-    return results
+    const results = await index.search(query, {
+      attributesToRetrieve: ['title', 'url', 'date', 'tags', 'emoji'],
+    })
+
+    return results.hits
   })
 
   eleventyConfig.setLibrary(
