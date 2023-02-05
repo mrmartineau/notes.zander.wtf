@@ -37,7 +37,7 @@ module.exports = function (eleventyConfig) {
     errorOnMissing: true,
   })
   eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
-    name: 'search',
+    name: 'searcher',
     functionsDir: './netlify/functions/',
   })
   // eleventyConfig.addFilter('getResults', async function (query) {
