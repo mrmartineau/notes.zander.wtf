@@ -11,10 +11,11 @@
       <div class="noteListItem-tags">
         {% for tag in note.tags %} {% tagDisplay tag %} {% endfor %}
       </div>
-      {% endif %}
+      {% endif %} {% if note.date %}
       <div class="noteListItem-date">
         {{ note.date | dateFromISO | readableDate }}
       </div>
+      {% endif %}
     </div>
   </a>
   {% endfor %}
