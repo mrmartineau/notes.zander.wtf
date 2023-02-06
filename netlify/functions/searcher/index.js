@@ -12,6 +12,8 @@ const index = client.initIndex(process.env.ALGOLIA_INDEX)
 require('./eleventy-bundler-modules.js')
 
 async function handler(event) {
+  console.time('searcher')
+  console.time('searcher - algolia')
   const searchQuery =
     event.multiValueQueryStringParameters || event.queryStringParameters
   console.log(`🚀 ~ handler ~ searchQuery`, searchQuery.query)
@@ -30,6 +32,7 @@ async function handler(event) {
     results = { hits: [] }
   }
   console.log(`🚀 ~ handler ~ results`, results.hits)
+  console.timeEnd('searcher - algolia')
   try {
     elev = new EleventyServerless('searcher', {
       path: new URL(event.rawUrl).pathname,
@@ -40,13 +43,10 @@ async function handler(event) {
         config.addGlobalData('searchResults', results?.hits)
       },
     })
-  } catch (err) {
-    console.log(`🚀 ~ handler ~ EleventyServerless err`, err)
-  }
-  
-  try {
+
     let [page] = await elev.getOutput()
     console.log(`🚀 ~ handler ~ page`, page)
+    console.timeEnd('searcher')
     return {
       statusCode: 200,
       headers: {

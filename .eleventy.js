@@ -1,7 +1,7 @@
 require('dotenv').config()
 const { EleventyServerlessBundlerPlugin } = require('@11ty/eleventy')
 const { DateTime } = require('luxon')
-const shikiTwoslash = require('eleventy-plugin-shiki-twoslash')
+// const shikiTwoslash = require('eleventy-plugin-shiki-twoslash')
 const rssPlugin = require('@11ty/eleventy-plugin-rss')
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
 const { getColourFromString } = require('./src/utils/getColourFromString')
@@ -19,9 +19,9 @@ module.exports = function (eleventyConfig) {
   // eleventyConfig.addPlugin(UpgradeHelper)
   eleventyConfig.addPlugin(rssPlugin)
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
-  eleventyConfig.addPlugin(shikiTwoslash, {
-    themes: ['dark-plus', 'light-plus'], // light bg is not set with CSS
-  })
+  // eleventyConfig.addPlugin(shikiTwoslash, {
+  //   themes: ['dark-plus', 'light-plus'], // light bg is not set with CSS
+  // })
   eleventyConfig.addPlugin(pluginTOC, {
     ignoredElements: ['.visually-hidden', '[aria-hidden]'],
   })
