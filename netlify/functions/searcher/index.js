@@ -16,10 +16,12 @@ async function handler(event) {
     event.multiValueQueryStringParameters || event.queryStringParameters
   console.log(`🚀 ~ handler ~ searchQuery`, searchQuery.query)
   let results
+  let elev
   if (searchQuery.query) {
     try {
       results = await index.search(searchQuery.query, {
         attributesToRetrieve: ['title', 'url', 'date', 'tags', 'emoji'],
+        attributesToHighlight: [],
       })
     } catch (err) {
       console.log(`🚀 ~ handler ~ Algolia err`, err)
@@ -28,15 +30,20 @@ async function handler(event) {
     results = { hits: [] }
   }
   console.log(`🚀 ~ handler ~ results`, results.hits)
-  let elev = new EleventyServerless('searcher', {
-    path: new URL(event.rawUrl).pathname,
-    query: searchQuery,
-    functionsDir: './netlify/functions/',
-    singleTemplateScope: false,
-    config: function (config) {
-      config.addGlobalData('searchResults', results?.hits)
-    },
-  })
+  try {
+    elev = new EleventyServerless('searcher', {
+      path: new URL(event.rawUrl).pathname,
+      query: searchQuery,
+      functionsDir: './netlify/functions/',
+      singleTemplateScope: false,
+      config: function (config) {
+        config.addGlobalData('searchResults', results?.hits)
+      },
+    })
+  } catch (err) {
+    console.log(`🚀 ~ handler ~ EleventyServerless err`, err)
+  }
+  
   try {
     let [page] = await elev.getOutput()
     console.log(`🚀 ~ handler ~ page`, page)
