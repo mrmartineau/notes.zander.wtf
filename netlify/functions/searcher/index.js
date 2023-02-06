@@ -42,6 +42,7 @@ async function handler(event) {
       config: function (config) {
         config.addGlobalData('searchResults', results?.hits)
       },
+      copyEnabled: false,
     })
 
     let [page] = await elev.getOutput()

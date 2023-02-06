@@ -1,9 +1,7 @@
-require('dotenv').config()
 const { EleventyServerlessBundlerPlugin } = require('@11ty/eleventy')
 const { DateTime } = require('luxon')
 // const shikiTwoslash = require('eleventy-plugin-shiki-twoslash')
 const rssPlugin = require('@11ty/eleventy-plugin-rss')
-const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
 const { getColourFromString } = require('./src/utils/getColourFromString')
 const slugify = require('@alexcarpenter/slugify')
 const pluginTOC = require('eleventy-plugin-nesting-toc')
@@ -11,14 +9,11 @@ const heroIcons = require('eleventy-plugin-heroicons')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const markdownItCopyCode = require('markdown-it-copy')
-// const UpgradeHelper = require('@11ty/eleventy-upgrade-help')
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 module.exports = function (eleventyConfig) {
   // Plugins
-  // eleventyConfig.addPlugin(UpgradeHelper)
   eleventyConfig.addPlugin(rssPlugin)
-  eleventyConfig.addPlugin(eleventyNavigationPlugin)
   // eleventyConfig.addPlugin(shikiTwoslash, {
   //   themes: ['dark-plus', 'light-plus'], // light bg is not set with CSS
   // })
@@ -87,10 +82,6 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter('dateFromISO', (timestamp) => {
     return DateTime.fromISO(timestamp, { zone: 'utc' }).toJSDate()
-  })
-
-  eleventyConfig.addFilter('jsonify', (data) => {
-    return JSON.stringify(data)
   })
 
   // Collections
