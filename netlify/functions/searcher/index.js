@@ -16,12 +16,16 @@ async function handler(event) {
     event.multiValueQueryStringParameters || event.queryStringParameters
   console.log(`🚀 ~ handler ~ searchQuery`, searchQuery.query)
   let results
-  try {
-    results = await index.search(searchQuery.query, {
-      attributesToRetrieve: ['title', 'url', 'date', 'tags', 'emoji'],
-    })
-  } catch (err) {
-    console.log(`🚀 ~ handler ~ Algolia err`, err)
+  if (searchQuery.query) {
+    try {
+      results = await index.search(searchQuery.query, {
+        attributesToRetrieve: ['title', 'url', 'date', 'tags', 'emoji'],
+      })
+    } catch (err) {
+      console.log(`🚀 ~ handler ~ Algolia err`, err)
+    }
+  } else {
+    results = { hits: [] }
   }
   console.log(`🚀 ~ handler ~ results`, results.hits)
   let elev = new EleventyServerless('searcher', {
@@ -35,6 +39,7 @@ async function handler(event) {
   })
   try {
     let [page] = await elev.getOutput()
+    console.log(`🚀 ~ handler ~ page`, page)
     return {
       statusCode: 200,
       headers: {
