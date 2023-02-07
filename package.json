@@ -8,11 +8,10 @@
     "serve": "npx @11ty/eleventy --serve --incremental",
     "serve:debug": "DEBUG=Eleventy* npx @11ty/eleventy --serve",
     "prebuild": "npm run clean  ",
-    "build": "npx @11ty/eleventy && npm run css",
+    "build": "DEBUG=Eleventy* npx @11ty/eleventy && npm run css",
     "test": "echo \"Error: no test specified\" && exit 1",
     "css": "postcss src/css/index.css --o _site/css/index.css",
     "css:watch": "watch 'npm run css' src",
-    "buildJson": "BUILD_JSON=true npx @11ty/eleventy --to=json",
     "clean": "rimraf _site"
   },
   "keywords": [],

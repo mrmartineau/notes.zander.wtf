@@ -58,7 +58,7 @@ async function handler(event) {
     // Only console log for matching serverless paths
     // (otherwise you’ll see a bunch of BrowserSync 404s for non-dynamic URLs during --serve)
     if (elev.isServerlessUrl(event.path)) {
-      console.log('Serverless Error:', JSON.stringify(error))
+      console.log('Serverless Error:', error)
     }
 
     return {
