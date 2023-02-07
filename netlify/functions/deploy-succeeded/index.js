@@ -6,7 +6,7 @@ exports.handler = async (event, context) => {
   try {
     const client = algoliasearch(
       process.env.ALGOLIA_APP,
-      process.env.ALGOLIA_SEARCH_KEY
+      process.env.ALGOLIA_ADMIN_KEY
     )
     const dataResp = await fetch('https://notez.zander.wtf/algolia.json')
     const records = await dataResp.json()
