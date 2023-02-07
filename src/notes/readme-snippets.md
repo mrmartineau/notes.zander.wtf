@@ -1,10 +1,10 @@
 ---
-title: README.md snippets
+title: README.md / markdown snippets
 emoji: 📝
 date: git Last Modified
 ---
 
-### Header/intro
+## Header/intro
 
 ```html
 <div align="center">
@@ -70,7 +70,7 @@ date: git Last Modified
 </div>
 ```
 
-### Footer
+## Footer
 
 ```md
 ---
@@ -81,3 +81,15 @@ date: git Last Modified
 
 > Made by Zander • [zander.wtf](https://zander.wtf) • [GitHub](https://github.com/mrmartineau/) • [Twitter](https://twitter.com/mrmartineau/)
 ```
+
+## Notes and warnings
+
+```md
+> **Note**
+> This is a note
+
+> **Warning**
+> This is a warning
+```
+
+[More info](https://github.com/community/community/discussions/16925)
