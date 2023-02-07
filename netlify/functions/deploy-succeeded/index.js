@@ -13,6 +13,7 @@ exports.handler = async (event, context) => {
     const index = client.initIndex(process.env.ALGOLIA_INDEX)
     const replacedObjectIds = await index.replaceAllObjects(records, {
       safe: true,
+      autoGenerateObjectIDIfNotExist: true,
     })
     console.log(`🚀 ~ deploy succeeded`, replacedObjectIds)
     console.timeEnd('deploy succeeded')

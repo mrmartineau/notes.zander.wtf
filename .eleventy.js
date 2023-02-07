@@ -165,6 +165,7 @@ module.exports = function (eleventyConfig) {
         emoji: note.data.emoji,
         content: note.template.frontMatter.content,
         tags: note.data?.tags?.length ? note.data.tags : [],
+        objectID: note.url,
       }
     })
     return JSON.stringify(algoliaIndex)
