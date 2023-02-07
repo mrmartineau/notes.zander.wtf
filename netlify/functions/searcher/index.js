@@ -37,7 +37,7 @@ async function handler(event) {
       path: new URL(event.rawUrl).pathname,
       query: searchQuery,
       functionsDir: './netlify/functions/',
-      // singleTemplateScope: false,
+      singleTemplateScope: false,
       config: function (config) {
         config.addGlobalData('searchResults', results?.hits)
       },
