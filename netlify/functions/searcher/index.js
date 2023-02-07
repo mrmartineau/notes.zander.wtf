@@ -17,7 +17,7 @@ async function handler(event) {
   const searchQuery =
     event.multiValueQueryStringParameters || event.queryStringParameters
   console.log(`🚀 ~ handler ~ searchQuery`, searchQuery.query)
-  let results
+  let results = { hits: [] }
   let elev
   if (searchQuery.query) {
     try {
@@ -28,17 +28,16 @@ async function handler(event) {
     } catch (err) {
       console.log(`🚀 ~ handler ~ Algolia err`, err)
     }
-  } else {
-    results = { hits: [] }
   }
   console.log(`🚀 ~ handler ~ results`, results.hits)
   console.timeEnd('searcher - algolia')
+
   try {
     elev = new EleventyServerless('searcher', {
       path: new URL(event.rawUrl).pathname,
       query: searchQuery,
       functionsDir: './netlify/functions/',
-      singleTemplateScope: false,
+      // singleTemplateScope: false,
       config: function (config) {
         config.addGlobalData('searchResults', results?.hits)
       },
