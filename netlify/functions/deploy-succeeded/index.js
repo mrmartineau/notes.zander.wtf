@@ -1,4 +1,5 @@
 const algoliasearch = require('algoliasearch')
+const fetch = require('node-fetch')
 
 exports.handler = async (event, context) => {
   console.time('deploy succeeded')
