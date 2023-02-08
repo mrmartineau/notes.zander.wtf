@@ -1,0 +1,44 @@
+pre {
+  padding: var(--space-s);
+  margin-bottom: var(--space-l);
+  overflow-x: auto;
+  position: relative;
+  font-family: var(--f-mono);
+  overflow-x: auto;
+  background-color: var(--bg) !important;
+
+  &[data-language] {
+    padding-top: var(--space-m);
+  }
+}
+
+/** Don't show the language identifiers */
+pre[data-language]::before {
+  content: attr(data-language);
+  line-height: 1;
+  border-radius: 0 0 0.2rem 0.2rem;
+  user-select: none;
+  background-color: var(--bg-main);
+  padding: var(--space-3xs) var(--space-2xs);
+  position: absolute;
+  top: 0;
+  left: var(--space-s);
+  font-size: var(--step--2);
+  text-transform: uppercase;
+}
+
+pre code a {
+  text-decoration: none;
+}
+
+/*@media (prefers-color-scheme: light) {
+  .shiki.dark-plus {
+    display: none;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .shiki.light-plus {
+    display: none;
+  }
+}
+*/

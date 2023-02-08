@@ -1,0 +1,17 @@
+.badge {
+  display: inline-flex;
+  flex-shrink: 0;
+  @apply py-0.5 px-2.5 rounded-full bg-zinc-200 text-xs;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+a.badge:hover {
+  color: currentColor;
+  opacity: 0.6;
+}
+
+.tagDot {
+  @apply w-2.5 h-2.5 rounded-xl;
+  display: inline-block;
+}

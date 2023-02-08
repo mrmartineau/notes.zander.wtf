@@ -26,14 +26,14 @@
   background-color: var(--bg-code);
 }
 
-pre.shiki:has(.u-mdic-copy-btn) .u-mdic-copy-btn {
+pre:has(.u-mdic-copy-btn) .u-mdic-copy-btn {
   opacity: 0;
 }
 
-pre.shiki:has(.u-mdic-copy-btn):hover .u-mdic-copy-btn {
+pre:has(.u-mdic-copy-btn):hover .u-mdic-copy-btn {
   opacity: 0.3;
 }
 
-pre.shiki:has(.u-mdic-copy-btn):hover .u-mdic-copy-btn:hover {
+pre:has(.u-mdic-copy-btn):hover .u-mdic-copy-btn:hover {
   opacity: 1;
 }

@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const { EleventyServerless } = require('@11ty/eleventy')
 const algoliasearch = require('algoliasearch')
 

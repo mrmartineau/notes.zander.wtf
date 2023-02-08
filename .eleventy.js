@@ -1,6 +1,5 @@
 const { EleventyServerlessBundlerPlugin } = require('@11ty/eleventy')
 const { DateTime } = require('luxon')
-// const shikiTwoslash = require('eleventy-plugin-shiki-twoslash')
 const rssPlugin = require('@11ty/eleventy-plugin-rss')
 const { getColourFromString } = require('./src/utils/getColourFromString')
 const slugify = require('@alexcarpenter/slugify')
@@ -9,14 +8,23 @@ const heroIcons = require('eleventy-plugin-heroicons')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const markdownItCopyCode = require('markdown-it-copy')
+// const torchlight = require('eleventy-plugin-torchlight')
+const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 module.exports = function (eleventyConfig) {
   // Plugins
   eleventyConfig.addPlugin(rssPlugin)
-  // eleventyConfig.addPlugin(shikiTwoslash, {
-  //   themes: ['dark-plus', 'light-plus'], // light bg is not set with CSS
-  // })
+  // eleventyConfig.addPlugin(torchlight)
+  eleventyConfig.addPlugin(syntaxHighlight, {
+    preAttributes: {
+      tabindex: 0,
+      // Added in 4.1.0 you can use callback functions too
+      'data-language': function ({ language, content, options }) {
+        return language
+      },
+    },
+  })
   eleventyConfig.addPlugin(pluginTOC, {
     ignoredElements: ['.visually-hidden', '[aria-hidden]'],
   })
@@ -141,12 +149,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode('tagDisplay', function (tag) {
     const tagName = slugify(tag)
     const tagColor = getColourFromString(tagName)
-    return `<span class="tag" style="background-color: ${tagColor};">${tag}</span>`
+    return `<span class="badge" style="background-color: ${tagColor};">${tag}</span>`
   })
   eleventyConfig.addShortcode('tagLink', function (tag) {
     const tagName = slugify(tag)
     const tagColor = getColourFromString(tagName)
-    return `<a href="/tags/${tagName}" class="tag" style="background-color: ${tagColor};">${tag}</a>`
+    return `<a href="/tags/${tagName}" class="badge" style="background-color: ${tagColor};">${tag}</a>`
   })
   eleventyConfig.addShortcode('tagDot', function (tag) {
     if (!tag) {

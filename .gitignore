@@ -7,3 +7,4 @@ netlify/functions/search/**
 netlify/functions/searcher/**
 !netlify/functions/searcher/index.js
 .env
+cache
