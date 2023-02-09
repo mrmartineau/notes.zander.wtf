@@ -1,0 +1,18 @@
+diff --git a/node_modules/@11ty/eleventy/src/Util/DateGitLastUpdated.js b/node_modules/@11ty/eleventy/src/Util/DateGitLastUpdated.js
+index 905af88..038b266 100644
+--- a/node_modules/@11ty/eleventy/src/Util/DateGitLastUpdated.js
++++ b/node_modules/@11ty/eleventy/src/Util/DateGitLastUpdated.js
+@@ -5,6 +5,7 @@ const spawn = require("cross-spawn");
+  * MIT licensed: https://github.com/vuejs/vuepress/blob/89440ce552675859189ed4ab254ce19c4bba5447/LICENSE
+  */
+ function getGitLastUpdatedTimeStamp(filePath) {
++  console.log(`🚀 ~ getGitLastUpdatedTimeStamp ~ filePath`, filePath)
+   return (
+     parseInt(
+       spawn
+@@ -25,4 +26,5 @@ module.exports = function (inputPath) {
+   if (timestamp) {
+     return new Date(timestamp);
+   }
++  return new Date()
+ };

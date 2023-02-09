@@ -12,7 +12,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "css": "postcss src/css/index.css --o _site/css/index.css",
     "css:watch": "watch 'npm run css' src",
-    "clean": "rimraf _site"
+    "clean": "rimraf _site",
+    "postinstall": "patch-package"
   },
   "keywords": [],
   "author": "Zander Martineau",
@@ -42,6 +43,7 @@
     "markdown-it-anchor": "^8.6.6",
     "markdown-it-copy": "^1.2.0",
     "node-fetch": "^2.6.9",
+    "patch-package": "^6.5.1",
     "postcss": "^8.4.19",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0",
