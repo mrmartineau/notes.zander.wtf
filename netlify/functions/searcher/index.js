@@ -31,7 +31,6 @@ async function handler(event) {
       console.log(`🚀 ~ handler ~ Algolia err`, err)
     }
   }
-  console.log(`🚀 ~ handler ~ results`, results.hits)
   console.timeEnd('searcher - algolia')
 
   try {
@@ -39,7 +38,7 @@ async function handler(event) {
       path: new URL(event.rawUrl).pathname,
       query: searchQuery,
       functionsDir: './netlify/functions/',
-      singleTemplateScope: false,
+      // singleTemplateScope: false,
       config: function (config) {
         config.addGlobalData('searchResults', results?.hits)
       },
@@ -47,7 +46,7 @@ async function handler(event) {
     })
 
     let [page] = await elev.getOutput()
-    console.log(`🚀 ~ handler ~ page`, page)
+    // console.log(`🚀 ~ handler ~ page`, page)
     console.timeEnd('searcher')
     return {
       statusCode: 200,
