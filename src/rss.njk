@@ -27,8 +27,8 @@
   <author>
     <name>{{ metadata.author.name }}</name>
   </author>
-  {%- for note in collections.notes | reverse %} {%- set absoluteUrl = note.url
-  | absoluteUrl(metadata.url) %}
+  {%- for note in collections.notes | reverse %} {% if loop.index < 6%} {%- set
+  absoluteUrl = note.url | absoluteUrl(metadata.url) %}
   <entry>
     <title>{{ note.data.title }}</title>
     <link href="{{ absoluteUrl }}" />
@@ -40,5 +40,5 @@
       >{{ note.templateContent | htmlToAbsoluteUrls(absoluteUrl) }}</content
     >
   </entry>
-  {%- endfor %}
+  {%- endif %} {%- endfor %}
 </feed>
