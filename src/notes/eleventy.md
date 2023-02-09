@@ -25,9 +25,33 @@ Usage:
 
 ## Nunjucks
 
+- Built-in filters: https://mozilla.github.io/nunjucks/templating.html#builtin-filters
+
+### Tags
+
+#### If
+
+```njk
+{% if variable %}
+  It is true
+{% endif %}
+```
+
+#### For
+
+```njk
+<ul>
+{% for item in items %}
+  <li>{{ item.title }}</li>
+{% else %}
+  <li>This would display if the 'item' collection were empty</li>
+{% endfor %}
+</ul>
+```
+
 ### Active class on links
 
-```liquid
+```njk
 <a
   class="{{ 'active' if '/' === page.url }}"
   href="{{ '/' | url }}"

@@ -7,7 +7,9 @@ eleventyExcludeFromCollections: true
 
 This site is my second brain. It's a place to collect my thoughts, ideas, and notes on code-related topics. I use it to keep track of things I've learned, and to share what I've learned with others.
 
-The first version of this site was built and released as a [Gatsby](https://gatsbyjs.com) theme ([Code Notes](https://github.com/mrmartineau/gatsby-theme-code-notes)) but I've since rebuilt it using [Eleventy](https://www.11ty.dev). This is a list of tools and resources I use to build this site.
+The first version of this site was built and released as a [Gatsby](https://gatsbyjs.com) theme ([Code Notes](https://github.com/mrmartineau/gatsby-theme-code-notes)) but I've since rebuilt it using [Eleventy](https://www.11ty.dev).
+
+## Tools and resources I used to create this site
 
 - [11ty](https://www.11ty.dev) static site generator
 - [Prism](https://prismjs.com) syntax highlighting
