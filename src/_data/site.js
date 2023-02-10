@@ -1,7 +1,7 @@
 module.exports = {
   meta: {
     title: 'Code Notes',
-    showTitleInSidebar: true,
+    showTitleInSidebar: false,
     description:
       'TILs, snippets—my digital code garden 🌱. By Zander Martineau',
     lang: 'en',
