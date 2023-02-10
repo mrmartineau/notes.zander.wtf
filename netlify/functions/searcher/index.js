@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const { EleventyServerless } = require('@11ty/eleventy')
 const algoliasearch = require('algoliasearch')
+const precompiledTagListCollections = require('./serverless-collections-tagList.json')
 
 const client = algoliasearch(
   process.env.ALGOLIA_APP,
@@ -34,19 +35,21 @@ async function handler(event) {
   console.timeEnd('searcher - algolia')
 
   try {
-    elev = new EleventyServerless('searcher', {
-      path: new URL(event.rawUrl).pathname,
-      query: searchQuery,
-      functionsDir: './netlify/functions/',
-      // singleTemplateScope: false,
-      config: function (config) {
-        config.addGlobalData('searchResults', results?.hits)
-      },
-      // copyEnabled: false,
+elev = new EleventyServerless('searcher', {
+  path: new URL(event.rawUrl).pathname,
+  query: searchQuery,
+  functionsDir: './netlify/functions/',
+  precompiledCollections: precompiledTagListCollections,
+  config: function (config) {
+    config.addGlobalData('searchResults', results?.hits)
+    config.addGlobalData('tagList', precompiledTagListCollections.tagList)
+    config.addCollection('tagListServerless', () => {
+      return precompiledTagListCollections.tagList
     })
+  },
+})
 
     let [page] = await elev.getOutput()
-    // console.log(`🚀 ~ handler ~ page`, page)
     console.timeEnd('searcher')
     return {
       statusCode: 200,

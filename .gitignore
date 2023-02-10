@@ -2,8 +2,6 @@ node_modules
 .vscode
 _site
 .cache
-netlify/functions/search/**
-!netlify/functions/search/index.js
 netlify/functions/searcher/**
 !netlify/functions/searcher/index.js
 .env

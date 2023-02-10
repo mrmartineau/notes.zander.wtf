@@ -19,7 +19,7 @@ eleventyConfig.addFilter('readableDate', (dateObj) => {
 
 Usage:
 
-```liquid
+```njk
 {{ page.date | readableDate }}
 ```
 
@@ -47,6 +47,32 @@ Usage:
   <li>This would display if the 'item' collection were empty</li>
 {% endfor %}
 </ul>
+```
+
+### Debugging
+
+There are two useful ways to debug data in Nunjucks templates.
+
+#### `dump` filter
+
+Prints the data to the page
+
+```njk
+{{ data | dump }}
+```
+
+#### `log` filter
+
+Logs the data to your terminal
+
+```njk
+{{ data | log }}
+```
+
+They can be used together:
+
+```njk
+{{ data | dump | log }}
 ```
 
 ### Active class on links
