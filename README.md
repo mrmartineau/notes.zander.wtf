@@ -1,16 +1,14 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/mrmartineau/11ty-notes/main/logo.png" width="140">
+  <img src="https://github.com/mrmartineau/notes.zander.wtf/blob/main/public/logo.png?raw=true" width="140">
   <h1>
     Code Notes
   </h1>
 
-<h2>Notes on code, TILs, my digital garden. By Zander Martineau</h2>
-
-> This is a new version of my old notes site ([notes.zander.wtf](https://notes.zander.wtf)) built with [Eleventy](https://www.11ty.dev/). Soon, the old one will be archived and the domain transferred to this one.
+<h2>TILs, snippets—my digital code garden 🌱</h2>
 
 </div>
 
-This site is built wit [11ty](https://www.11ty.dev/).
+> This is the latest version of my code notes site. It is now built with [Eleventy](https://www.11ty.dev/). The [old site](https://github.com/mrmartineau/notes.zander.wtf-gatsby) was built using my [gatsby theme](https://github.com/mrmartineau/gatsby-theme-code-notes).
 
 ## Search
 
