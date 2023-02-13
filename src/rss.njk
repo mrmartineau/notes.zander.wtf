@@ -3,42 +3,31 @@
   "permalink": "feed.xml",
   "eleventyExcludeFromCollections": true,
   "metadata": {
-    "title": "Code Notes by Zander Martineau",
-    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
     "language": "en",
-    "url": "https://notez.zander.wtf",
     "author": {
       "name": "Zander Martineau"
     }
   }
 }
 ---
-
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ metadata.url }}">
-  <title>{{ metadata.title }}</title>
-  <subtitle>{{ metadata.subtitle }}</subtitle>
-  <link href="{{ permalink | absoluteUrl(metadata.url) }}" rel="self" />
-  <link href="{{ metadata.url }}" />
-  <updated>{{
-    collections.notes | getNewestCollectionItemDate | dateToRfc3339
-  }}</updated>
-  <id>{{ metadata.url }}</id>
-  <author>
-    <name>{{ metadata.author.name }}</name>
-  </author>
-  {%- for note in collections.notes | reverse %} {% if loop.index < 6%} {%- set
-  absoluteUrl = note.url | absoluteUrl(metadata.url) %}
-  <entry>
-    <title>{{ note.data.title }}</title>
-    <link href="{{ absoluteUrl }}" />
-    <updated>{{ note.date | dateToRfc3339 }}</updated>
-    <id>{{ absoluteUrl }}</id>
-    <content
-      xml:lang="{{ metadata.language }}"
-      type="html"
-      >{{ note.templateContent | htmlToAbsoluteUrls(absoluteUrl) }}</content
-    >
-  </entry>
-  {%- endif %} {%- endfor %}
-</feed>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:base="{{ site.meta.siteUrl }}" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.meta.title }}</title>
+    <link>{{ site.meta.siteUrl }}</link>
+    <atom:link href="{{ permalink | absoluteUrl(site.meta.siteUrl) }}" rel="self" type="application/rss+xml" />
+    <description>{{ site.meta.description }}</description>
+    <language>{{ metadata.language }}</language>
+    {%- for note in collections.notes | reverse %} {% if loop.index < 6 %} {%- set
+      absolutePostUrl = note.url | absoluteUrl(site.meta.siteUrl) %}
+    <item>
+      <title>{{ note.data.title }}</title>
+      <link>{{ absolutePostUrl }}</link>
+      <content:encoded>{{ note.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content:encoded>
+      <pubDate>{{ note.date | dateToRfc822 }}</pubDate>
+      <dc:creator>{{ metadata.author.name }}</dc:creator>
+      <guid>{{ absolutePostUrl }}</guid>
+    </item>
+    {%- endif %} {%- endfor %}
+  </channel>
+</rss>
