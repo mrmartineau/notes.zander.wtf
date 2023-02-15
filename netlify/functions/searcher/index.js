@@ -19,10 +19,10 @@ async function handler(event) {
   console.time('searcher - algolia')
   const searchQuery =
     event.multiValueQueryStringParameters || event.queryStringParameters
-  console.log(`🚀 ~ handler ~ searchQuery`, searchQuery.query)
   let results = { hits: [] }
   let elev
   if (searchQuery.query) {
+    console.log(`🚀 ~ handler ~ searchQuery`, searchQuery.query)
     try {
       results = await index.search(searchQuery.query, {
         attributesToRetrieve: ['title', 'url', 'date', 'tags', 'emoji'],
@@ -35,19 +35,16 @@ async function handler(event) {
   console.timeEnd('searcher - algolia')
 
   try {
-elev = new EleventyServerless('searcher', {
-  path: new URL(event.rawUrl).pathname,
-  query: searchQuery,
-  functionsDir: './netlify/functions/',
-  precompiledCollections: precompiledTagListCollections,
-  config: function (config) {
-    config.addGlobalData('searchResults', results?.hits)
-    config.addGlobalData('tagList', precompiledTagListCollections.tagList)
-    config.addCollection('tagListServerless', () => {
-      return precompiledTagListCollections.tagList
+    elev = new EleventyServerless('searcher', {
+      path: new URL(event.rawUrl).pathname,
+      query: searchQuery,
+      functionsDir: './netlify/functions/',
+      // precompiledCollections: precompiledTagListCollections,
+      config: function (config) {
+        config.addGlobalData('searchResults', results?.hits)
+        config.addGlobalData('tagList', precompiledTagListCollections.tagList)
+      },
     })
-  },
-})
 
     let [page] = await elev.getOutput()
     console.timeEnd('searcher')

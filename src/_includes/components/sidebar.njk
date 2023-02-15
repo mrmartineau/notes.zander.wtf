@@ -25,7 +25,8 @@
         <div class="cn-sidebar-wrapper uppercase flex gap-2 items-center pb-0">
           {% heroicon "outline", "tag", "Tags", { width: 20 } %} Tags
         </div>
-        {% for tag in collections.tagList %} {% if tag.name !== "untagged" %}
+        {% set tags = tagList or collections.tagList %} {% for tag in tags %} {%
+        if tag.name !== "untagged" %}
         <a
           class="cn-sidebar-link {{ 'active' if tag.path | slugify in page.url }}"
           href="{{ '/tags/' | url }}{{ tag.path | slugify }}"
@@ -33,8 +34,9 @@
           {% tagDot tag.name %}
           {{ tag.name }} ({{ tag.count }})
         </a>
-        {% endif %} {% endfor %} {% for tag in collections.tagList %} {% if
-        tag.name === "untagged" %}
+
+        {% endif %} {% endfor %} {% for tag in tags %} {% if tag.name ===
+        "untagged" %}
         <a
           class="cn-sidebar-link {{ 'active' if tag.path | slugify in page.url }}"
           href="{{ '/tags/' | url }}{{ tag.path | slugify }}"
