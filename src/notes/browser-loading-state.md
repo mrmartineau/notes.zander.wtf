@@ -12,7 +12,10 @@ function showLoading(promise) {
   navigation.addEventListener(
     'navigate',
     (event) => {
-      event.intercept({ scroll: 'manual', handler: () => promise })
+      event.intercept({
+        scroll: 'manual',
+        handler: () => promise,
+      })
     },
     { once: true }
   )
