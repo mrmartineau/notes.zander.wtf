@@ -1,7 +1,7 @@
 @layer components {
   .noteListItem {
     @apply block md:flex justify-between rounded items-center gap-3;
-    transition: all 200ms ease-in-out;
+    transition: background-color 200ms ease-in-out;
     overflow: hidden;
     padding: var(--space-3xs) var(--space-xs);
   }

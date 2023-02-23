@@ -8,7 +8,6 @@ const heroIcons = require('eleventy-plugin-heroicons')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const markdownItCopyCode = require('markdown-it-copy')
-// const torchlight = require('eleventy-plugin-torchlight')
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
@@ -19,7 +18,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight, {
     preAttributes: {
       tabindex: 0,
-      // Added in 4.1.0 you can use callback functions too
       'data-language': function ({ language, content, options }) {
         return language
       },
@@ -142,8 +140,6 @@ module.exports = function (eleventyConfig) {
       )
     })
   })
-
-  // eleventyConfig.dataFilterSelectors.add('searchResults')
 
   // Short codes
   eleventyConfig.addShortcode('tagDisplay', function (tag) {

@@ -12,6 +12,8 @@ a.badge:hover {
 }
 
 .tagDot {
-  @apply w-2.5 h-2.5 rounded-xl;
+  @apply rounded-xl;
   display: inline-block;
+  width: 10px;
+  height: 10px;
 }

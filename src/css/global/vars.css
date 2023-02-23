@@ -1,10 +1,12 @@
 :root {
   --color-yellow: #ffd200;
   --color-accent: hsl(334, 86%, 48%);
-  --sidebar-width: 250px;
+  --sidebar-width: 220px;
   --bg: theme(colors.zinc.100);
   --bg-main: white;
   --bg-nav-active: var(--bg-main);
+  --color-nav: theme(colors.zinc.700);
+  --color-nav-active: theme(colors.zinc.800);
   --bg-note-hover: var(--bg);
   --border: #ddd;
   --f-mono: Comic Code, JetBrains Mono, SF Mono, Menlo, Monaco, Courier New,
@@ -19,7 +21,9 @@
     /* --bg-code: #1e1e1e; */
     --bg-code-highlight: #444;
     --bg-main: theme(colors.zinc.700);
-    --bg-nav-active: var(--bg-main);
+    --bg-nav-active: theme(colors.zinc.700);
+    --color-nav: theme(colors.zinc.400);
+    --color-nav-active: theme(colors.zinc.200);
     --bg-note-hover: var(--bg);
     --border: theme(colors.zinc.500);
   }
@@ -30,7 +34,9 @@
   /* --bg-code: #1e1e1e; */
   --bg-code-highlight: #444;
   --bg-main: theme(colors.zinc.700);
-  --bg-nav-active: var(--bg-main);
+  --bg-nav-active: theme(colors.zinc.700);
+  --color-nav: theme(colors.zinc.400);
+  --color-nav-active: theme(colors.zinc.200);
   --bg-note-hover: var(--bg);
   --border: theme(colors.zinc.500);
 }

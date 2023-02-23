@@ -1,51 +1,52 @@
 <aside class="cn-sidebar">
   <div class="cn-sidebar-contentWrapper">
     <div class="cn-sidebar-top">
-      <div class="cn-sidebar-wrapper prose prose-zinc dark:prose-invert">
-        {% if site.meta.showTitleInSidebar === true %} {% if site.meta.title %}
-        <h1 class="cn-logo">
-          <a href="{{ '/' | url }}">
-            {{ site.meta.title }}
-          </a>
-        </h1>
-        {% endif %} {% endif %}{% if site.meta.description %}
-        <div class="cn-siteDescription">
-          {{ site.meta.description }}
+      <div class="cn-sidebar-wrapper">
+        <div class="prose prose-zinc dark:prose-invert">
+          {% if site.meta.showTitleInSidebar === true %} {% if site.meta.title
+          %}
+          <h1 class="cn-logo">
+            <a href="{{ '/' | url }}">
+              {{ site.meta.title }}
+            </a>
+          </h1>
+          {% endif %} {% endif %}{% if site.meta.description %}
+          <div class="cn-siteDescription">
+            {{ site.meta.description }}
+          </div>
+          {% endif %}
         </div>
-        {% endif %}
-      </div>
-      <nav>
-        <a
-          class="cn-sidebar-link uppercase {{ 'active' if '/' === page.url }}"
-          href="{{ '/' | url }}"
-        >
-          {% heroicon "outline", "collection", "All tags", { width: 20 } %} All
-          notes
-        </a>
-        <div class="cn-sidebar-wrapper uppercase flex gap-2 items-center pb-0">
-          {% heroicon "outline", "tag", "Tags", { width: 20 } %} Tags
-        </div>
-        {% set tags = tagList or collections.tagList %} {% for tag in tags %} {%
-        if tag.name !== "untagged" %}
-        <a
-          class="cn-sidebar-link {{ 'active' if tag.path | slugify in page.url }}"
-          href="{{ '/tags/' | url }}{{ tag.path | slugify }}"
-        >
-          {% tagDot tag.name %}
-          {{ tag.name }} ({{ tag.count }})
-        </a>
 
-        {% endif %} {% endfor %} {% for tag in tags %} {% if tag.name ===
-        "untagged" %}
-        <a
-          class="cn-sidebar-link {{ 'active' if tag.path | slugify in page.url }}"
-          href="{{ '/tags/' | url }}{{ tag.path | slugify }}"
-        >
-          {% tagDot tag.name %}
-          {{ tag.name }} ({{ tag.count }})
-        </a>
-        {% endif %} {% endfor %}
-      </nav>
+        <nav>
+          <a
+            class="cn-sidebar-link uppercase {{ 'active' if '/' === page.url }}"
+            href="{{ '/' | url }}"
+          >
+            {% heroicon "outline", "collection", "All tags", { width: 16 } %}
+            All notes
+          </a>
+          {% set tags = tagList or collections.tagList %} {% for tag in tags %}
+          {% if tag.name !== "untagged" %}
+          <a
+            class="cn-sidebar-link {{ 'active' if tag.path | slugify in page.url }}"
+            href="{{ '/tags/' | url }}{{ tag.path | slugify }}"
+          >
+            {% tagDot tag.name %}
+            {{ tag.name }} ({{ tag.count }})
+          </a>
+
+          {% endif %} {% endfor %} {% for tag in tags %} {% if tag.name ===
+          "untagged" %}
+          <a
+            class="cn-sidebar-link {{ 'active' if tag.path | slugify in page.url }}"
+            href="{{ '/tags/' | url }}{{ tag.path | slugify }}"
+          >
+            {% tagDot tag.name %}
+            {{ tag.name }} ({{ tag.count }})
+          </a>
+          {% endif %} {% endfor %}
+        </nav>
+      </div>
     </div>
 
     {% include 'components/footer.njk' %}

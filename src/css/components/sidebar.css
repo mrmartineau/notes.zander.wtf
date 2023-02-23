@@ -33,26 +33,35 @@
   }
 
   .cn-sidebar-wrapper {
-    padding: var(--space-s) var(--space-s);
+    padding: var(--space-s) var(--space-xs);
+    @apply flex flex-col gap-3;
+  }
+
+  .cn-sidebar-sectionHeading {
+    margin: var(--space-2xs) var(--space-3xs) 0;
+    font-size: var(--step--2);
+    color: var(--color-nav);
   }
 
   .cn-sidebar-link {
     @apply flex items-center;
-    padding: var(--space-3xs) var(--space-s);
-    font-size: var(--step--1);
+    padding: var(--space-3xs) var(--space-2xs);
+    font-size: var(--step--2);
     gap: var(--space-2xs);
+    border-radius: 0.4rem;
+    color: var(--color-nav);
+    margin: 1px 0;
+    transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
 
     .tagDot {
-      @apply w-2.5 h-2.5;
+      margin-left: 3px;
+      margin-right: 3px;
     }
 
+    &.active,
     &:hover {
       background-color: var(--bg-nav-active);
-      color: currentColor;
-    }
-
-    &.active {
-      background-color: var(--bg-nav-active);
+      color: var(--color-nav-active);
     }
   }
 }

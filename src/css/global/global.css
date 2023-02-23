@@ -19,9 +19,9 @@
   opacity: 0.6;
 }
 
-a {
+/* a {
   transition: all 250ms ease-in-out;
-}
+} */
 
 a:hover {
   color: var(--color-accent);
