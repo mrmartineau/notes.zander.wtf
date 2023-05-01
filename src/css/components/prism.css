@@ -6,22 +6,9 @@ pre[class*='language-'] {
   word-break: normal;
   word-wrap: normal;
   line-height: 1.5em;
-
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
   tab-size: 4;
-
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
   hyphens: none;
-}
-
-code[class*='language-']::-moz-selection,
-pre[class*='language-']::-moz-selection,
-code[class*='language-'] ::-moz-selection,
-pre[class*='language-'] ::-moz-selection {
-  background: var(--bg-code-highlight);
+  color: var(--text) !important;
 }
 
 code[class*='language-']::selection,
@@ -44,7 +31,9 @@ pre[class*='language-'] {
 
 .language-css > code,
 .language-sass > code,
-.language-scss > code {
+.language-scss > code,
+.token.number,
+.token.unit {
   color: #fd9170;
 }
 
@@ -52,148 +41,120 @@ pre[class*='language-'] {
   opacity: 0.7;
 }
 
-.token.atrule {
-  color: #c792ea;
+.token.atrule,
+.token.boolean,
+.token.constant,
+.token.function,
+.token.id .token.important,
+.token.keyword,
+.token.symbol {
+  color: theme(colors.sky.600);
+}
+@media (prefers-color-scheme: dark) {
+  .token.atrule,
+  .token.boolean,
+  .token.constant,
+  .token.function,
+  .token.id .token.important,
+  .token.keyword,
+  .token.symbol {
+    color: theme(colors.sky.300);
+  }
 }
 
-.token.attr-name {
-  color: #ffcb6b;
+.token.id .token.important {
+  font-weight: bold;
 }
 
-.token.attr-value {
-  color: #a5e844;
-}
-
-.token.attribute {
-  color: #a5e844;
-}
-
-.token.boolean {
-  color: #c792ea;
-}
-
-.token.builtin {
-  color: #ffcb6b;
-}
-
-.token.cdata {
-  color: #80cbc4;
-}
-
-.token.char {
-  color: #80cbc4;
-}
-
+.token.attr-name,
+.token.builtin,
 .token.class {
-  color: #ffcb6b;
+  color: theme(colors.amber.600);
+}
+@media (prefers-color-scheme: dark) {
+  .token.attr-name,
+  .token.builtin,
+  .token.class {
+    color: theme(colors.amber.200);
+  }
 }
 
-.token.class-name {
-  color: #f2ff00;
+.token.attr-value,
+.token.attribute,
+.token.pseudo-class,
+.token.pseudo-element,
+.token.string {
+  color: theme(colors.emerald.600);
+}
+@media (prefers-color-scheme: dark) {
+  .token.attr-value,
+  .token.attribute,
+  .token.pseudo-class,
+  .token.pseudo-element,
+  .token.string {
+    color: theme(colors.emerald.200);
+  }
 }
 
-.token.comment {
-  color: #616161;
-}
-
-.token.constant {
-  color: #c792ea;
-}
-
-.token.deleted {
-  color: #ff6666;
-}
-
-.token.doctype {
-  color: #616161;
-}
-
-.token.entity {
-  color: #ff6666;
-}
-
-.token.function {
-  color: #c792ea;
-}
-
-.token.hexcode {
-  color: #f2ff00;
-}
-
-.token.id {
-  color: #c792ea;
-  font-weight: bold;
-}
-
-.token.important {
-  color: #c792ea;
-  font-weight: bold;
-}
-
+.token.cdata,
+.token.char,
+.token.property,
 .token.inserted {
   color: #80cbc4;
 }
 
-.token.keyword {
-  color: #c792ea;
-}
-
-.token.number {
-  color: #fd9170;
-}
-
-.token.operator {
-  color: #89ddff;
-}
-
-.token.prolog {
-  color: #616161;
-}
-
-.token.property {
-  color: #80cbc4;
-}
-
-.token.pseudo-class {
-  color: #a5e844;
-}
-
-.token.pseudo-element {
-  color: #a5e844;
-}
-
-.token.punctuation {
-  color: #89ddff;
-}
-
+.token.class-name,
+.token.hexcode,
 .token.regex {
-  color: #f2ff00;
+  color: theme(colors.yellow.600);
+}
+@media (prefers-color-scheme: dark) {
+  .token.class-name,
+  .token.hexcode,
+  .token.regex {
+    color: theme(colors.yellow.300);
+  }
 }
 
-.token.selector {
-  color: #ff6666;
+.token.comment,
+.token.doctype,
+.token.prolog {
+  color: theme(colors.zinc.400);
+}
+@media (prefers-color-scheme: dark) {
+  .token.comment,
+  .token.doctype,
+  .token.prolog {
+    color: theme(colors.zinc.500);
+  }
 }
 
-.token.string {
-  color: #a5e844;
-}
-
-.token.symbol {
-  color: #c792ea;
-}
-
-.token.tag {
-  color: #ff6666;
-}
-
-.token.unit {
-  color: #fd9170;
-}
-
-.token.url {
-  color: #ff6666;
-}
-
+.token.deleted,
+.token.entity,
+.token.selector,
+.token.tag,
+.token.url,
 .token.variable {
-  color: #ff6666;
+  color: theme(colors.red.600);
+}
+@media (prefers-color-scheme: dark) {
+  .token.deleted,
+  .token.entity,
+  .token.selector,
+  .token.tag,
+  .token.url,
+  .token.variable {
+    color: theme(colors.red.400);
+  }
+}
+
+.token.punctuation,
+.token.operator {
+  color: theme(colors.cyan.600);
+}
+@media (prefers-color-scheme: dark) {
+  .token.punctuation,
+  .token.operator {
+    color: theme(colors.cyan.300);
+  }
 }

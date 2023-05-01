@@ -5,6 +5,7 @@
   --bg: theme(colors.zinc.100);
   --bg-main: white;
   --bg-nav-active: var(--bg-main);
+  --text: theme(colors.zinc.700);
   --color-nav: theme(colors.zinc.700);
   --color-nav-active: theme(colors.zinc.800);
   --bg-note-hover: var(--bg);
@@ -22,6 +23,7 @@
     --bg-code-highlight: #444;
     --bg-main: theme(colors.zinc.700);
     --bg-nav-active: theme(colors.zinc.700);
+    --text: theme(colors.zinc.400);
     --color-nav: theme(colors.zinc.400);
     --color-nav-active: theme(colors.zinc.200);
     --bg-note-hover: var(--bg);
