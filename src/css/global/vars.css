@@ -13,14 +13,12 @@
   --f-mono: Comic Code, JetBrains Mono, SF Mono, Menlo, Monaco, Courier New,
     monospace;
   --bg-code: var(--bg);
-  --bg-code-highlight: #f1f1f1;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: theme(colors.zinc.800);
     /* --bg-code: #1e1e1e; */
-    --bg-code-highlight: #444;
     --bg-main: theme(colors.zinc.700);
     --bg-nav-active: theme(colors.zinc.700);
     --text: theme(colors.zinc.400);
@@ -34,7 +32,6 @@
 .dark {
   --bg: theme(colors.zinc.800);
   /* --bg-code: #1e1e1e; */
-  --bg-code-highlight: #444;
   --bg-main: theme(colors.zinc.700);
   --bg-nav-active: theme(colors.zinc.700);
   --color-nav: theme(colors.zinc.400);

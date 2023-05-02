@@ -11,11 +11,9 @@ pre[class*='language-'] {
   color: var(--text) !important;
 }
 
-code[class*='language-']::selection,
-pre[class*='language-']::selection,
-code[class*='language-'] ::selection,
-pre[class*='language-'] ::selection {
-  background: var(--bg-code-highlight);
+code[class*='language-md'],
+pre[class*='language-md'] {
+  white-space: pre-line;
 }
 
 :not(pre) > code[class*='language-'] {
