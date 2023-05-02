@@ -3,6 +3,7 @@ title: Native browser loading state
 tags:
   - javascript
 link: https://twitter.com/_developit/status/1625612424576376840
+date: git Last Modified
 ---
 
 With the new [Navigation API](http://developer.mozilla.org/en-US/docs/Web/API/Navigation), you can now show the native spinner + stop button for any asynchronous operation - all you need is a Promise.
