@@ -6,6 +6,13 @@ date: git Last Modified
 emoji: 💽
 ---
 
+## Install
+
+```sh
+brew install postgresql@15
+fish_add_path /opt/homebrew/opt/postgresql@15/bin
+```
+
 ## Tables
 
 ## Create table
@@ -71,13 +78,27 @@ ALTER TABLE table_name DROP CONSTRAINT table_name_field_fkey;
 
 # Backup and restore
 
-## Backup the database
+## Database backup & restore
+
+Using [`pg_dump`](https://www.postgresql.org/docs/current/app-pgdump.html)
+
+### Backup DB and content
 
 ```sh
 pg_dump -U postgres -W -h db.******.supabase.co -p 5432 -n public -F t -f db-backup.tar postgres
 ```
 
-## Restore the database
+### Only backup DB schemas
+
+Notice the `-s` flag
+
+```sh
+pg_dump -U postgres -W -h db.******.supabase.co -p 5432 -s -n public -F t -f db-backup.tar postgres
+```
+
+### Restore DB
+
+Using [`pg_restore`](https://www.postgresql.org/docs/current/app-pgrestore.html)
 
 ```sh
 pg_restore -U postgres -W -h db..******..supabase.co -p 5432 -F t -C -d postgres db-backup.tar
