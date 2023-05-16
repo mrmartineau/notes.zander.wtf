@@ -10,7 +10,147 @@ date: 2021-01-16
 
 ## Stories
 
-This is a good starter that includes most things you'll need when creating stories.
+This is a good starter that includes most things you'll need when creating stories. This uses CS3.
+
+```tsx
+// MyComponent.story.ts|tsx
+
+import type { Meta, StoryObj } from '@storybook/react'
+
+import { MyComponent } from './MyComponent'
+
+const meta: Meta<typeof MyComponent> = {
+  /* 👇 The title prop is optional.
+   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+   * to learn how to generate automatic titles
+   */
+  title: 'Path/To/MyComponent',
+  component: MyComponent,
+}
+
+export default meta
+type Story = StoryObj<typeof MyComponent>
+
+export const Basic: Story = {
+  args: {
+    prop1: 'Something',
+    prop2: true,
+  },
+}
+
+// https://storybook.js.org/docs/react/api/csf#spreadable-story-objects
+export const BasicOnDark: Story = {
+  ...Basic,
+  parameters: { background: { default: 'dark' } },
+}
+```
+
+### Custom render function
+
+```tsx
+// This story uses a render function to fully control how the component renders.
+export const Example: Story = {
+  render: () => (
+    <div style={{ maxWidth: '300px' }}>
+      <MyComponent prop1="Something" prop2={false} />
+    </div>
+  ),
+}
+```
+
+### Play function
+
+Storybook's play functions are small snippets of code executed when the story renders in the UI. They are convenient helper methods to help you test use cases that otherwise weren't possible or required user intervention.
+
+```tsx
+// LoginForm.stories.ts|tsx
+
+import type { Meta, StoryObj } from '@storybook/react'
+
+import { within, userEvent } from '@storybook/testing-library'
+
+import { expect } from '@storybook/jest'
+
+import { LoginForm } from './LoginForm'
+
+const meta: Meta<typeof LoginForm> = {
+  /* 👇 The title prop is optional.
+   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+   * to learn how to generate automatic titles
+   */
+  title: 'Form',
+  component: LoginForm,
+}
+
+export default meta
+type Story = StoryObj<typeof LoginForm>
+
+export const EmptyForm: Story = {}
+
+/*
+ * See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+ * to learn more about using the canvasElement to query the DOM
+ */
+export const FilledForm: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+
+    // 👇 Simulate interactions with the component
+    await userEvent.type(canvas.getByTestId('email'), 'email@provider.com')
+
+    await userEvent.type(canvas.getByTestId('password'), 'a-random-password')
+
+    // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    await userEvent.click(canvas.getByRole('button'))
+
+    // 👇 Assert DOM structure
+    await expect(
+      canvas.getByText(
+        'Everything is perfect. Your account is ready and we should probably get you started!'
+      )
+    ).toBeInTheDocument()
+  },
+}
+```
+
+### Non-story exports
+
+[More info](https://storybook.js.org/docs/react/api/csf#non-story-exports)
+
+```tsx
+// MyComponent.stories.ts|tsx
+
+import type { Meta, StoryObj } from '@storybook/react'
+
+import { MyComponent } from './MyComponent'
+
+import someData from './data.json'
+
+const meta: Meta<typeof MyComponent> = {
+  /* 👇 The title prop is optional.
+   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+   * to learn how to generate automatic titles
+   */
+  title: 'MyComponent',
+  component: MyComponent,
+  includeStories: ['SimpleStory'], // 👈 Storybook loads these stories
+  excludeStories: /.*Data$/, // 👈 Storybook ignores anything that contains Data
+}
+
+export default meta
+type Story = StoryObj<typeof MyComponent>
+
+export const simpleData = { foo: 1, bar: 'baz' }
+export const complexData = { foo: 1, foobar: { bar: 'baz', baz: someData } }
+
+export const SimpleStory: Story = {
+  args: {
+    data: simpleData,
+  },
+}
+```
+
+### CS2 format example
 
 ```tsx
 import React from 'react'
@@ -114,7 +254,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     'storybook-addon-paddings',
-    'storybook-addon-color-mode/register',
+    'storybook-addon-color-mode',
     '@storybook/addon-a11y',
   ],
   webpackFinal: async (config) => {
