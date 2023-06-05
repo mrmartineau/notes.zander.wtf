@@ -27,3 +27,25 @@ For everyone who wants to create a wrapper component around a certain HTML eleme
 ```
 
 [Link](https://github.com/sveltejs/language-tools/issues/442#issuecomment-1359423782)
+
+## Adding classes conditionally
+
+```html
+<!-- Button.svelte -->
+<script>
+  export let primary = false
+  export let secondary = false
+</script>
+
+<button
+  class:c-btn--primary="{primary}"
+  class:c-btn--secondary="{secondary}"
+  class="c-btn"
+>
+  <slot></slot>
+</button>
+```
+
+```jsx
+<Button secondary="{true}">Click me</Button>
+```

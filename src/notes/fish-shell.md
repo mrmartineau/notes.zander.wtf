@@ -122,6 +122,12 @@ fish_add_path /usr/local/sbin
 
 https://fishshell.com/docs/current/cmds/fish_add_path.html
 
+#### List all $PATH entries
+
+```sh
+string join \n $PATH | nl
+```
+
 ### Using `ssh-agent`
 
 When needing to add ssh keys to Github, [the docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent) suggest running `eval "$(ssh-agent -s)"` but that does not work in fish. Run this instead:
