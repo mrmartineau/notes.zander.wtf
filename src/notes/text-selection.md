@@ -1,9 +1,9 @@
 ---
 title: Text selection
 tags:
-- javascript
+  - javascript
 date: git Last Modified
-emoji:🔤
+emoji: 🔤
 ---
 
 ```js
