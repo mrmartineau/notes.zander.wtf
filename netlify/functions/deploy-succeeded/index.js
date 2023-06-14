@@ -8,7 +8,7 @@ exports.handler = async (event, context) => {
       process.env.ALGOLIA_APP,
       process.env.ALGOLIA_ADMIN_KEY
     )
-    const dataResp = await fetch('https://notez.zander.wtf/algolia.json')
+    const dataResp = await fetch('https://notes.zander.wtf/algolia.json')
     const records = await dataResp.json()
     const index = client.initIndex(process.env.ALGOLIA_INDEX)
     const replacedObjectIds = await index.replaceAllObjects(records, {
