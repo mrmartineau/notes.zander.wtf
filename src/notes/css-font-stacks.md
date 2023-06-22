@@ -2,29 +2,29 @@
 title: CSS font-stacks
 tags:
   - css
-date: 2020-02-27
+date: git Last Modified
+link: https://systemfontstack.com
 ---
 
-## System
+## Basic system font stacks
+
+### Sans-serif
 
 ```css
--apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans"
+-apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+  helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
 ```
 
-## Sans
+### Serif
 
 ```css
-"Helvetica Neue", Helvetica, Arial, sans-serif
+Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid
+    Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe
+    UI Symbol;
 ```
 
-## Serif
+### Mono
 
 ```css
-Georgia, "Times New Roman", Times, serif
-```
-
-## Monospaced
-
-```css
-Menlo, Monaco, "Courier New", monospace
+Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 ```
