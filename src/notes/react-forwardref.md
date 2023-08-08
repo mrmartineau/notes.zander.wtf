@@ -35,3 +35,16 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 ```
 
 React TypeScript docs: https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/forward_and_create_ref/
+
+## Fixed forwardRef
+
+```tsx
+import React, { forwardRef } from 'react'
+// Declare a type that works with generic components
+type FixedForwardRef = <T, P = {}>(
+  render: (props: P, ref: React.Ref<T>) => React.ReactElement
+) => (props: P & React.RefAttributes<T>) => React.ReactElement
+
+// Cast the old `forwardRef` to the new one
+export const fixedForwardRef = forwardRef as FixedForwardRef
+```

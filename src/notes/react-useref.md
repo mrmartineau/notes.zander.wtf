@@ -46,3 +46,33 @@ function Foo() {
   return <div ref={divRef}>etc</div>
 }
 ```
+
+### Strongly Type useRef with `ElementRef`
+
+```tsx
+import { useRef, ElementRef } from 'react'
+
+const Component = () => {
+  const audioRef = useRef<ElementRef<'audio'>>(null)
+
+  return <audio ref={audioRef}>Hello</audio>
+}
+```
+
+or
+
+```tsx
+import { OtherComponent } from './other-component'
+import React, { useRef, ElementRef } from 'react'
+
+// Pass it in via typeof!
+type OtherComponentRef = ElementRef<typeof OtherComponent>
+
+const Component = () => {
+  const ref = useRef<OtherComponentRef>(null)
+
+  return <OtherComponent ref={ref}>Hello</OtherComponent>
+}
+```
+
+[More info](https://www.totaltypescript.com/strongly-type-useref-with-elementref)
