@@ -4,11 +4,48 @@ tags:
   - react
 emoji: 🎣
 date: git Last Modified
-link: https://kentcdodds.com/blog/how-to-use-react-context-effectively
+link: http://reactjs.org/docs/hooks-reference.html#usecontext
 ---
 
-- Docs: http://reactjs.org/docs/hooks-reference.html#usecontext
 - TS/React docs: https://github.com/typescript-cheatsheets/react-typescript-cheatsheet#context
+
+```tsx
+import { createContext } from 'react'
+
+interface CurrentUserContextType {
+  username: string
+}
+
+const CurrentUserContext = createContext<CurrentUserContextType | null>(null)
+
+const useCurrentUser = () => {
+  const currentUserContext = useContext(CurrentUserContext)
+
+  if (!currentUserContext) {
+    throw new Error(
+      'useCurrentUser has to be used within <CurrentUserContext.Provider>'
+    )
+  }
+
+  return currentUserContext
+}
+```
+
+or this, but it's not as good because it doesn't provide the type safety that the above does:
+
+```tsx
+export interface CurrentUserContextType {
+  username: string
+}
+
+export const CurrentUserContext = createContext<CurrentUserContextType>(
+  {} as CurrentUserContextType
+)
+```
+
+### Example
+
+From [this article](https://kentcdodds.com/blog/how-to-use-react-context-effectively)
 
 ```tsx
 import * as React from 'react'
@@ -48,7 +85,7 @@ function useCount() {
 export { CountProvider, useCount }
 ```
 
-## Usage
+#### Usage
 
 ```tsx
 import React, { useContext } from 'react'
@@ -66,7 +103,7 @@ const MyComponent = () => {
 </CountProvider>
 ```
 
-## Child as a function
+### Child as a function
 
 We can change the `CountProvider` component
 

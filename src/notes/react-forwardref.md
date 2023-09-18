@@ -5,7 +5,7 @@ tags:
   - typescript
 emoji: ⚛
 date: git Last Modified
-link: https://beta.reactjs.org/reference/react/forwardRef
+link: https://react.dev/reference/react/forwardRef
 ---
 
 Example of a component that uses `forwardRef`:

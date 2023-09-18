@@ -7,7 +7,7 @@ date: git Last Modified
 link: https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks/#useref
 ---
 
-- Docs: https://beta.reactjs.org/reference/react/useRef
+- Docs: https://react.dev/reference/react/useRef
 
 ## TypeScript
 
