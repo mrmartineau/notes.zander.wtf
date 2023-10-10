@@ -4,28 +4,55 @@ tags:
   - javascript
 emoji: 🐕
 link: https://github.github.io/fetch/
-date: 2020-12-01
+date: git Last Modified
 ---
-
-This documents the polyfillable parts of the [WHATWG Fetch standard](https://fetch.spec.whatwg.org/). See [Caveats](#caveats) for notable exceptions.
 
 Usage synopsis (use the argument links to find out more):
 
 ```js
-fetch(url, options).then(
-  function (response) {
-    // handle HTTP response
-  },
-  function (error) {
-    // handle network error
-  }
-)
+fetch(url, options)
 ```
 
-More comprehensive usage example:
+## GET
 
 ```js
-fetch(url, {
+const response = await fetch(url, { headers: {} })
+const data = await response.json()
+
+if (!data) {
+  throw new Error('No data')
+}
+
+return data
+```
+
+## POST
+
+Using `async/await`:
+
+```js
+const response = await fetch(url, {
+  method: 'POST',
+  body: JSON.stringify(data),
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  credentials: 'same-origin',
+})
+
+const data = await response.json()
+
+if (!data) {
+  throw new Error('No data')
+}
+
+return data
+```
+
+Using `then()`:
+
+```js
+const response = fetch(url, {
   method: 'POST',
   body: JSON.stringify(data),
   headers: {
@@ -51,7 +78,7 @@ fetch(url, {
 
 Synopsis: `new Request(url, options)`
 
-Request represents a HTTP request to be performed via `fetch()`. Typically a Request doesn't need to be constructed manually, as it's instantiated internally when `fetch()` is called.
+`Request` represents a HTTP request to be performed via `fetch()`. Typically a `Request` doesn't need to be constructed manually, as it's instantiated internally when `fetch()` is called.
 
 ### URL (Request or string)
 
@@ -147,11 +174,3 @@ fetch(...).then((response) => {
   }
 })
 ```
-
-## Caveats
-
-The [whatwg-fetch polyfill](https://github.com/github/fetch) isn't able nor does it aim to implement the entire WHATWG Fetch standard, since some of the standard features would be non-trivial or otherwise unfeasible to implement. Notable examples include:
-
-- Inability to [set the redirect mode](https://github.com/github/fetch/issues/137)
-- Inability to [change the cache directive](https://github.com/github/fetch/issues/438#issuecomment-261272466)
-- Inability to [disable same-origin cookies](https://github.com/github/fetch/pull/56#issuecomment-68835992)

@@ -60,6 +60,13 @@ CREATE TABLE public.bookmark_tag (
 CREATE TYPE status AS ENUM ('active', 'inactive', 'deleted', 'archived', 'draft');
 ```
 
+## Rename a value in an array
+
+```sql
+UPDATE bookmarks
+SET tags = array_replace(tags, 'open', 'public')
+```
+
 ## Constraints
 
 ### List constraints on a table
