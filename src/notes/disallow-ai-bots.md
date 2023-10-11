@@ -1,5 +1,5 @@
 ---
-title: Dissallow AI bots
+title: Disallow AI bots
 emoji: 🤖
 date: git Last Modified
 ---
