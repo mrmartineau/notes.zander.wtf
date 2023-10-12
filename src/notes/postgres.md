@@ -67,6 +67,13 @@ UPDATE bookmarks
 SET tags = array_replace(tags, 'open', 'public')
 ```
 
+## Update a value in all rows
+
+```sql
+UPDATE table_name
+SET column_name = 'column value'
+```
+
 ## Constraints
 
 ### List constraints on a table

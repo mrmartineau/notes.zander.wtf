@@ -9,14 +9,12 @@ date: git Last Modified
 ```html
 <div align="center">
   <img
-    src="https://raw.githubusercontent.com/mrmartineau/gatsby-theme-code-notes/master/assets/opengraph.png"
+    src="https://raw.githubusercontent.com/organisation/repo/master/assets/opengraph.png"
     width="640"
   />
 
   <p>
-    <a
-      href="https://github.com/MrMartineau/gatsby-theme-code-notes/blob/master/LICENSE"
-    >
+    <a href="https://github.com/Organisation/repo/blob/master/LICENSE">
       <img
         src="https://img.shields.io/badge/license-MIT-blue.svg"
         alt="gatsby-theme-code-notes is released under the MIT license."
@@ -48,10 +46,10 @@ date: git Last Modified
       src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"
       alt="PRs welcome!"
     />
-    <a href="https://twitter.com/intent/follow?screen_name=MrMartineau">
+    <a href="https://main.elk.zone/toot.cafe/@zander">
       <img
-        src="https://img.shields.io/twitter/follow/MrMartineau.svg?label=Follow%20@MrMartineau"
-        alt="Follow @MrMartineau"
+        src="https://img.shields.io/mastodon/follow/90758?domain=https%3A%2F%2Ftoot.cafe"
+        alt="Follow @zander"
       />
     </a>
     <a href="https://open.vscode.dev/organization/repository">
@@ -85,11 +83,14 @@ date: git Last Modified
 ## Notes and warnings
 
 ```md
-> **Note**
-> This is a note
+> [!NOTE]
+> Highlights information that users should take into account, even when skimming.
 
-> **Warning**
-> This is a warning
+> [!IMPORTANT]
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]
+> Critical content demanding immediate user attention due to potential risks.
 ```
 
 [More info](https://github.com/community/community/discussions/16925)
