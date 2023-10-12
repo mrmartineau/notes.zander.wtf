@@ -175,6 +175,12 @@ git reset HEAD~1
 git reset --hard HEAD~1
 ```
 
+## Rename files
+
+```sh
+git mv fileName.css filename.css
+```
+
 ## Config
 
 Run the command `git config --global -e` to edit the global config
