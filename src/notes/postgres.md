@@ -92,6 +92,20 @@ ALTER TABLE table_name DROP CONSTRAINT table_name_field_fkey;
 
 # Backup and restore
 
+Install the `libpq` CLI tool:
+
+```sh
+brew install libpq
+```
+
+Add it to your path:
+
+```sh
+fish_add_path /opt/homebrew/opt/libpq/bin
+```
+
+(I use Fish shell so the above command is for Fish. For Bash, use `export PATH="/opt/homebrew/opt/libpq/bin:$PATH"`)
+
 ## Database backup & restore
 
 Using [`pg_dump`](https://www.postgresql.org/docs/current/app-pgdump.html)
