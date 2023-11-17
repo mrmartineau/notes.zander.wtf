@@ -160,12 +160,28 @@ interface ThisType<T> {}
 
 ## Custom types
 
+### `WithOptional`
+
+Convert specified properties of T to be optional
+
 ```ts
-// Convert specified properties of T to be optional
 type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 
 type NewType = WithOptional<OldInterface, 'date' | 'title'>
 ```
+
+### `KeyOfUnion`
+
+Distributive conditional type
+
+```ts
+type KeyOfUnion<T> = T extends any ? keyof T : never
+
+// usage
+type Example = KeyOfUnion<A | B>
+```
+
+more info: https://twitter.com/mattpocockuk/status/1702634299873239144 & https://t.co/kmYldp7sQB
 
 ## Creating type definitions for npm packages
 
