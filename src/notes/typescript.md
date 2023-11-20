@@ -2,7 +2,7 @@
 title: TypeScript
 tags:
   - typescript
-date: 2021-04-22
+date: git Last Modified
 ---
 
 - [TypeScript Deep Dive](https://basarat.gitbook.io/typescript/)
