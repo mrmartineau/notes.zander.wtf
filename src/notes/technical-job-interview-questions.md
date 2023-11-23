@@ -10,18 +10,26 @@ date: git Last Modified
 
 ### What is the difference between functional and object oriented programming?
 
-- Functional
-  - emphasises on the use of functions where each function performs a specific task
-  - Fundamental elements used are variables and functions. The data in the functions are immutable (cannot be changed after creation)
-  - Importance is not given to data but to functions
-  - It follows declarative programming model
-  - It uses recursion for iteration
-  - It is parallel programming supported
-  - The statements in this programming paradigm does not need to follow a particular order while execution
-- Object oriented
-- Follow a simple two-point guideline:[2](http://blog.fogus.me/2013/07/22/fp-vs-oo-from-the-trenches/#fn:gl)
-  - Whenever I write some code to deal with data **_about_** people then functional programming seems to work best.
-  - Whenever I write some code to **_simulate_** people then object-oriented programming seems[3](http://blog.fogus.me/2013/07/22/fp-vs-oo-from-the-trenches/#fn:actors) to work best.
+#### Functional
+
+- emphasises on the use of functions where each function performs a specific task
+- Fundamental elements used are variables and functions. The data in the functions are immutable (cannot be changed after creation)
+- Importance is not given to data but to functions
+- It follows declarative programming model
+- It uses recursion for iteration
+- It is parallel programming supported
+- The statements in this programming paradigm does not need to follow a particular order while execution
+
+#### Object oriented
+
+OOP (Object-Oriented Programming) is an approach in programming in which data is encapsulated within objects and the object itself is operated on, rather than its component parts.
+
+JavaScript is heavily object-oriented. It follows a [prototype-based model](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain), but it also offers a [class syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_classes) to enable typical OOP paradigms.
+
+Follow a simple two-point guideline:[2](http://blog.fogus.me/2013/07/22/fp-vs-oo-from-the-trenches/#fn:gl)
+
+- Whenever I write some code to deal with data **_about_** people then functional programming seems to work best.
+- Whenever I write some code to **_simulate_** people then object-oriented programming seems[3](http://blog.fogus.me/2013/07/22/fp-vs-oo-from-the-trenches/#fn:actors) to work best.
 
 ### What are some javascript design patterns?
 
