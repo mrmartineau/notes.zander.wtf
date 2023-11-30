@@ -57,11 +57,35 @@ https://stackoverflow.com/questions/5076944/what-is-the-difference-between-null-
 ### What is a closure?
 
 A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). **In other words, a closure gives you access to an outer function’s scope from an inner function.** In JavaScript, closures are created every time a function is created, **at function creation time**.
+
+A closure is the combination of a function and the lexical environment within which that function was declared.
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 
 ### What is currying?
 
 Currying is a transformation of functions that translates a function from callable as `f(a, b, c)` into callable as `f(a)(b)(c)`. Currying doesn’t call a function. It just transforms it.
+
+```js
+function curry(f) {
+  // curry(f) does the currying transform
+  return function (a) {
+    return function (b) {
+      return f(a, b)
+    }
+  }
+}
+
+// usage
+function sum(a, b) {
+  return a + b
+}
+
+let curriedSum = curry(sum)
+
+alert(curriedSum(1)(2)) // 3
+```
+
 https://javascript.info/currying-partials
 
 ### What is a `Map`?
@@ -426,6 +450,82 @@ These tools can help you to identify performance bottlenecks, set performance bu
 - **Load**: The page should be fully loaded in under 1000ms. This means that the page should be visible and usable in under 1 second.
 
 To improve the performance of a web page using the RAIL model, developers should focus on minimizing the time it takes to respond to user input, ensuring animations run smoothly, making use of idle time, and reducing the time it takes to fully load the page.
+
+## Accessibility questions
+
+Accessibility (a11y) is about ensuring that digital technology is usable by people with disabilities. Accessibility is an important aspect of diversity, equity, and inclusion (DEI).
+
+### How you audit accessibility?
+
+Start an accessibility audit by using tools such as Lighthouse and Axe tool. Once I fix all the issues reported by these tools, I move to the manual testing of the web application especially by not using my keyboard, use screen readers such as voiceover to see how the application is working in the real world.
+
+### How you will decide when to use `button` or `a` tag?
+
+`button` is when we want to take an action such as submit the form, open a popup, etc. Whereas, an `a` tag is when we want to navigate (or redirect) the user to another page or part of a page.
+
+### What is ARIA?
+
+[Accessible Rich Internet Applications](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) (ARIA) is a set of roles and attributes that define ways to make web content and web applications (especially those developed with JavaScript) more accessible to people with disabilities.
+
+It supplements HTML so that interactions and widgets commonly used in applications can be passed to assistive technologies when there is not otherwise a mechanism. For example, ARIA enables accessible JavaScript widgets, form hints and error messages, live content updates, and more.
+
+The [first rule of ARIA](https://www.w3.org/TR/using-aria/#rule1) use is _"If you can use a native HTML element or attribute with the semantics and behavior you require already built in, instead of re-purposing an element and adding an ARIA role, state or property to make it accessible, then do so."_
+
+Other rules include:
+
+1. Do not change native semantics, unless you really have to.
+1. All interactive ARIA controls must be usable with the keyboard.
+1. Do not use role="presentation" or aria-hidden="true" on a focusable element .
+1. All interactive elements must have an accessible name.
+
+[Notes on ARIA Use in HTML](https://www.w3.org/TR/using-aria/#NOTES)
+
+### What is the difference between `role` and `aria-role`?
+
+`role` is a native HTML attribute that is used to define the role of an element. Whereas, `aria-role` is an ARIA attribute that is used to define the role of an element.
+
+### What is the difference between `aria-label` and `aria-labelledby`?
+
+`aria-label` is used to define a string that labels the current element. Whereas, `aria-labelledby` is used to define the ID of an element that labels the current element.
+
+### What is WAI?
+
+The [W3C Web Accessibility Initiative](https://www.w3.org/WAI/) (WAI) develops standards and support materials to help you understand and implement accessibility.
+
+### What is WCAG?
+
+Web Content Accessibility Guidelines (WCAG) 2 covers a wide range of recommendations for making Web content more accessible. Following these guidelines will make content accessible to a wider range of people with disabilities, including blindness and low vision, deafness and hearing loss, learning disabilities, cognitive limitations, limited movement, speech disabilities, photosensitivity and combinations of these. Following these guidelines will also often make your Web content more usable to users in general.
+
+#### [WCAG Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/glance/)
+
+##### Perceivable
+
+- Provide text alternatives for non-text content.
+- Provide captions and other alternatives for multimedia.
+- Create content that can be presented in different ways, including by assistive technologies, without losing meaning.
+- Make it easier for users to see and hear content.
+
+##### Operable
+
+- Make all functionality available from a keyboard.
+- Give users enough time to read and use content.
+- Do not use content that causes seizures or physical reactions.
+- Help users navigate and find content.
+- Make it easier to use inputs other than keyboard.
+
+##### Understandable
+
+- Make text readable and understandable.
+- Make content appear and operate in predictable ways.
+- Help users avoid and correct mistakes.
+
+##### Robust
+
+- Maximize compatibility with current and future user tools.
+
+### Further reading:
+
+- Accessibility principles: https://www.w3.org/WAI/fundamentals/accessibility-principles/
 
 ## Other questions
 
