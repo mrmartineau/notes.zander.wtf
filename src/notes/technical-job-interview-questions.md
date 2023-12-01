@@ -256,6 +256,8 @@ Make all properties in `T` optional
 
 Construct a type with a set of properties `K` of type `T`
 
+More built-in types: [/notes/typescript/#built-in-utility-types](/notes/typescript/#built-in-utility-types)
+
 ### What is a generic and how might you use one?
 
 Used to pass a type into another type/interface. Like when you need to specify the return type of a a generic function.
