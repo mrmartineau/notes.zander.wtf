@@ -6,30 +6,38 @@ tags:
 date: git Last Modified
 ---
 
+Use the Custom GPT that I made to prepare for technical interviews: https://chat.openai.com/g/g-lCM8cVeOj-tech-interview-coach
+
 ## JavaScript questions
 
 ### What is the difference between functional and object oriented programming?
 
-#### Functional
+Functional Programming (FP) and Object-Oriented Programming (OOP) are two fundamental paradigms in software engineering, each with its unique approach and principles:
 
-- emphasises on the use of functions where each function performs a specific task
-- Fundamental elements used are variables and functions. The data in the functions are immutable (cannot be changed after creation)
-- Importance is not given to data but to functions
-- It follows declarative programming model
-- It uses recursion for iteration
-- It is parallel programming supported
-- The statements in this programming paradigm does not need to follow a particular order while execution
+#### Functional Programming
 
-#### Object oriented
+- **Immutability**: In FP, data is immutable. Once created, objects cannot be modified. This leads to more predictable and bug-resistant code.
+- **Pure Functions**: Functions in FP are 'pure'. They don’t have side effects (like modifying global state) and given the same inputs, always produce the same outputs.
+- **First-Class and Higher-Order Functions**: Functions are treated as first-class citizens, meaning they can be assigned to variables, passed as arguments, or returned from other functions. Higher-order functions, which take functions as arguments or return them, are a key feature.
+- **Stateless**: FP emphasizes stateless design where the output of a function depends only on its input arguments and not on any external or global state.
+- **Examples of Functional Languages**: Haskell, Clojure, and parts of JavaScript, Python, etc.
 
-OOP (Object-Oriented Programming) is an approach in programming in which data is encapsulated within objects and the object itself is operated on, rather than its component parts.
+#### Object-Oriented Programming
 
-JavaScript is heavily object-oriented. It follows a [prototype-based model](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain), but it also offers a [class syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_classes) to enable typical OOP paradigms.
+- **Encapsulation**: OOP encapsulates data and functions that operate on the data within objects. This helps in bundling the data and the methods that operate on the data, and restricts access to them.
+- **Inheritance**: Objects can inherit properties and methods from other objects. This promotes code reusability.
+- **Polymorphism**: OOP allows objects to be treated as instances of their parent class rather than their actual class. This leads to flexibility in code.
+- **Stateful**: Objects in OOP typically hold state. They have attributes that are often modified by the methods of the object.
+- **Examples of Object-Oriented Languages**: Java, C++, Python, Ruby, etc.
 
-Follow a simple two-point guideline:[2](http://blog.fogus.me/2013/07/22/fp-vs-oo-from-the-trenches/#fn:gl)
+#### Comparative Summary
 
-- Whenever I write some code to deal with data **_about_** people then functional programming seems to work best.
-- Whenever I write some code to **_simulate_** people then object-oriented programming seems[3](http://blog.fogus.me/2013/07/22/fp-vs-oo-from-the-trenches/#fn:actors) to work best.
+- **Philosophy**: FP is about transforming data in a sequence of immutable steps without side effects, while OOP is about organizing code around objects and their interactions.
+- **State Management**: FP avoids state and mutable data, while OOP embraces them.
+- **Code Reusability**: In FP, reusability is achieved through functions, especially higher-order functions. In OOP, reusability is achieved through inheritance and polymorphism.
+- **Concurrency**: FP tends to be more friendly towards concurrent programming due to its emphasis on immutability.
+
+Many modern programming languages support both paradigms, allowing developers to choose the most suitable approach for their problem at hand.
 
 ### What are some javascript design patterns?
 
@@ -88,6 +96,38 @@ alert(curriedSum(1)(2)) // 3
 
 https://javascript.info/currying-partials
 
+### What is throttling and debouncing?
+
+Throttling and debouncing are techniques used in JavaScript to optimize and control the execution of repeated or heavy-duty functions.
+
+**Throttling** limits the rate at which a function gets called. It ensures that the function is executed at most once within a specified time interval, regardless of how many times it is invoked. Throttling is often useful to prevent excessive or unnecessary function calls, such as during scroll or resize events.
+
+**Debouncing** limits the frequency at which a function gets called. It postpones the execution of a function until after a certain cooldown period has elapsed since the last invocation. If the function is called again during the cooldown period, the timer resets. Debouncing is commonly used for tasks that require a delay, such as search suggestions or form input validation.
+
+Both techniques help optimize performance and enhance user experience by preventing unnecessary or excessive function invocations.
+
+### What is a tuple?
+
+A tuple is an ordered collection or array-like structure that can contain multiple elements of different types in JavaScript. Unlike regular arrays, tuples have a fixed length and their elements are typically accessed using indices.
+
+However, it's important to note that JavaScript does not have built-in support for tuples as a distinct data type. In JavaScript, you can simulate tuples by using arrays or objects to store multiple values in a specific order.
+
+For example, an array can be used to represent a tuple in JavaScript:
+
+```js
+const tuple = [1, 'Hello', true]
+```
+
+In this example, the tuple consists of three elements: the number 1, the string 'Hello', and the boolean value true. The elements can be accessed using their respective indices:
+
+```js
+console.log(tuple[0]) // Output: 1
+console.log(tuple[1]) // Output: 'Hello'
+console.log(tuple[2]) // Output: true
+```
+
+Although arrays can be used to represent tuples in JavaScript, they lack the strict type enforcement and fixed length characteristic of tuples in some other programming languages.
+
 ### What is a `Map`?
 
 The Map object holds key-value pairs and remembers the original insertion order of the keys. Any value (both objects and primitive values) may be used as either a key or a value.
@@ -111,16 +151,18 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Dest
 
 ### How do you like to style React components?
 
-CSS.. with PostCSS and Tailwind
+CSS.. with PostCSS/Sass and Tailwind
 
 ### What is your preferred state management solution for React?
 
-`useState`, Context, Jotai, Zustand, Recoil, Redux
+`useState`, Context, [Jotai](https://jotai.org/), [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction), [Recoil](https://recoiljs.org/), [Redux](https://redux.js.org/)
 Correct answer is: it depends?
 
 ### Explain Suspense?
 
-`Suspense` lets components “wait” for something before rendering.
+`<Suspense>` lets you display a fallback until its children have finished loading.
+
+https://react.dev/reference/react/Suspense
 
 ### What are ErrorBoundary's used for?
 
