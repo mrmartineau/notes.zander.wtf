@@ -10,34 +10,35 @@ link: http://reactjs.org/docs/hooks-reference.html#usecontext
 - TS/React docs: https://github.com/typescript-cheatsheets/react-typescript-cheatsheet#context
 
 ```tsx
-import { User } from '@supabase/supabase-js'
 import { ReactNode, createContext, useContext } from 'react'
 
-interface UserContextType {
-  user: User
+type SomethingContextData = any[]
+
+interface SomethingContextType {
+  data: SomethingContextData
 }
 
-const UserContext = createContext<UserContextType | null>(null)
+const SomethingContext = createContext<SomethingContextType | null>(null)
 
-export const useUser = () => {
-  const userContext = useContext(UserContext)
+interface ProviderProps {
+  children: ReactNode
+}
 
-  if (!userContext) {
-    throw new Error('useUser has to be used within <UserContext.Provider>')
+export const SomethingProvider = ({ children }: ProviderProps) => {
+  const [data, setData] = useState<SomethingContextData>([])
+  return (
+    <SomethingContext.Provider value={{ data }}>{children}</SomethingContext.Provider>
+  )
+}
+
+export const useSomething = () => {
+  const context = useContext(SomethingContext)
+
+  if (!context) {
+    throw new Error('useSomething has to be used within <SomeContext.Provider>')
   }
 
-  return userContext
-}
-
-interface UserProviderProps {
-  children: ReactNode
-  user: User
-}
-
-export const UserProvider = ({ children, user }: UserProviderProps) => {
-  return (
-    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
-  )
+  return context
 }
 ```
 
