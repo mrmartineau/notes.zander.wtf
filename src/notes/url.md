@@ -49,9 +49,7 @@ params.toString() // user=zander
 ```ts
 // one liner
 const params = Object.fromEntries(
-  new URLSearchParams(
-    new URL('user=zander&page=news#hello').search
-  )
+  new URLSearchParams(new URL('user=zander&page=news#hello').search)
 )
 ```
 
