@@ -44,13 +44,13 @@ params.delete('page')
 params.toString() // user=zander
 ```
 
-### To convert a url with search params to an object:
+### Convert a url with search params to an object:
 
 ```ts
 // one liner
 const params = Object.fromEntries(
   new URLSearchParams(
-    new URL('https://mysite.com/login?user=zander&page=news#hello').search
+    new URL('user=zander&page=news#hello').search
   )
 )
 ```

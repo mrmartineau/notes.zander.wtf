@@ -95,3 +95,29 @@ DELETE FROM tablename1;
 -- Remove the entire tablename1 table.
 DROP TABLE tablename1;
 ```
+
+## Queries
+
+Select all bookmarks with 'public' tag
+
+```sql
+SELECT *
+FROM public.bookmarks
+WHERE 'test' = ANY(tags);
+```
+
+Update the bookmarks table and set the `public` column to true for all items that have the `public` tag
+
+```sql
+UPDATE public.bookmarks
+SET public = true
+WHERE 'public' = ANY(tags);
+```
+
+Select all bookmarks with 'public' tag and remove the `public` tag from those items
+
+```sql
+UPDATE public.bookmarks
+SET "tags" = array_remove("tags", 'public')
+WHERE 'public' = ANY("tags");
+```
