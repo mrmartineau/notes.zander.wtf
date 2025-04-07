@@ -50,4 +50,4 @@ for (var i of array) {
 | for in         | for in x 9,155,750 ops/sec ±0.50% (68 runs sampled)  |
 | for..of        | for..of x 1,339,234 ops/sec ±0.42% (68 runs sampled) |
 
-`for...of` uses `@iterator`s internally which has aren't as efficient
+`for...of` uses `@iterator`s internally which aren't as efficient
