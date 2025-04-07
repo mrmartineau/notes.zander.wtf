@@ -2,7 +2,7 @@
 title: JS array looping
 tags:
   - javascript
-emoji: 🤷‍♂️
+emoji: 🔁
 date: git Last Modified
 link: https://www.measurethat.net/Benchmarks/Show/18189/0/for-vs-foreach-vs-forin-vs-forof
 ---
