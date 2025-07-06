@@ -452,6 +452,7 @@ These are tools that I use often and that I find useful.
 - [Reqres](https://reqres.in/): A hosted REST-API ready to respond to your AJAX requests
 - [Mirage JS](https://miragejs.com/): An API mocking library for frontend developers
 - [Postwoman](https://postwoman.io/): API request builder
+- [Mockae](https://mockae.com/): create a mock API powered by Lua
 
 ## GraphQL
 
@@ -468,6 +469,7 @@ These are tools that I use often and that I find useful.
 - [JSON generator](https://next.json-generator.com/): generate a lot of custom JSON for your app/site
 - [JSON Editor Online](https://jsoneditoronline.org/): view/edit JSON in a better format
 - [fx](https://github.com/antonmedv/fx): Command-line tool and terminal JSON viewer 🔥
+- [JSONing](https://jsoning.com/): A JSON toolset, including a formatter, comparer, JSONPath tester, patch generator, and data generator
 
 # HTML
 
