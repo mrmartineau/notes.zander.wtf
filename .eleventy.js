@@ -143,11 +143,17 @@ module.exports = function (eleventyConfig) {
 
   // Short codes
   eleventyConfig.addShortcode('tagDisplay', function (tag) {
+    if (!tag) {
+      return ''
+    }
     const tagName = slugify(tag)
     const tagColor = getColourFromString(tagName)
     return `<span class="badge" style="background-color: ${tagColor};">${tag}</span>`
   })
   eleventyConfig.addShortcode('tagLink', function (tag) {
+    if (!tag) {
+      return ''
+    }
     const tagName = slugify(tag)
     const tagColor = getColourFromString(tagName)
     return `<a href="/tags/${tagName}" class="badge" style="background-color: ${tagColor};">${tag}</a>`
