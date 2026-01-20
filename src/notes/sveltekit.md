@@ -81,7 +81,7 @@ export const load: PageLoad = async ({ fetch, params }) => {
 
 ### Using data in the page
 
-```svelte
+```html
 <script lang="ts">
   import type { PageData } from './$types'
 
@@ -97,7 +97,7 @@ export const load: PageLoad = async ({ fetch, params }) => {
 
 ## Layouts
 
-```svelte
+```html
 <!-- +layout.svelte -->
 <script lang="ts">
   import type { LayoutData } from './$types'
@@ -115,7 +115,7 @@ export const load: PageLoad = async ({ fetch, params }) => {
 
 ## Form actions
 
-```svelte
+```html
 <!-- +page.svelte -->
 <script lang="ts">
   import { enhance } from '$app/forms'
@@ -163,7 +163,7 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 
 Use `$app/environment` to check if code is running in the browser:
 
-```svelte
+```html
 <script>
   import { onMount } from 'svelte'
   import { browser } from '$app/environment'
@@ -184,7 +184,7 @@ Use `$app/environment` to check if code is running in the browser:
 
 For libraries that expect the DOM to be available:
 
-```svelte
+```html
 <script>
   import { onMount } from 'svelte'
 
@@ -229,7 +229,7 @@ import { env } from '$env/dynamic/public'
 
 ## Preloading
 
-```svelte
+```html
 <script>
   import { preloadData } from '$app/navigation'
 </script>
