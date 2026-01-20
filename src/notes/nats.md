@@ -126,7 +126,7 @@ JetStream is the built-in persistence engine providing **at-least-once** or **ex
 
 ### Config Example (`server.conf`)
 
-```hocon
+```
 jetstream {
   store_dir: "/data/nats-jetstream"
   max_mem: 1G
