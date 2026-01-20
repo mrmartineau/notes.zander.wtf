@@ -1,0 +1,13 @@
+{
+  "name": "11ty-notes-deploy-webhook",
+  "compatibility_date": "2026-01-20",
+  "main": "./index.js",
+  // Environment variables - set these using `wrangler secret put`
+  // Required secrets:
+  // - ALGOLIA_APP
+  // - ALGOLIA_ADMIN_KEY
+  // - ALGOLIA_INDEX
+  // - WEBHOOK_SECRET (optional, for securing the webhook)
+  // - SITE_URL (optional, defaults to https://notes.zander.wtf)
+}
+
