@@ -7,12 +7,45 @@ date: git Last Modified
 
 ## Basic example
 
-TBC
+Immer lets you write mutable-looking code that produces immutable updates. You write code as if you're directly modifying the object, but Immer produces a new immutable copy.
+
+```ts
+import { produce } from 'immer'
+
+const baseState = {
+  name: 'Michel',
+  age: 33,
+}
+
+const nextState = produce(baseState, (draft) => {
+  draft.age = 34
+})
+
+console.log(baseState.age) // 33 (unchanged)
+console.log(nextState.age) // 34 (new object)
+```
+
+### With current state
+
+Use `current()` to get a snapshot of the draft at any point:
+
+```ts
+import { produce, current } from 'immer'
+
+const nextState = produce(baseState, (draft) => {
+  draft.items.push({ id: 1 })
+  console.log(current(draft)) // logs the current draft state
+})
 
 ## useImmer
 
+The `use-immer` package provides hooks that combine React state with Immer.
+
+```bash
+npm install immer use-immer
+```
+
 ```tsx
-import React from 'react'
 import { useImmer } from 'use-immer'
 
 function App() {
@@ -58,7 +91,7 @@ https://immerjs.github.io/immer/docs/update-patterns
 ### Object mutations
 
 ```js
-import produce from 'immer'
+import { produce } from 'immer'
 
 const todosObj = {
   id1: { done: false, body: 'Take out the trash' },
@@ -84,7 +117,7 @@ const updatedTodosObj = produce(todosObj, (draft) => {
 ### Array mutations
 
 ```js
-import produce from 'immer'
+import { produce } from 'immer'
 
 const todosArray = [
   { id: 'id1', done: false, body: 'Take out the trash' },
@@ -151,7 +184,7 @@ const updatedTodosArray = produce(todosArray, (draft) => {
 ### Nested data structures
 
 ```js
-import produce from 'immer'
+import { produce } from 'immer'
 
 // example complex data structure
 const store = {

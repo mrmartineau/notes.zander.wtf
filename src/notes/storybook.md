@@ -8,364 +8,243 @@ link: https://storybook.js.org
 date: git Last Modified
 ---
 
-## Stories
+## Stories (CSF3)
 
-This is a good starter that includes most things you'll need when creating stories. This uses CS3.
+This is a good starter that includes most things you'll need when creating stories.
 
 ```tsx
-// MyComponent.story.ts|tsx
-
+// MyComponent.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react'
-
 import { MyComponent } from './MyComponent'
 
-const meta: Meta<typeof MyComponent> = {
-  /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
-   * to learn how to generate automatic titles
-   */
-  title: 'Path/To/MyComponent',
+const meta = {
+  title: 'Components/MyComponent',
   component: MyComponent,
-}
+  // Autodocs
+  tags: ['autodocs'],
+  // Default args for all stories
+  args: {
+    prop1: 'Default value',
+  },
+} satisfies Meta<typeof MyComponent>
 
 export default meta
-type Story = StoryObj<typeof MyComponent>
+type Story = StoryObj<typeof meta>
 
-export const Basic: Story = {
+export const Default: Story = {
   args: {
     prop1: 'Something',
     prop2: true,
   },
 }
 
-// https://storybook.js.org/docs/react/api/csf#spreadable-story-objects
-export const BasicOnDark: Story = {
-  ...Basic,
-  parameters: { background: { default: 'dark' } },
+export const OnDark: Story = {
+  ...Default,
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
 }
 ```
 
 ### Custom render function
 
 ```tsx
-// This story uses a render function to fully control how the component renders.
-export const Example: Story = {
-  render: () => (
+export const WithWrapper: Story = {
+  render: (args) => (
     <div style={{ maxWidth: '300px' }}>
-      <MyComponent prop1="Something" prop2={false} />
+      <MyComponent {...args} />
     </div>
   ),
 }
 ```
 
-### Play function
+### Play function (interaction testing)
 
-Storybook's play functions are small snippets of code executed when the story renders in the UI. They are convenient helper methods to help you test use cases that otherwise weren't possible or required user intervention.
+Play functions let you simulate user interactions for testing.
 
 ```tsx
-// LoginForm.stories.ts|tsx
-
+// LoginForm.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react'
-
-import { within, userEvent } from '@storybook/testing-library'
-
-import { expect } from '@storybook/jest'
-
+import { within, userEvent, expect } from '@storybook/test'
 import { LoginForm } from './LoginForm'
 
-const meta: Meta<typeof LoginForm> = {
-  /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
-   * to learn how to generate automatic titles
-   */
-  title: 'Form',
+const meta = {
+  title: 'Forms/LoginForm',
   component: LoginForm,
-}
+} satisfies Meta<typeof LoginForm>
 
 export default meta
-type Story = StoryObj<typeof LoginForm>
+type Story = StoryObj<typeof meta>
 
-export const EmptyForm: Story = {}
-
-/*
- * See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
- * to learn more about using the canvasElement to query the DOM
- */
 export const FilledForm: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
 
-    // 👇 Simulate interactions with the component
-    await userEvent.type(canvas.getByTestId('email'), 'email@provider.com')
+    await userEvent.type(
+      canvas.getByLabelText('Email'),
+      'email@provider.com'
+    )
+    await userEvent.type(
+      canvas.getByLabelText('Password'),
+      'a-random-password'
+    )
+    await userEvent.click(canvas.getByRole('button', { name: 'Sign in' }))
 
-    await userEvent.type(canvas.getByTestId('password'), 'a-random-password')
-
-    // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
-    await userEvent.click(canvas.getByRole('button'))
-
-    // 👇 Assert DOM structure
-    await expect(
-      canvas.getByText(
-        'Everything is perfect. Your account is ready and we should probably get you started!'
-      )
-    ).toBeInTheDocument()
+    await expect(canvas.getByText('Welcome back!')).toBeInTheDocument()
   },
 }
+```
+
+### Args and argTypes
+
+```tsx
+const meta = {
+  title: 'Components/Button',
+  component: Button,
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary', 'ghost'],
+    },
+    size: {
+      control: 'radio',
+      options: ['sm', 'md', 'lg'],
+    },
+    disabled: { control: 'boolean' },
+    onClick: { action: 'clicked' },
+  },
+} satisfies Meta<typeof Button>
+```
+
+### Decorators
+
+```tsx
+const meta = {
+  title: 'Components/Card',
+  component: Card,
+  decorators: [
+    (Story) => (
+      <div style={{ padding: '2rem' }}>
+        <Story />
+      </div>
+    ),
+  ],
+} satisfies Meta<typeof Card>
 ```
 
 ### Non-story exports
 
-[More info](https://storybook.js.org/docs/react/api/csf#non-story-exports)
-
 ```tsx
-// MyComponent.stories.ts|tsx
-
 import type { Meta, StoryObj } from '@storybook/react'
-
 import { MyComponent } from './MyComponent'
 
-import someData from './data.json'
-
-const meta: Meta<typeof MyComponent> = {
-  /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
-   * to learn how to generate automatic titles
-   */
+const meta = {
   title: 'MyComponent',
   component: MyComponent,
-  includeStories: ['SimpleStory'], // 👈 Storybook loads these stories
-  excludeStories: /.*Data$/, // 👈 Storybook ignores anything that contains Data
-}
+  // Only include these as stories
+  includeStories: ['Default', 'WithData'],
+  // Or exclude anything matching pattern
+  excludeStories: /.*Data$/,
+} satisfies Meta<typeof MyComponent>
 
 export default meta
-type Story = StoryObj<typeof MyComponent>
+type Story = StoryObj<typeof meta>
 
-export const simpleData = { foo: 1, bar: 'baz' }
-export const complexData = { foo: 1, foobar: { bar: 'baz', baz: someData } }
+// This won't be a story (excluded by pattern)
+export const mockData = { foo: 1, bar: 'baz' }
 
-export const SimpleStory: Story = {
-  args: {
-    data: simpleData,
-  },
+export const Default: Story = {}
+
+export const WithData: Story = {
+  args: { data: mockData },
 }
-```
-
-### CS2 format example
-
-```tsx
-import React from 'react'
-import { Story, Meta } from '@storybook/react/types-6-0'
-import { MyComponent, MyComponentProps } from './myComponent'
-// import docs from './myComponent.docs.mdx'
-
-export default {
-  title: 'Components/MyComponent',
-  component: MyComponent,
-  parameters: {
-    // docs: { page: docs },
-    // paddings: [],
-    /* backgrounds: {
-      default: 'white',
-    },*/
-  },
-  /* argTypes: {
-    // Select element
-    variant: {
-      name: 'Variant',
-      defaultValue: 'large',
-      control: {
-        type: 'select',
-        options: ['large', 'small']
-      },
-    },
-    // Radio
-    variant: {
-      name: 'Variant',
-      defaultValue: 'large',
-      control: {
-        type: 'radio',
-        options: ['large', 'small']
-      },
-    },
-  }, */
-} as Meta
-
-const Template: Story<MyComponentProps> = (args) => <Zander {...args} />
-
-export const Standard = Template.bind({})
-Standard.args = {}
-
-/* Standard.decorators = [
-  (Story) => (
-    <Box sx={{ color: 'bright' }}>
-      <Story />
-    </Box>
-  ),
-]*/
-/* Standard.parameters = {
-  backgrounds: {
-    default: 'blue',
-  },
-}*/
-```
-
-### MDX
-
-    import { Meta, Story, Preview, Anchor } from '@storybook/addon-docs/blocks'
-
-    <Meta title="Theme UI|Components" />
-
-    ---
-
-    <Anchor storyId="the-title--example" />
-
-    # Title
-
-    ## Example code
-
-    ```jsx
-    some code
-    ```
-
-#### Story inside MDX
-
-```jsx
-<Preview>
-  <Story name="Example"></Story>
-</Preview>
 ```
 
 ## Config
 
-[Declarative Storybook configuration](https://medium.com/storybookjs/declarative-storybook-configuration-49912f77b78)
+### `main.ts`
 
-```js
-// main.js
-const path = require('path')
-const SRC_PATH = path.join(__dirname, '../src')
+```ts
+// .storybook/main.ts
+import type { StorybookConfig } from '@storybook/react-vite'
 
-module.exports = {
-  stories: [
-    '../docs/**/*.stories.mdx',
-    '../src/**/*.stories.mdx',
-    '../**/*.stories.@(js|jsx|ts|tsx)',
-  ],
+const config: StorybookConfig = {
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    '@storybook/addon-links',
     '@storybook/addon-essentials',
-    'storybook-addon-paddings',
-    'storybook-addon-color-mode',
     '@storybook/addon-a11y',
+    '@storybook/addon-interactions',
   ],
-  typescript: {
-    check: false,
-    checkOptions: {},
-    reactDocgen: 'none',
+  framework: {
+    name: '@storybook/react-vite',
+    options: {},
   },
 }
+
+export default config
 ```
 
-```js
-// preview.js
-import React from 'react'
-import { withPaddings } from 'storybook-addon-paddings'
-import { ThemeProvider } from 'theme-ui'
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
-import theme from '../src/theme/index.js'
+### `preview.ts`
 
-export const parameters = {
-  layout: 'fullscreen',
-  actions: { argTypesRegex: '^on[A-Z].*' },
-  // Set some different background colours
-  backgrounds: {
-    default: 'white',
-    values: [
-      { name: 'white', value: '#fff' },
-      { name: 'peach', value: 'hsla(36, 100%, 92%, 1)' },
-      { name: 'pink', value: 'hsla(0, 69%, 91%, 1)' },
-      { name: 'green', value: 'hsla(114, 70%, 93%, 1)' },
-      { name: 'light blue', value: 'hsla(199, 100%, 93%, 1)' },
-      { name: 'blue', value: 'hsl(240, 100%, 22%)' },
-      { name: 'dark', value: 'hsl(109, 0%, 16%)' },
-    ],
-  },
-  viewport: {
-    viewports: {
-      // A few custom viewports
-      iphoneSe: {
-        name: 'iPhone SE',
-        styles: {
-          height: '667px',
-          width: '375px',
-        },
-        type: 'mobile',
-      },
-      iphone12Mini: {
-        name: 'iPhone 12 Mini',
-        styles: {
-          height: '812px',
-          width: '375px',
-        },
-        type: 'mobile',
-      },
-      // the default viewports from Storybook
-      ...INITIAL_VIEWPORTS,
-    },
+```ts
+// .storybook/preview.ts
+import type { Preview } from '@storybook/react'
+import '../src/styles/globals.css'
 
-    // storybook-addon-paddings
-    paddings: [
-      { name: 'Small', value: '16px' },
-      { name: 'Medium', value: '32px', default: true },
-      { name: 'Large', value: '64px' },
-    ],
-
-    // storybook-addon-color-mode
-    colorMode: {
-      defaultMode: 'default',
-      modes: {
-        light: {
-          name: 'Light',
-        },
+const preview: Preview = {
+  parameters: {
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
       },
     },
-  },
-  options: {
-    // custom sidebar sorting
-    storySort: {
-      order: [
-        'Introduction',
-        ['Welcome', 'Getting Started'],
-        'Docs',
-        'Advanced',
-        'Typography',
-        'Layout',
-        'Design System',
-        'Page sections',
-        'Atoms',
-        'Components',
+    backgrounds: {
+      default: 'light',
+      values: [
+        { name: 'light', value: '#ffffff' },
+        { name: 'dark', value: '#1a1a1a' },
       ],
     },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+        <Story />
+      </div>
+    ),
+  ],
 }
 
-export const decorators = [
-  withPaddings,
-  (Story) => (
-    <ThemeProvider theme={theme}>
-      <Story />
-    </ThemeProvider>
-  ),
-]
+export default preview
 ```
 
-### Useful addons
+## Useful addons
 
-- [storybook-addon-paddings](https://github.com/rbardini/storybook-addon-paddings)
-- [story-description-loader](https://github.com/izhan/storybook-description-loader)
-- [storybook-addon-color-mode](https://gitlab.com/joshrasmussen/storybook-addons/-/tree/next/packages%2Fcolor-mode)
+- [@storybook/addon-a11y](https://storybook.js.org/addons/@storybook/addon-a11y) - Accessibility testing
+- [@storybook/addon-interactions](https://storybook.js.org/addons/@storybook/addon-interactions) - Debug play functions
+- [storybook-addon-paddings](https://github.com/rbardini/storybook-addon-paddings) - Add padding around stories
+- [@storybook/addon-themes](https://storybook.js.org/addons/@storybook/addon-themes) - Theme switching
 
-```sh
-yarn add --dev @storybook/preset-typescript @storybook/addon-docs/preset @storybook/addon-links/register @storybook/addon-actions/register @storybook/addon-backgrounds/register @storybook/addon-a11y/register @storybook/addon-knobs/register @storybook/addon-viewport/register storybook-addon-color-mode/register storybook-addon-paddings story-description-loader
+## Testing with Storybook
+
+Stories can be reused in unit tests using `composeStories`:
+
+```tsx
+// MyComponent.test.tsx
+import { composeStories } from '@storybook/react'
+import { render, screen } from '@testing-library/react'
+import * as stories from './MyComponent.stories'
+
+const { Default, WithData } = composeStories(stories)
+
+test('renders default state', () => {
+  render(<Default />)
+  expect(screen.getByText('Hello')).toBeInTheDocument()
+})
+
+test('renders with data', () => {
+  render(<WithData />)
+  expect(screen.getByText('Data loaded')).toBeInTheDocument()
+})
 ```
-
-With Gatsby: https://www.gatsbyjs.org/docs/visual-testing-with-storybook/

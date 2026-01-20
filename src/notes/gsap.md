@@ -5,7 +5,7 @@ tags:
   - react
   - javascript
 link: https://greensock.com/docs/v3/GSAP
-date: 2020-12-02
+date: git Last Modified
 ---
 
 ## GSAP
@@ -28,65 +28,113 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 ```
 
-### With React
+### With React (useGSAP hook)
 
-```tsx
-const wrapperRef = useRef<HTMLDivElement>(null)
-const oneRef = useRef<HTMLDivElement>(null)
-const twoRef = useRef<HTMLDivElement>(null)
+For React 18+, GSAP provides the `@gsap/react` package with a `useGSAP` hook that handles cleanup automatically.
 
-useEffect(() => {
-  if (!oneRef.current && !twoRef.current) {
-    const scrollConfig = {
-      trigger: wrapperRef.current,
-      start: 'top center',
-      end: 'bottom center',
-    }
-
-    oneRef.current = ScrollTrigger.create({
-      ...scrollConfig,
-      onEnter: (self) => {
-        // self.isActive
-      },
-      onLeaveBack: (self) => {
-        // self.isActive
-      },
-      invalidateOnRefresh: false,
-    })
-
-    // Line
-    twoRef.current = gsap.to(lineRef.current, {
-      height: wrapperRef.current.scrollHeight,
-      ease: 'sine.inOut',
-      scrollTrigger: {
-        ...scrollConfig,
-        scrub: true,
-      },
-    })
-  }
-  return () => {
-    // Cleanup scroll listeners
-    ScrollTrigger.getAll().forEach((instance) => {
-      instance.kill()
-    })
-    gsap.killTweensOf(window)
-  }
-}, [])
+```bash
+npm install @gsap/react
 ```
 
-#### Cleanup scroll listeners
+```tsx
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
-Make sure you cleanup your scroll trigger listeners when your component unmounts.
+gsap.registerPlugin(useGSAP)
 
-```jsx
-// Very simple example
+const MyComponent = () => {
+  const container = useRef<HTMLDivElement>(null)
+
+  useGSAP(
+    () => {
+      // All GSAP animations in here are scoped to the container
+      // and automatically cleaned up when the component unmounts
+      gsap.to('.box', { x: 100, duration: 1 })
+    },
+    { scope: container }
+  )
+
+  return (
+    <div ref={container}>
+      <div className="box">Animated</div>
+    </div>
+  )
+}
+```
+
+### With dependencies
+
+```tsx
+useGSAP(
+  () => {
+    gsap.to('.box', { x: isActive ? 200 : 0 })
+  },
+  { scope: container, dependencies: [isActive] }
+)
+```
+
+### With ScrollTrigger
+
+```tsx
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
+
+gsap.registerPlugin(ScrollTrigger, useGSAP)
+
+const ScrollAnimation = () => {
+  const container = useRef<HTMLDivElement>(null)
+
+  useGSAP(
+    () => {
+      gsap.to('.box', {
+        y: 100,
+        scrollTrigger: {
+          trigger: '.box',
+          start: 'top center',
+          end: 'bottom center',
+          scrub: true,
+        },
+      })
+    },
+    { scope: container }
+  )
+
+  return (
+    <div ref={container}>
+      <div className="box">Scroll-driven</div>
+    </div>
+  )
+}
+```
+
+### Context-safe callbacks
+
+For event handlers or callbacks, use `contextSafe`:
+
+```tsx
+const { contextSafe } = useGSAP({ scope: container })
+
+const handleClick = contextSafe(() => {
+  gsap.to('.box', { rotation: 360 })
+})
+
+return <button onClick={handleClick}>Rotate</button>
+```
+
+### Legacy approach (manual cleanup)
+
+If you can't use `@gsap/react`, handle cleanup manually:
+
+```tsx
 useEffect(() => {
-  return () => {
-    ScrollTrigger.getAll().forEach((instance) => {
-      instance.kill()
-    })
-    gsap.killTweensOf(window)
-  }
+  const ctx = gsap.context(() => {
+    gsap.to('.box', { x: 100 })
+  }, container)
+
+  return () => ctx.revert()
 }, [])
 ```
 

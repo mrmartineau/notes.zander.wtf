@@ -35,21 +35,39 @@ npm install --save-dev @testing-library/react
 ```tsx
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import '@testing-library/jest-dom'
 import Fetch from './fetch'
 
 test('loads and displays greeting', async () => {
+  // Setup userEvent instance (recommended over calling methods directly)
+  const user = userEvent.setup()
+
   // ARRANGE
   render(<Fetch url="/greeting" />)
 
   // ACT
-  await userEvent.click(screen.getByText('Load Greeting'))
+  await user.click(screen.getByText('Load Greeting'))
   await screen.findByRole('heading')
 
   // ASSERT
   expect(screen.getByRole('heading')).toHaveTextContent('hello there')
   expect(screen.getByRole('button')).toBeDisabled()
 })
+```
+
+### Common userEvent actions
+
+```tsx
+const user = userEvent.setup()
+
+await user.click(element)
+await user.dblClick(element)
+await user.type(input, 'Hello World')
+await user.clear(input)
+await user.selectOptions(select, ['option1', 'option2'])
+await user.keyboard('{Enter}')
+await user.tab()
+await user.hover(element)
+await user.unhover(element)
 ```
 
 ### [Cypress](https://testing-library.com/docs/cypress-testing-library/intro)

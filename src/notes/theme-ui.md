@@ -4,16 +4,39 @@ tags:
   - react
 emoji: 🎨
 link: https://theme-ui.com
-date: 2020-06-11
+date: git Last Modified
 ---
 
 ## Theme spec
 
 https://theme-ui.com/theme-spec
 
-## JSX pragma and the `sx` prop
+## The `sx` prop
 
-https://theme-ui.com/sx-prop
+With Theme UI v0.15+, you no longer need the JSX pragma. Just use the `ThemeUIProvider`:
+
+```tsx
+import { ThemeUIProvider } from 'theme-ui'
+import { theme } from './theme'
+
+const App = () => (
+  <ThemeUIProvider theme={theme}>
+    <div sx={{ color: 'primary', bg: 'background' }}>Hello</div>
+  </ThemeUIProvider>
+)
+```
+
+For TypeScript, add to your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "jsxImportSource": "theme-ui"
+  }
+}
+```
+
+### Legacy JSX pragma (older versions)
 
 ```jsx
 /** @jsx jsx */
@@ -64,11 +87,10 @@ const Link = () => (
 
 https://theme-ui.com/packages/color
 
-```js
-/** @jsx jsx */
-import { jsx } from 'theme-ui'
+```tsx
 import { darken, lighten } from '@theme-ui/color'
-export default (props) => (
+
+const Card = (props) => (
   <div
     {...props}
     sx={{

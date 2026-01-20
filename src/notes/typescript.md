@@ -183,6 +183,42 @@ type Example = KeyOfUnion<A | B>
 
 more info: https://twitter.com/mattpocockuk/status/1702634299873239144 & https://t.co/kmYldp7sQB
 
+### `Awaited`
+
+Unwrap the type of a Promise (built-in since TS 4.5):
+
+```ts
+type Result = Awaited<Promise<string>> // string
+type NestedResult = Awaited<Promise<Promise<number>>> // number
+```
+
+### `NoInfer`
+
+Prevent TypeScript from inferring a type from a specific position (built-in since TS 5.4):
+
+```ts
+function createStreetLight<C extends string>(colors: C[], defaultColor: NoInfer<C>) {
+  // defaultColor must be one of the colors, but doesn't influence inference
+}
+
+createStreetLight(['red', 'yellow', 'green'], 'red') // ✅
+createStreetLight(['red', 'yellow', 'green'], 'blue') // ❌
+```
+
+### `satisfies`
+
+Check that a value matches a type without widening (TS 4.9+):
+
+```ts
+const palette = {
+  red: [255, 0, 0],
+  green: '#00ff00',
+} satisfies Record<string, string | number[]>
+
+// palette.red is still number[], not string | number[]
+palette.red.map((n) => n * 2) // ✅ works
+```
+
 ## Creating type definitions for npm packages
 
 If an npm package does not provide types, it is advisable to add your own in a declaration file (`.d.ts`). Here is an example for the `sum-float` package.

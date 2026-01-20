@@ -1,6 +1,6 @@
 ---
-title: React Query
-link: https://tanstack.com/query/v3/docs/react/overview
+title: TanStack Query (React Query)
+link: https://tanstack.com/query/latest/docs/framework/react/overview
 tags:
   - react
 emoji: ⚛
@@ -9,167 +9,215 @@ date: git Last Modified
 
 ## useQuery
 
-Given a fetch function like this (that uses [axios](/notes/axios)):
+The v5 API uses a single object argument instead of positional arguments.
 
 ```ts
-import axios from 'axios'
-import urlJoin from 'proper-url-join'
+import { useQuery } from '@tanstack/react-query'
 
-export interface APIResponse<T> {
-  status?: number
-  success: boolean
-  data?: T
-  error?: ErrorResponse
-}
-export interface ErrorResponse {
-  message: string
-  data?: {
-    errors?: unknown
-    error?: unknown
-  }
+interface User {
+  id: string
+  name: string
 }
 
-interface RequestModel {
-  path: string
-}
-
-export const getSomeData = async <Response>({
-  path,
-}: RequestModel): Promise<APIResponse<Response>> => {
-  try {
-    const { data } = await axios({
-      method: 'GET',
-      url: urlJoin('https://mysite.com', path),
-    })
-    return data
-  } catch (error) {
-    throw new Error(error.message || 'error.unknown')
-  }
-}
+const { data, error, isPending, isError } = useQuery({
+  queryKey: ['user', userId],
+  queryFn: () => fetchUser(userId),
+})
 ```
 
-This is how you might use react-query
+### With options
 
 ```ts
-import { useQuery, UseQueryResult } from 'react-query'
-
-interface ResponseModel {
-  data: {
-    key: string
-  }
-}
-type ResponseUseQueryModel = UseQueryResult<ResponseModel, Error>
-
-const someData = useQuery<ResponseUseQueryModel, Error>(
-  ['traineeFeedback', traineeId],
-  () =>
-    getSomeData<TraineeFeedbackDataModel>({
-      path: TRAINEE_FEEDBACK,
-    })
-)
-```
-
-### Add options to the query
-
-```ts
-const someData = useQuery<ResponseUseQueryModel, Error>(
-  ['traineeFeedback', traineeId],
-  () =>
-    getSomeData<TraineeFeedbackDataModel>({
-      path: TRAINEE_FEEDBACK,
-    }),
-  // options are the 3rd param
-  {
-    // will wait for `idToken` to be truthy before running this query
-    enabled: !!idToken,
-  }
-)
+const { data, isPending } = useQuery({
+  queryKey: ['user', userId],
+  queryFn: () => fetchUser(userId),
+  enabled: !!userId, // only run when userId is truthy
+  staleTime: 1000 * 60 * 5, // 5 minutes
+  gcTime: 1000 * 60 * 30, // 30 minutes (formerly cacheTime)
+})
 ```
 
 ### As a custom hook
 
 ```ts
-import { useQuery, UseQueryResult } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
-export const useTraineeFeedback = (
-  traineeId: string,
-  idToken: string
-): UseQueryResult<TraineeFeedbackResponseModel, Error> => {
-  return useQuery<TraineeFeedbackResponseModel, Error>(
-    ['traineeFeedback', traineeId],
-    () =>
-      getSomeData<TraineeFeedbackDataModel>({
-        path: TRAINEE_FEEDBACK,
-      }),
-    {
-      enabled: !!idToken,
-    }
-  )
+interface User {
+  id: string
+  name: string
+  email: string
+}
+
+export const useUser = (userId: string) => {
+  return useQuery({
+    queryKey: ['user', userId],
+    queryFn: async (): Promise<User> => {
+      const response = await fetch(`/api/users/${userId}`)
+      if (!response.ok) throw new Error('Failed to fetch user')
+      return response.json()
+    },
+    enabled: !!userId,
+  })
 }
 ```
 
 ### Usage in a component
 
-From [here](https://github.com/tannerlinsley/react-query/discussions/2063)
+```tsx
+const UserProfile = ({ userId }: { userId: string }) => {
+  const { data: user, isPending, isError, error } = useUser(userId)
 
-```ts
-interface ViewUserPagePathParameters {
-  userId: string
-}
+  if (isPending) return <div>Loading...</div>
+  if (isError) return <div>Error: {error.message}</div>
 
-interface IUser {
-  id: string
-  displayName: string
-}
-
-export function assertNever(value: never): never {
-  throw new Error(`Unhandled discriminated union member: ${value}`)
-}
-
-export const ViewUser: React.FC = (props) => {
-  const { userId } = useParams<ViewUserPagePathParameters>()
-  const { status, data, error } = useQuery<IUser, Error>(
-    `getUser for ${userId}`,
-    () => getUser({ id: userId })
-  )
-
-  if (status === 'success') {
-    const user = data
-    return <div>Name: {user.displayName}</div>
-  } else if (status === 'loading') {
-    return <div>loading...</div>
-  } else if (status === 'idle') {
-    return <div>mutating...</div>
-  } else if (status === 'error') {
-    return 'An error has occurred: ' + error.message
-  } else {
-    return assertNever(queryResult)
-  }
+  return <div>Name: {user.name}</div>
 }
 ```
 
-## useQueries
+## useMutation
 
 ```ts
-import { useQueries } from 'react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-const scorecardQueries = useQueries([
-  {
-    queryKey: ['traineeInfo', traineeId],
-    queryFn: () =>
-      getSomeData<GetTraineeInfoDataModel>({
-        path: TRAINEE_FEEDBACK,
-      }),
-    // options in useQueries are not in a separate object
-    enabled: !!idToken,
+const queryClient = useQueryClient()
+
+const mutation = useMutation({
+  mutationFn: (newUser: { name: string }) => {
+    return fetch('/api/users', {
+      method: 'POST',
+      body: JSON.stringify(newUser),
+    })
   },
-  {
-    queryKey: ['traineeAchievements', traineeId],
-    queryFn: () =>
-      getSomeData<TraineeAchievementsDataModel>({
-        path: TRAINEE_FEEDBACK,
-      }),
-    enabled: !!idToken,
+  onSuccess: () => {
+    // Invalidate and refetch
+    queryClient.invalidateQueries({ queryKey: ['users'] })
   },
-])
+})
+
+// Usage
+mutation.mutate({ name: 'New User' })
+```
+
+## queryOptions
+
+The `queryOptions` helper lets you define query configuration in one place and reuse it across `useQuery`, `useSuspenseQuery`, `useQueries`, prefetching, and more. Great for co-locating `queryKey` and `queryFn` together.
+
+```ts
+import { queryOptions, useQuery, useQueryClient } from '@tanstack/react-query'
+
+function userOptions(id: string) {
+  return queryOptions({
+    queryKey: ['user', id],
+    queryFn: () => fetchUser(id),
+    staleTime: 5 * 1000,
+  })
+}
+
+// Usage in components
+const { data } = useQuery(userOptions(userId))
+const { data } = useSuspenseQuery(userOptions(userId))
+
+// Prefetching
+queryClient.prefetchQuery(userOptions(userId))
+
+// Setting data directly
+queryClient.setQueryData(userOptions(userId).queryKey, newUser)
+
+// Multiple queries
+useQueries({
+  queries: [userOptions('1'), userOptions('2')],
+})
+```
+
+Override options at the component level:
+
+```ts
+const { data } = useQuery({
+  ...userOptions(userId),
+  select: (data) => data.name, // type inference still works
+})
+```
+
+For infinite queries, use `infiniteQueryOptions`.
+
+## useQueries
+
+Run multiple queries in parallel.
+
+```ts
+import { useQueries } from '@tanstack/react-query'
+
+const results = useQueries({
+  queries: [
+    {
+      queryKey: ['user', userId],
+      queryFn: () => fetchUser(userId),
+    },
+    {
+      queryKey: ['posts', userId],
+      queryFn: () => fetchUserPosts(userId),
+    },
+  ],
+})
+```
+
+## useSuspenseQuery
+
+For use with React Suspense. Data is guaranteed to be defined.
+
+```tsx
+import { useSuspenseQuery } from '@tanstack/react-query'
+
+const UserProfile = ({ userId }: { userId: string }) => {
+  // data is guaranteed to be defined
+  const { data: user } = useSuspenseQuery({
+    queryKey: ['user', userId],
+    queryFn: () => fetchUser(userId),
+  })
+
+  return <div>Name: {user.name}</div>
+}
+
+// Wrap with Suspense
+const App = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <UserProfile userId="123" />
+  </Suspense>
+)
+```
+
+## QueryClient setup
+
+```tsx
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60, // 1 minute
+      retry: 1,
+    },
+  },
+})
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <YourApp />
+    <ReactQueryDevtools initialIsOpen={false} />
+  </QueryClientProvider>
+)
+```
+
+## Placeholder and initial data
+
+```ts
+const { data } = useQuery({
+  queryKey: ['user', userId],
+  queryFn: () => fetchUser(userId),
+  // Show immediately while fetching
+  placeholderData: { id: userId, name: 'Loading...' },
+  // Or use previous data as placeholder
+  placeholderData: (previousData) => previousData,
+})
 ```
