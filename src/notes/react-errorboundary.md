@@ -1,85 +1,153 @@
 ---
 title: React Error Boundary
-link: https://reactjs.org/docs/error-boundaries.html
+link: https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary
 tags:
   - react
 emoji: ⚛
-date: 2021-11-11
+date: git Last Modified
 ---
 
-From the React docs on [Error boundaries](https://reactjs.org/docs/error-boundaries.html):
+Error boundaries catch JavaScript errors in their child component tree, log those errors, and display a fallback UI instead of crashing the whole app.
 
-> Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
+## Using `react-error-boundary`
 
-Use this component to wrap other components that might crash so errors can be caught.
+The [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary) package provides a ready-to-use solution that's easier than writing your own class component.
 
-## Basic example
+```bash
+npm install react-error-boundary
+```
+
+### Basic usage
 
 ```tsx
-<ErrorBoundary>
-  <Suspense fallback={<Loader />}>
-    {/* A component that fetches data */}
-  </Suspense>
+import { ErrorBoundary } from 'react-error-boundary'
+
+const App = () => (
+  <ErrorBoundary fallback={<div>Something went wrong</div>}>
+    <MyComponent />
+  </ErrorBoundary>
+)
+```
+
+### With fallback component
+
+```tsx
+import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
+
+const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => (
+  <div role="alert">
+    <p>Something went wrong:</p>
+    <pre>{error.message}</pre>
+    <button onClick={resetErrorBoundary}>Try again</button>
+  </div>
+)
+
+const App = () => (
+  <ErrorBoundary
+    FallbackComponent={ErrorFallback}
+    onReset={() => {
+      // Reset app state here
+    }}
+    onError={(error, info) => {
+      // Log to error reporting service
+      console.error(error, info.componentStack)
+    }}
+  >
+    <MyComponent />
+  </ErrorBoundary>
+)
+```
+
+### Reset on navigation or prop change
+
+```tsx
+<ErrorBoundary
+  FallbackComponent={ErrorFallback}
+  resetKeys={[pathname, userId]}
+>
+  <MyComponent />
 </ErrorBoundary>
 ```
 
-## Custom fallback component
+### useErrorBoundary hook
 
-A custom `fallback` component can be passed to the `ErrorBoundary` component, like so:
+Trigger error boundary from event handlers or effects:
 
 ```tsx
-<ErrorBoundary fallback={<div>Error loading the cohort list</div>}>
-  <Suspense fallback={<Loader />}>
-    {/* A component that fetches data */}
-  </Suspense>
-</ErrorBoundary>
+import { useErrorBoundary } from 'react-error-boundary'
+
+const MyComponent = () => {
+  const { showBoundary } = useErrorBoundary()
+
+  const handleClick = async () => {
+    try {
+      await riskyOperation()
+    } catch (error) {
+      showBoundary(error)
+    }
+  }
+
+  return <button onClick={handleClick}>Do something risky</button>
+}
 ```
 
-### Source
+## With Suspense
+
+Error boundaries pair nicely with Suspense for data fetching:
 
 ```tsx
-import React, { ReactNode } from 'react'
-import { Alert } from 'theme-ui'
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 
-export interface ErrorBoundaryProps {
+const App = () => (
+  <ErrorBoundary fallback={<div>Failed to load</div>}>
+    <Suspense fallback={<div>Loading...</div>}>
+      <DataComponent />
+    </Suspense>
+  </ErrorBoundary>
+)
+```
+
+## Custom class-based error boundary
+
+If you prefer not to use a library:
+
+```tsx
+import { Component, ReactNode } from 'react'
+
+interface Props {
+  children: ReactNode
   fallback?: ReactNode
 }
 
-interface ErrorBoundaryState {
+interface State {
   hasError: boolean
   error: Error | null
 }
 
-export class ErrorBoundary extends React.Component<
-  ErrorBoundaryProps,
-  ErrorBoundaryState
-> {
-  state = { hasError: false, error: null }
+class ErrorBoundary extends Component<Props, State> {
+  state: State = { hasError: false, error: null }
 
-  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
-    return {
-      hasError: true,
-      error,
-    }
+  static getDerivedStateFromError(error: Error): State {
+    return { hasError: true, error }
   }
 
-  render(): ReactNode {
-    if (this.state.hasError) {
-      console.error(this.state.error)
-      const fallback = this.props.fallback
-      if (typeof fallback === 'string') {
-        return <Alert variant="warning">{fallback}</Alert>
-      } else if (fallback) {
-        return fallback
-      }
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error('Error caught:', error, errorInfo.componentStack)
+  }
 
-      return (
-        <Alert variant="warning">
-          Something went wrong. Please refresh the page and try again.
-        </Alert>
-      )
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback ?? <div>Something went wrong</div>
     }
     return this.props.children
   }
 }
 ```
+
+## What error boundaries don't catch
+
+- Event handlers (use try/catch)
+- Async code (use try/catch or `.catch()`)
+- Server-side rendering
+- Errors in the error boundary itself

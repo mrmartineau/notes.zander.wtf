@@ -10,14 +10,14 @@ link: https://react.dev/reference/react/useId
 `useId` is a React Hook for generating unique IDs that can be passed to accessibility attributes.
 
 ```tsx
-import { useId } from 'react';
+import { useId } from 'react'
 
-const PasswordField = () =>  {
-  const passwordHintId = useId();
+const PasswordField = () => {
+  const passwordHintId = useId()
   return (
     <>
       <input type="password" aria-describedby={passwordHintId} />
-      <p id={passwordHintId}>
+      <p id={passwordHintId}>Password must be at least 8 characters</p>
     </>
   )
 }

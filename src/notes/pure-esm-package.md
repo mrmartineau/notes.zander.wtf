@@ -15,11 +15,11 @@ This means you have the following choices:
 2. If the package is used in an async context, you could use [`await import(…)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports) from CommonJS instead of `require(…)`.
 3. Stay on the existing version of the package until you can move to ESM.
 
-**You also need to make sure you're on the latest minor version of Node.js. At minimum Node.js 12.20, 14.14, or 16.0.**
+**You also need to make sure you're on a supported version of Node.js. At minimum Node.js 18.x or later.** (Node.js 16 and earlier are end-of-life.)
 
 I would strongly recommend moving to ESM. ESM can still import CommonJS packages, but CommonJS packages cannot import ESM packages synchronously.
 
-ESM is natively supported by Node.js 12 and later.
+ESM is natively supported by Node.js 12 and later, but you should use Node.js 18+ for full ESM support including native `fetch`, top-level `await`, and better module resolution.
 
 You can read more about my [ESM plans](https://blog.sindresorhus.com/get-ready-for-esm-aa53530b3f77).
 
@@ -31,7 +31,7 @@ You can read more about my [ESM plans](https://blog.sindresorhus.com/get-ready-f
 
 - Add `"type": "module"` to your package.json.
 - Replace `"main": "index.js"` with `"exports": "./index.js"` in your package.json.
-- Update the `"engines"` field in package.json to Node.js 12: `"node": "^12.20.0 || ^14.13.1 || >=16.0.0"`.
+- Update the `"engines"` field in package.json to Node.js 18+: `"node": ">=18"`.
 - Remove `'use strict';` from all JavaScript files.
 - Replace all `require()`/`module.export` with `import`/`export`.
 - Use only full relative file paths for imports: `import x from '.';` → `import x from './index.js';`.
@@ -48,8 +48,8 @@ Yes, but you need to convert your project to output ESM. See below.
 
 - Add `"type": "module"` to your package.json.
 - Replace `"main": "index.js"` with `"exports": "./index.js"` in your package.json.
-- Update the `"engines"` field in package.json to Node.js 12: `"node": "^12.20.0 || ^14.13.1 || >=16.0.0"`.
-- Add [`"module": "ES2020"`](https://www.typescriptlang.org/tsconfig#module) to your tsconfig.json.
+- Update the `"engines"` field in package.json to Node.js 18+: `"node": ">=18"`.
+- Add [`"module": "NodeNext"`](https://www.typescriptlang.org/tsconfig#module) (or `"ES2022"`) to your tsconfig.json.
 - Use only full relative file paths for imports: `import x from '.';` → `import x from './index.js';`.
 - Remove `namespace` usage and use `export` instead.
 - Optional but recommended, use the [`node:` protocol](https://nodejs.org/api/esm.html#esm_node_imports) for imports.
@@ -73,7 +73,7 @@ The problem is either Webpack or your Webpack configuration. First, ensure you a
 
 ### I'm having problems with ESM and Next.js
 
-You must enable the [experimental support for ESM](https://nextjs.org/blog/next-11-1#es-modules-support).
+Next.js 13+ has full ESM support. For older versions, you may need to configure `transpilePackages` in `next.config.js`.
 
 ### I'm having problems with ESM and Jest
 
@@ -146,7 +146,11 @@ import { promises as fs } from 'node:fs'
 const packageJson = JSON.parse(await fs.readFile('package.json'))
 ```
 
-If you target Node.js 14 or later, you can import it using `import fs from 'node:fs/promises';` instead.
+You can also import JSON directly with an import assertion (Node.js 18+):
+
+```js
+import packageJson from './package.json' with { type: 'json' }
+```
 
 ### When should I use a default export or named exports?
 

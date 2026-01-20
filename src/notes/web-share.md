@@ -8,13 +8,31 @@ link: https://web.dev/web-share/
 ---
 
 ```js
+const shareData = {
+  title: 'My Page',
+  text: 'Check out this page.',
+  url: 'https://example.com/',
+}
+
+// Check if sharing is supported
+if (navigator.canShare?.(shareData)) {
+  try {
+    await navigator.share(shareData)
+    console.log('Shared successfully')
+  } catch (err) {
+    if (err.name !== 'AbortError') {
+      console.error('Error sharing:', err)
+    }
+  }
+}
+```
+
+Legacy check (for older browsers):
+
+```js
 if (navigator.share) {
   navigator
-    .share({
-      title: 'web.dev',
-      text: 'Check out web.dev.',
-      url: 'https://web.dev/',
-    })
+    .share(shareData)
     .then(() => console.log('Successful share'))
     .catch((error) => console.log('Error sharing', error))
 }

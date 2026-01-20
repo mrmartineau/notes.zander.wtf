@@ -4,26 +4,32 @@ tags:
   - react
 emoji: 🎣
 date: git Last Modified
+link: https://react.dev/reference/react/useReducer
 ---
 
-- Docs: http://reactjs.org/docs/hooks-reference.html#usereducer
 - TS/React docs: https://github.com/typescript-cheatsheets/react-typescript-cheatsheet/blob/master/README.md#hooks
 
 ## Example
 
 ```tsx
-import React, { useReducer } from 'react'
+import { useReducer } from 'react'
 
-const initialState = { count: 0 }
+interface State {
+  count: number
+}
 
-const reducer = (state, action) => {
+type Action = { type: 'increment' } | { type: 'decrement' } | { type: 'reset'; payload: number }
+
+const initialState: State = { count: 0 }
+
+const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'increment':
       return { count: state.count + 1 }
     case 'decrement':
       return { count: state.count - 1 }
-    default:
-      throw new Error()
+    case 'reset':
+      return { count: action.payload }
   }
 }
 
@@ -34,8 +40,22 @@ export const Counter = () => {
       Count: {state.count}
       <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
       <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'reset', payload: 0 })}>Reset</button>
     </>
   )
+}
+```
+
+## With lazy initialization
+
+```tsx
+const init = (initialCount: number): State => {
+  return { count: initialCount }
+}
+
+const Counter = ({ initialCount }: { initialCount: number }) => {
+  const [state, dispatch] = useReducer(reducer, initialCount, init)
+  // ...
 }
 ```
 

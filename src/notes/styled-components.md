@@ -4,7 +4,7 @@ tags:
   - react
   - typescript
 emoji: 💅
-date: 2020-05-19
+date: git Last Modified
 ---
 
 ## Basic component
@@ -24,7 +24,7 @@ You can get the props at the top of the component so you don't have to do it in 
 ```js
 import styled, { css } from 'styled-components'
 
-// 👎 instead ofgetting the props in every line:
+// 👎 instead of getting the props in every line:
 const Post = styled.article`
   font-size: ${(props) => props.theme.fontSizes.md};
   color: ${(props) => props.theme.colors.bodyText};
@@ -47,8 +47,10 @@ h/t https://twitter.com/NikkitaFTW/status/1262423045874089990
 ```js
 import styled, { css } from 'styled-components'
 
-const Post = styled.article({ theme }) => css`
-  font-size: ${theme.fontSizes.md};
-  color: ${theme.colors.bodyText};
-`)
+const Post = styled.article(
+  ({ theme }) => css`
+    font-size: ${theme.fontSizes.md};
+    color: ${theme.colors.bodyText};
+  `
+)
 ```

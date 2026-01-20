@@ -3,72 +3,154 @@ title: IntersectionObserver
 tags:
   - javascript
 emoji: 🚸
-date: 2020-11-04
+date: git Last Modified
 ---
 
+## Basic usage
+
 ```js
-const handleIntersectionChange = (changes, observer) => {
-  changes.forEach((change) => {
-    console.log('entry', entry)
-    // Each entry describes an intersection change for one observed
-    // target element:
-    //   entry.boundingClientRect
-    //   entry.intersectionRatio
-    //   entry.intersectionRect
-    //   entry.isIntersecting
-    //   entry.rootBounds
-    //   entry.target
-    //   entry.time
-    if (entry.intersectionRatio > 0.8) {
-      // do something
-    } else {
-      // do something else
-    }
-  })
-}
-var observer = new IntersectionObserver(handleIntersectionChange, {
-  root: document.querySelector('body'),
-  rootMargin: '0px',
-  threshold: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
-})
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        console.log('Element is visible')
+        // entry.target - the observed element
+        // entry.intersectionRatio - how much is visible (0-1)
+        // entry.boundingClientRect - element's bounding box
+      }
+    })
+  },
+  {
+    root: null, // viewport
+    rootMargin: '0px',
+    threshold: 0.5, // trigger at 50% visibility
+  }
+)
 
 observer.observe(document.querySelector('.element'))
+
+// Clean up when done
+observer.disconnect()
 ```
 
-https://css-tricks.com/using-intersectionobserver-to-check-if-page-scrolled-past-certain-point/
+### Multiple thresholds
+
+```js
+const observer = new IntersectionObserver(callback, {
+  threshold: [0, 0.25, 0.5, 0.75, 1], // trigger at these visibility percentages
+})
+```
+
+### Observe once (lazy loading pattern)
+
+```js
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      loadImage(entry.target)
+      observer.unobserve(entry.target) // stop observing after first trigger
+    }
+  })
+})
+```
 
 ## With React
 
+### Using a ref
+
 ```tsx
-import React, { FC, useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
-export const StickyBannerLayout: FC = ({ children }) => {
+const LazySection = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    if ('IntersectionObserver' in window) {
-      const config = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5,
-      }
+    const element = ref.current
+    if (!element) return
 
-      const handleIntersectionChange = (changes) => {
-        changes.forEach((change) => {
-          if (change.isIntersecting) {
-            // do something
-          } else {
-            // do something else
-          }
-        })
-      }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          console.log('Section is visible')
+        }
+      },
+      { threshold: 0.5 }
+    )
 
-      const observer = new IntersectionObserver(
-        handleIntersectionChange,
-        config
-      )
-      observer.observe(document.querySelector('.element'))
-    }
+    observer.observe(element)
+
+    return () => observer.disconnect()
   }, [])
 
-  return <div>{children}</div>
+  return <div ref={ref}>{children}</div>
 }
 ```
+
+### Custom hook
+
+```tsx
+import { useEffect, useRef, useState } from 'react'
+
+const useIntersectionObserver = (options?: IntersectionObserverInit) => {
+  const ref = useRef<HTMLElement>(null)
+  const [isIntersecting, setIsIntersecting] = useState(false)
+
+  useEffect(() => {
+    const element = ref.current
+    if (!element) return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsIntersecting(entry.isIntersecting)
+    }, options)
+
+    observer.observe(element)
+
+    return () => observer.disconnect()
+  }, [options])
+
+  return { ref, isIntersecting }
+}
+
+// Usage
+const MyComponent = () => {
+  const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.5 })
+
+  return (
+    <div ref={ref}>
+      {isIntersecting ? 'Visible!' : 'Not visible'}
+    </div>
+  )
+}
+```
+
+### Trigger once
+
+```tsx
+const useIntersectionOnce = (options?: IntersectionObserverInit) => {
+  const ref = useRef<HTMLElement>(null)
+  const [hasIntersected, setHasIntersected] = useState(false)
+
+  useEffect(() => {
+    const element = ref.current
+    if (!element || hasIntersected) return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setHasIntersected(true)
+        observer.disconnect()
+      }
+    }, options)
+
+    observer.observe(element)
+
+    return () => observer.disconnect()
+  }, [options, hasIntersected])
+
+  return { ref, hasIntersected }
+}
+```
+
+## References
+
+- [MDN: IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+- [CSS-Tricks: Using IntersectionObserver](https://css-tricks.com/using-intersectionobserver-to-check-if-page-scrolled-past-certain-point/)

@@ -116,38 +116,31 @@ export const createBrowserClient = () =>
 
 ### Server client
 
+The newer `@supabase/ssr` API uses `getAll` and `setAll` for cookie handling:
+
 ```ts
-import {
-  type CookieOptions,
-  createServerClient as _createServerClient,
-} from '@supabase/ssr'
+import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
+import { Database } from '@/types/supabase'
 
-import { Database } from '../../types/supabase'
+export async function createClient() {
+  const cookieStore = await cookies()
 
-export const createServerClient = (cookieStore: ReturnType<typeof cookies>) => {
-  return _createServerClient<Database>(
+  return createServerClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        get(name: string) {
-          return cookieStore.get(name)?.value
+        getAll() {
+          return cookieStore.getAll()
         },
-        set(name: string, value: string, options: CookieOptions) {
+        setAll(cookiesToSet) {
           try {
-            cookieStore.set({ name, value, ...options })
-          } catch (error) {
-            // The `set` method was called from a Server Component.
-            // This can be ignored if you have middleware refreshing
-            // user sessions.
-          }
-        },
-        remove(name: string, options: CookieOptions) {
-          try {
-            cookieStore.set({ name, value: '', ...options })
-          } catch (error) {
-            // The `delete` method was called from a Server Component.
+            cookiesToSet.forEach(({ name, value, options }) =>
+              cookieStore.set(name, value, options)
+            )
+          } catch {
+            // The `setAll` method was called from a Server Component.
             // This can be ignored if you have middleware refreshing
             // user sessions.
           }
@@ -161,15 +154,12 @@ export const createServerClient = (cookieStore: ReturnType<typeof cookies>) => {
 ### Middleware client
 
 ```ts
-import { type CookieOptions, createServerClient } from '@supabase/ssr'
-import { type NextRequest, NextResponse } from 'next/server'
+import { createServerClient } from '@supabase/ssr'
+import { NextResponse, type NextRequest } from 'next/server'
 
-export const createMiddlewareClient = (request: NextRequest) => {
-  // Create an unmodified response
-  let response = NextResponse.next({
-    request: {
-      headers: request.headers,
-    },
+export async function updateSession(request: NextRequest) {
+  let supabaseResponse = NextResponse.next({
+    request,
   })
 
   const supabase = createServerClient(
@@ -177,49 +167,43 @@ export const createMiddlewareClient = (request: NextRequest) => {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        get(name: string) {
-          return request.cookies.get(name)?.value
+        getAll() {
+          return request.cookies.getAll()
         },
-        set(name: string, value: string, options: CookieOptions) {
-          // If the cookie is updated, update the cookies for the request and response
-          request.cookies.set({
-            name,
-            value,
-            ...options,
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) =>
+            request.cookies.set(name, value, options)
+          )
+          supabaseResponse = NextResponse.next({
+            request,
           })
-          response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
-          })
-          response.cookies.set({
-            name,
-            value,
-            ...options,
-          })
-        },
-        remove(name: string, options: CookieOptions) {
-          // If the cookie is removed, update the cookies for the request and response
-          request.cookies.set({
-            name,
-            value: '',
-            ...options,
-          })
-          response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
-          })
-          response.cookies.set({
-            name,
-            value: '',
-            ...options,
-          })
+          cookiesToSet.forEach(({ name, value, options }) =>
+            supabaseResponse.cookies.set(name, value, options)
+          )
         },
       },
     }
   )
 
-  return { supabase, response }
+  // Refresh session if expired
+  await supabase.auth.getUser()
+
+  return supabaseResponse
+}
+```
+
+Use in middleware:
+
+```ts
+// middleware.ts
+import { type NextRequest } from 'next/server'
+import { updateSession } from '@/utils/supabase/middleware'
+
+export async function middleware(request: NextRequest) {
+  return await updateSession(request)
+}
+
+export const config = {
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
 }
 ```

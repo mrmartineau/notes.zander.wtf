@@ -7,139 +7,282 @@ emoji: ⚛
 date: git Last Modified
 ---
 
-[React TypeScript cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet) is my bible for all React/TypeScipt things
+[React TypeScript cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet) is my bible for all React/TypeScript things.
 
-## Functional components
+## Typing components
 
-1. Your own types
-1. `VoidFunctionComponent` or `VFC`
-1. `FunctionComponent` or `FC`
+The preferred method is to type props directly rather than using `FC`.
 
-### 1. Your own type
-
-This is the preferred method, as described [here](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/function_components/), for typing your React components.
-
-```tsx twoslash
-import type { ReactNode } from 'react'
-
-interface AppProps {
-  message: string
+```tsx
+interface ButtonProps {
+  label: string
+  onClick: () => void
+  disabled?: boolean
 }
 
-const App = ({ message }: AppProps): JSX.Element => <div>{message}</div>
+const Button = ({ label, onClick, disabled }: ButtonProps) => {
+  return (
+    <button onClick={onClick} disabled={disabled}>
+      {label}
+    </button>
+  )
+}
 ```
 
-If you need to type `children`, you can add the types like so:
+### With children
 
-```tsx twoslash
+Explicitly type children when you need them:
+
+```tsx
 import type { ReactNode } from 'react'
 
-interface AppProps {
-  message: string
-  children: ReactNode // or whatever type you want
+interface CardProps {
+  title: string
+  children: ReactNode
 }
 
-const App = ({ message, children }: AppProps): JSX.Element => (
+const Card = ({ title, children }: CardProps) => (
   <div>
-    {message}
+    <h2>{title}</h2>
     {children}
   </div>
 )
 ```
 
-### 2. `FunctionComponent` or `FC`
+### With PropsWithChildren
 
-**Using `FunctionComponent` or `FC` is discouraged because it defines `children` as an optional prop.** In most cases you would want to be explicit about how `children` are used. It also defines `children` as `ReactNode` which is a very broad type. So you may want to define `children` as `ReactText` instead which is `number | string`.
+If you want a shorthand for adding children:
 
-```tsx twoslash
-import type { FC } from 'react'
+```tsx
+import type { PropsWithChildren } from 'react'
 
-interface AppProps {
-  message: string
+interface CardProps {
+  title: string
 }
 
-const App: FC<AppProps> = ({ message }) => <div>{message}</div>
+const Card = ({ title, children }: PropsWithChildren<CardProps>) => (
+  <div>
+    <h2>{title}</h2>
+    {children}
+  </div>
+)
 ```
 
-### 3. `VoidFunctionComponent` or `VFC`
+### Why not `FC`?
 
-Using `VoidFunctionComponent` or `VFC` is slightly better than `FunctionComponent` because you have to explicitly define `children` type, but if you're doing that, you might as well use option 1 above instead.
+`FC` (FunctionComponent) is no longer recommended because:
 
-```tsx twoslash
-import type { FC } from 'react'
+1. It used to implicitly include `children` (fixed in React 18, but the habit stuck)
+2. It doesn't play well with generics
+3. Direct prop typing is more explicit and flexible
 
-interface AppProps {
-  message: string
-}
+```tsx
+// ❌ Less preferred
+const Button: FC<ButtonProps> = ({ label }) => <button>{label}</button>
 
-const App: FC<AppProps> = ({ message }) => <div>{message}</div>
+// ✅ Preferred
+const Button = ({ label }: ButtonProps) => <button>{label}</button>
 ```
 
-## Basic prop type examples
+> Note: `VFC` (VoidFunctionComponent) was deprecated in React 18 and removed in React 19.
+
+## Basic prop types
 
 ```ts
 type AppProps = {
   message: string
   count: number
   disabled: boolean
-  /** array of a type! */
   names: string[]
-  /** string literals to specify exact string values, with a union type to join them together */
-  status: 'waiting' | 'success'
-  /** any object as long as you dont use its properties (NOT COMMON but useful as placeholder) */
-  obj: object
-  obj2: {} // almost the same as `object`, exactly the same as `Object`
-  /** an object with any number of properties (PREFERRED) */
-  obj3: {
+  status: 'waiting' | 'success' | 'error'
+  /** Object with specific shape */
+  user: {
     id: string
-    title: string
+    name: string
   }
-  /** array of objects! (common) */
-  objArr: {
+  /** Array of objects */
+  items: {
     id: string
     title: string
   }[]
-  /** a dict object with any number of properties of the same type */
-  dict1: {
-    [key: string]: MyTypeHere
-  }
-  dict2: Record<string, MyTypeHere> // equivalent to dict1
-  /** any function as long as you don't invoke it (not recommended) */
-  onSomething: Function
-  /** function that doesn't take or return anything (VERY COMMON) */
+  /** Record type for dictionaries */
+  scores: Record<string, number>
+  /** Function that returns nothing */
   onClick: () => void
-  /** function with named prop (VERY COMMON) */
-  onChange: (id: number) => void
-  /** alternative function type syntax that takes an event (VERY COMMON) */
-  onClick(event: React.MouseEvent<HTMLButtonElement>): void
-  /** an optional prop (VERY COMMON!) */
-  optional?: OptionalType
+  /** Function with parameters */
+  onChange: (value: string) => void
+  /** Optional prop */
+  optional?: string
 }
 ```
-
-## Useful prop type examples
-
-```ts
-export declare interface AppProps {
-  children1: JSX.Element // bad, doesnt account for arrays
-  children2: JSX.Element | JSX.Element[] // meh, doesn't accept strings
-  children3: React.ReactChildren // despite the name, not at all an appropriate type; it is a utility
-  children4: React.ReactChild[] // better, accepts array children
-  children: React.ReactNode // best, accepts everything (see edge case below)
-  functionChildren: (name: string) => React.ReactNode // recommended function as a child render prop type
-  style?: React.CSSProperties // to pass through style props
-  onChange?: React.FormEventHandler<HTMLInputElement> // form events! the generic parameter is the type of event.target
-  onChange?: React.FormEvent<HTMLInputElement> // event.currentTarget.value
-  onChange?: React.ChangeEvent<HTMLInputElement> // event.target.value
-  //  more info: https://react-typescript-cheatsheet.netlify.app/docs/advanced/patterns_by_usecase/#wrappingmirroring
-  props: Props & React.ComponentPropsWithoutRef<'button'> // to impersonate all the props of a button element and explicitly not forwarding its ref
-  props2: Props & React.ComponentPropsWithRef<MyButtonWithForwardRef> // to impersonate all the props of MyButtonForwardedRef and explicitly forwarding its ref
-}
-```
-
-Read more [here](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example#useful-react-prop-type-examples)
 
 ## Event handling
 
-Some `class` based examples of TS event handling can be found at
-https://fettblog.eu/typescript-react/events/
+```tsx
+const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  console.log(event.currentTarget)
+}
+
+const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  console.log(event.target.value)
+}
+
+const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault()
+}
+
+const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  if (event.key === 'Enter') {
+    // ...
+  }
+}
+```
+
+## Common prop patterns
+
+```tsx
+import type { ReactNode, CSSProperties, ComponentPropsWithoutRef } from 'react'
+
+interface Props {
+  /** Anything React can render */
+  children: ReactNode
+  /** Style object */
+  style?: CSSProperties
+  /** Class name */
+  className?: string
+}
+```
+
+### Extending HTML elements
+
+```tsx
+import type { ComponentPropsWithoutRef } from 'react'
+
+interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
+  variant: 'primary' | 'secondary'
+}
+
+const Button = ({ variant, children, ...rest }: ButtonProps) => (
+  <button className={`btn-${variant}`} {...rest}>
+    {children}
+  </button>
+)
+```
+
+### With ref forwarding
+
+```tsx
+import { forwardRef, type ComponentPropsWithRef } from 'react'
+
+interface InputProps extends ComponentPropsWithRef<'input'> {
+  label: string
+}
+
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ label, ...rest }, ref) => (
+    <label>
+      {label}
+      <input ref={ref} {...rest} />
+    </label>
+  )
+)
+```
+
+## Hooks
+
+### useState
+
+```tsx
+// Type is inferred
+const [count, setCount] = useState(0)
+
+// Explicit type for complex state
+const [user, setUser] = useState<User | null>(null)
+
+// Union types
+const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle')
+```
+
+### useRef
+
+```tsx
+// DOM element ref
+const inputRef = useRef<HTMLInputElement>(null)
+
+// Mutable ref (no null)
+const intervalRef = useRef<number | undefined>(undefined)
+```
+
+### useReducer
+
+```tsx
+type State = { count: number }
+type Action = { type: 'increment' } | { type: 'decrement' } | { type: 'reset'; payload: number }
+
+const reducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 }
+    case 'decrement':
+      return { count: state.count - 1 }
+    case 'reset':
+      return { count: action.payload }
+  }
+}
+
+const [state, dispatch] = useReducer(reducer, { count: 0 })
+```
+
+### useContext
+
+```tsx
+interface ThemeContextType {
+  theme: 'light' | 'dark'
+  toggleTheme: () => void
+}
+
+const ThemeContext = createContext<ThemeContextType | null>(null)
+
+const useTheme = () => {
+  const context = useContext(ThemeContext)
+  if (!context) {
+    throw new Error('useTheme must be used within ThemeProvider')
+  }
+  return context
+}
+```
+
+## Generic components
+
+```tsx
+interface ListProps<T> {
+  items: T[]
+  renderItem: (item: T) => ReactNode
+}
+
+const List = <T,>({ items, renderItem }: ListProps<T>) => (
+  <ul>
+    {items.map((item, index) => (
+      <li key={index}>{renderItem(item)}</li>
+    ))}
+  </ul>
+)
+
+// Usage
+<List items={users} renderItem={(user) => <span>{user.name}</span>} />
+```
+
+## Discriminated unions for props
+
+```tsx
+type ButtonProps =
+  | { variant: 'link'; href: string }
+  | { variant: 'button'; onClick: () => void }
+
+const Button = (props: ButtonProps) => {
+  if (props.variant === 'link') {
+    return <a href={props.href}>Click me</a>
+  }
+  return <button onClick={props.onClick}>Click me</button>
+}
+```

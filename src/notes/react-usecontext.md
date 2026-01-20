@@ -4,7 +4,7 @@ tags:
   - react
 emoji: 🎣
 date: git Last Modified
-link: http://reactjs.org/docs/hooks-reference.html#usecontext
+link: https://react.dev/reference/react/useContext
 ---
 
 - TS/React docs: https://github.com/typescript-cheatsheets/react-typescript-cheatsheet#context
