@@ -3,20 +3,6 @@
   "compatibility_date": "2026-01-20",
   "assets": {
     "directory": "./_site"
-  },
-  // Routes configuration for the search worker
-  "routes": [
-    {
-      "pattern": "notes.zander.wtf/search/*",
-      "zone_name": "zander.wtf"
-    }
-  ],
-  // Environment variables - set these using `wrangler secret put`
-  // Required secrets:
-  // - ALGOLIA_APP
-  // - ALGOLIA_SEARCH_KEY
-  // - ALGOLIA_INDEX
-
-  // For the main site with search
-  "main": "./workers/search/index.js"
+  }
 }
+

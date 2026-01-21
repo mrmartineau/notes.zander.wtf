@@ -1,3 +1,4 @@
+const { EleventyServerlessBundlerPlugin } = require('@11ty/eleventy')
 const { DateTime } = require('luxon')
 const rssPlugin = require('@11ty/eleventy-plugin-rss')
 const { getColourFromString } = require('./src/utils/getColourFromString')
@@ -28,6 +29,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(heroIcons, {
     className: 'icon',
     errorOnMissing: true,
+  })
+
+  // Serverless
+  // Search
+  eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
+    name: 'searcher',
+    functionsDir: './netlify/functions/',
   })
 
   eleventyConfig.setLibrary(
