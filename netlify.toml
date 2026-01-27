@@ -4,3 +4,15 @@ to = "/.netlify/functions/searcher"
 status = 200
 force = true
 _generated_by_eleventy_serverless = "searcher"
+
+[[redirects]]
+from = "/notes/*"
+to = "https://zander.wtf/notes/:splat"
+status = 200
+force = true
+
+[[redirects]]
+from = "/tags/*"
+to = "https://zander.wtf/tags/:splat"
+status = 200
+force = true
